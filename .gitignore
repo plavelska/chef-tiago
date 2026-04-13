@@ -1,0 +1,43 @@
+# OS
+.DS_Store
+Thumbs.db
+
+# Editors
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Environment files
+.env
+.env.*
+
+# Dependencies and build output
+node_modules/
+dist/
+build/
+out/
+coverage/
+.cache/
+
+# Static hosting and deployment tools
+.vercel/
+.netlify/
+.wrangler/
+
+# Local test and preview artifacts
+playwright-report/
+test-results/
+
+# Archives
+*.zip
+*.tar
+*.tar.gz
