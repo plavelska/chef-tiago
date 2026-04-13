@@ -18,10 +18,12 @@ This repository is currently a direct Webflow-style static export: plain HTML pa
 From this folder, run:
 
 ```sh
-python3 -m http.server 8000
+./scripts/serve.sh
 ```
 
 Then open `http://localhost:8000`.
+
+More local workflow notes live in `DEVELOPMENT.md`.
 
 ## Working Approach
 
