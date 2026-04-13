@@ -33,6 +33,10 @@ coverage/
 .netlify/
 .wrangler/
 
+# Local Codex gstack sidecar
+.agents/skills/gstack
+.agents/skills/gstack-*
+
 # Local test and preview artifacts
 playwright-report/
 test-results/
