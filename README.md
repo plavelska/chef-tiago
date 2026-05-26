@@ -1,17 +1,28 @@
 # Chef Tiago
 
-Static marketing site for chef-tiago.com.
+Static website for chef-tiago.com.
 
-This repository is currently a direct Webflow-style static export: plain HTML pages, generated CSS/JS, local fonts, local images, and a small set of supporting documents. That makes it easy to edit from Codex or Codex CLI without a build step.
+This repo is being prepared for a full redesign and relaunch of Tiago Borges' online presence. The site should no longer behave like a private-chef booking funnel. The approved direction is a bold, image-led, one-page editorial profile for Tiago as a chef, executive chef, restaurant operator/coordinator, consultant, and music-aware hospitality collaborator.
 
-## Current Shape
+## Current Status
 
-- Main pages: `index.html`, `services.html`, `booking.html`
-- Utility pages: `404.html`, `401.html`
-- Styling: `css/normalize.css`, `css/webflow.css`, `css/chef-tiago-borges.webflow.css`
-- Behavior: `js/webflow.js`
-- Assets: `images/`, `fonts/`, `documents/`
-- Custom domain: `CNAME` -> `chef-tiago.com`
+The repository still contains the older Webflow-style export, including `services.html`, `booking.html`, generated CSS, and generated Webflow JavaScript.
+
+That legacy code is reference material only. The approved relaunch path is to rebuild the public site from scratch with:
+
+- `index.html`
+- `css/site.css`
+- `js/site.js`
+- curated, optimized public images in a folder such as `images/tiago-2026/`
+
+Inactive Webflow legacy files should be removed in the relaunch commit.
+
+## Source Of Truth
+
+- `PLAN.md`: product, content, architecture, and review decisions.
+- `DESIGN.md`: visual direction, layout rules, imagery rules, and anti-slop checks.
+- `DEVELOPMENT.md`: local preview and implementation workflow.
+- `AGENTS.md`: Codex/gstack instructions for this repo.
 
 ## Local Preview
 
@@ -21,18 +32,31 @@ From this folder, run:
 ./scripts/serve.sh
 ```
 
-Then open `http://localhost:8000`.
+Then open:
+
+```text
+http://127.0.0.1:8000
+```
 
 More local workflow notes live in `DEVELOPMENT.md`.
 
-## Working Approach
+## Working Rules
 
-- Short term: edit the exported HTML/CSS directly so content and design can move quickly.
-- Medium term: reduce brittle Webflow-specific markup and improve semantics, metadata, and accessibility.
-- Long term: consider migrating to a more maintainable static-site setup only after the content structure stabilizes.
+- Keep production static and boring: no framework, no build step, no client-side routing.
+- Use expressive design, but keep the implementation explicit and easy to edit.
+- Do not commit raw `new assets/` files.
+- Commit only curated, optimized image derivatives.
+- Keep Tiago's chef/operator credibility primary.
+- Keep the music angle as atmosphere and selected collaboration, not a separate DJ brand.
+- Use gstack `/qa` or `/qa-only` for browser QA after meaningful visual changes.
 
-## Repo Notes
+## Planned Verification
 
-- Findings and structural notes live in `SITE_AUDIT.md`.
-- Ongoing priorities and decisions live in `PROJECT_STATUS.md`.
-- The generated `webflow.css` and `webflow.js` files are best treated carefully; they are workable, but they are not pleasant hand-authored code.
+During the relaunch, add minimal dev-only Playwright checks for:
+
+- Anchor navigation.
+- Visible email and `mailto:` contact link.
+- Absence of stale private-chef booking language.
+- Desktop and mobile rendering sanity.
+- Clean browser console.
+- Progressive enhancement if JavaScript fails.

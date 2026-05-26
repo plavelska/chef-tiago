@@ -690,3 +690,223 @@ The first concrete build task after that:
 - Do not touch untracked image assets until there is an agreed image-selection pass.
 - Keep all future planning updates in this file unless a more specific design doc is created.
 - If a new `DESIGN.md` is created later, this file remains the product/content plan and `DESIGN.md` becomes the visual system source.
+
+## Engineering Review Decisions
+
+Status: Approved direction from `/plan-eng-review`
+Date: 2026-05-26
+
+The redesign should be implemented as a full vanilla static relaunch, not as a Webflow cleanup.
+
+### Accepted Architecture
+
+- Rebuild the public site from scratch with vanilla HTML, CSS, and JavaScript.
+- Use a one-page editorial structure with anchor navigation.
+- Keep production simple: `index.html`, `css/site.css`, and `js/site.js`.
+- Use the current Webflow export only as temporary reference material while rebuilding.
+- Delete inactive Webflow legacy files in the relaunch commit instead of preserving backward compatibility.
+
+### Route Model
+
+Use one public page:
+
+```text
+/
+├── #top
+├── #work
+├── #point-of-view
+├── #collaborations
+├── #music
+└── #contact
+```
+
+The site is currently offline, so old URL compatibility is not required for first relaunch.
+
+### Asset Pipeline
+
+- Keep raw `new assets/` files out of git.
+- Curate a small public image set into a repo folder such as `images/tiago-2026/`.
+- Commit only web-ready derivatives.
+- Give meaningful images useful alt text.
+- Set image width and height attributes to reduce layout shift.
+- Lazy-load non-critical images.
+
+### Performance Budget
+
+The site should stay bold and image-led, but image handling must be deliberate.
+
+Implementation rules:
+
+- Hero image should be optimized before commit.
+- Non-critical images should use `loading="lazy"`.
+- Decorative images should not carry essential copy.
+- Public image derivatives should be resized for their actual layout role.
+- Large source archives should never be committed accidentally.
+
+### Verification Plan
+
+The runtime site remains static, but the repo should gain dev-only verification.
+
+Add a minimal Playwright setup during implementation to check:
+
+- Anchor navigation targets exist.
+- Contact email is visible as text.
+- Contact link uses `mailto:`.
+- No old booking/private-chef language remains in the main journey.
+- Desktop and mobile layouts render without obvious breakage.
+- Browser console is clean.
+- The page remains usable if JavaScript fails.
+
+Continue using gstack `/qa` or `/qa-only` for browser-level visual and interaction review.
+
+Primary QA artifact:
+
+`~/.gstack/projects/plavelska-chef-tiago/lolalu-main-eng-review-test-plan-20260526-135235.md`
+
+### What Already Exists
+
+- `scripts/serve.sh` already provides a local static preview server.
+- Existing fonts can support the new identity without adding external font dependencies.
+- Existing committed images can serve as fallback material if the new image curation is delayed.
+- Existing Webflow pages and CSS are useful as reference, but should not shape the new implementation.
+- `PLAN.md` is the content and product plan.
+- `DESIGN.md` is the visual system source of truth.
+
+### Not In Scope
+
+- No Webflow compatibility layer.
+- No old `booking.html` or `services.html` aliases for first relaunch.
+- No booking form in the first launch.
+- No JavaScript single-page app routing.
+- No Vite, npm build step, or static generator for production.
+- No external image CDN for the first launch.
+- No raw `new assets/` commit.
+
+### Test Diagram
+
+```text
+CODE PATHS                                  USER FLOWS
+[+] index.html                              [+] First impression
+  ├── Hero identity is current                ├── Tiago is not framed as private chef
+  ├── Anchor nav targets exist                ├── Visitor understands selected projects
+  ├── Email CTA is visible                    └── Contact works without a form
+  └── Old booking language removed
+
+[+] css/site.css                            [+] Responsive visual system
+  ├── Mobile layout does not collapse         ├── Desktop poster rhythm holds
+  ├── Dark section contrast passes            ├── Mobile type remains readable
+  └── Focus states visible                    └── Images support rather than bury copy
+
+[+] js/site.js                              [+] Progressive enhancement
+  ├── No console errors                       ├── Site works if JS fails
+  ├── Reduced motion respected                └── Motion never blocks content
+  └── Anchor behavior remains usable
+```
+
+### Failure Modes
+
+- Stale role language: test for old booking and private-chef framing.
+- Broken contact path: test visible email and `mailto:` behavior.
+- Slow image load: optimize curated derivatives and lazy-load lower-priority images.
+- Mobile collapse: test small viewport layout before launch.
+- JavaScript dependency creep: ensure the site remains readable with JS disabled.
+- Accessibility regression: verify contrast, focus states, alt text, and reduced-motion handling.
+
+### Parallelization
+
+Sequential implementation is recommended for the first relaunch because the primary files overlap.
+
+Possible split after the initial structure lands:
+
+```text
+Lane A: content and HTML structure -> index.html
+Lane B: image curation and optimization -> images/tiago-2026/
+Lane C: Playwright verification -> package/dev test files
+
+Order: build Lane A first, run Lane B in parallel once image choices are known, add Lane C before launch.
+```
+
+### Completion Summary
+
+- Step 0: Scope Challenge: scope accepted as full vanilla relaunch.
+- Architecture Review: one major decision resolved, one-page editorial route model.
+- Code Quality Review: one major decision resolved, plain static file structure.
+- Test Review: one gap resolved, dev-only Playwright checks plus gstack QA.
+- Performance Review: one gap resolved, practical image budget and optimization rules.
+- Legacy Cleanup: one gap resolved, delete Webflow legacy in relaunch commit.
+- TODOs.md updates: none proposed beyond the existing open Tiago questions in this plan.
+- Failure modes: no critical silent gaps remain if verification plan is implemented.
+- Parallelization: mostly sequential, with image curation and verification separable after structure lands.
+- Lake Score: complete path chosen for architecture, assets, tests, performance, and cleanup.
+
+## Developer Experience Review Decisions
+
+Status: Approved direction from `/plan-devex-review`
+Date: 2026-05-26
+
+The relevant developer experience is the maintainer workflow for Lika working with Codex or Codex CLI.
+
+### Persona
+
+```text
+TARGET DEVELOPER PERSONA
+=========================
+Who:       Lika plus Codex collaborator
+Context:   Creative owner steering content, design, implementation, git, and review with AI assistance
+Tolerance: Low tolerance for stale docs or unclear next steps; high tolerance for deliberate design discussion
+Expects:   A clear source of truth, easy preview command, asset rules, and a safe verification path
+```
+
+### DX Mode
+
+Use DX POLISH for this repo.
+
+The repo does not need a public developer-platform onboarding flow. It needs a low-friction maintainer loop:
+
+```text
+open repo
+  -> read README / PLAN / DESIGN
+  -> run ./scripts/serve.sh
+  -> edit vanilla static files
+  -> preview locally
+  -> run Playwright checks once added
+  -> run gstack QA
+  -> commit and push
+```
+
+### DevEx Fixes Applied
+
+- `README.md` now distinguishes the current legacy export from the approved vanilla relaunch.
+- `DEVELOPMENT.md` now documents the relaunch workflow, asset rules, and planned verification.
+- `PLAN.md` now records this DevEx decision so future Codex sessions do not need chat history.
+
+### DevEx Scorecard
+
+| Dimension | Current Score | Target | Notes |
+|-----------|---------------|--------|-------|
+| Getting started | 8/10 | 9/10 | Preview command exists; README now points to the right plan |
+| Source of truth | 8/10 | 9/10 | PLAN and DESIGN are explicit; implementation still pending |
+| Asset workflow | 7/10 | 9/10 | Rules are clear; curation tooling/process not built yet |
+| Verification | 6/10 | 9/10 | gstack QA available; Playwright checks still need implementation |
+| Continuity for Codex | 8/10 | 9/10 | AGENTS, PLAN, DESIGN, README now align |
+
+TTHW for a future maintainer is now expected to be under 2 minutes:
+
+```text
+git clone
+cd chef-tiago
+./scripts/serve.sh
+open http://127.0.0.1:8000
+```
+
+## GSTACK REVIEW REPORT
+
+| Review | Trigger | Why | Runs | Status | Findings |
+|--------|---------|-----|------|--------|----------|
+| CEO Review | `/plan-ceo-review` | Scope and strategy | 1 | CLEAR | Scope expanded to editorial chef/operator profile with selected-project CTA |
+| Codex Review | `/codex review` | Independent second opinion | 0 | NOT RUN | Run before shipping implementation diff |
+| Eng Review | `/plan-eng-review` | Architecture and tests | 1 | CLEAR | Vanilla one-page relaunch, curated assets, Playwright QA, image budget, Webflow cleanup |
+| Design Review | `/plan-design-review` | UI/UX gaps | 1 | CLEAR | Direction captured in `DESIGN.md`; mockup generation blocked by missing OpenAI API key |
+| DX Review | `/plan-devex-review` | Maintainer workflow gaps | 1 | CLEAR | README and DEVELOPMENT now align with the vanilla relaunch workflow |
+
+- VERDICT: CEO, DESIGN, ENG, and DX cleared for implementation.
