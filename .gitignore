@@ -45,3 +45,4 @@ test-results/
 *.zip
 *.tar
 *.tar.gz
+.gstack/

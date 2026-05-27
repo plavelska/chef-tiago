@@ -1,13 +1,15 @@
 # Design Direction: Tiago Borges
 
-Status: Draft source of truth
-Last updated: 2026-05-26
+Status: Approved implementation direction
+Last updated: 2026-05-27
 
 ## Visual Thesis
 
-The site should feel like Ibiza night, food, music, and kitchen heat, held together by chef credibility.
+The site should feel like bright market heat, food, music, and soft room energy, held together by chef credibility and a modern brutalist poster system.
 
-It should be bold, image-led, warm, atmospheric, and slightly mischievous. It should not become a beige luxury restaurant template, a generic private-chef brochure, or a DJ portfolio.
+It should be bold, image-led, warm, atmospheric, slightly mischievous, and structurally graphic. The approved reference round selected variant C: playful, colorful, and modern brutalist, inspired by the editorial contrast of Tenity, the exposed grid/manual language of Creative Web Manual, and the hospitality confidence of What Matters Agency.
+
+The design-shotgun feedback moved the direction away from heavy black, fire, red club lighting, and dramatic nightlife imagery. It should not become a beige luxury restaurant template, a generic private-chef brochure, an Italian trattoria template, or a DJ portfolio.
 
 ## Identity Hierarchy
 
@@ -24,16 +26,18 @@ The visitor should understand quickly that Tiago is no longer positioned as a st
 
 Approved direction:
 
-- Ibiza night / food / music
+- Bright food energy / market heat / soft music and room atmosphere
 - More atmospheric than polite hospitality design
-- Dark sections are allowed
-- Nightlife cues and music-energy transitions are allowed
+- Playful colorful brutalism with a visible grid, chunky type, pill navigation, sticker tags, and poster-card modules
+- Color blocking and bold color clashes are encouraged when they feel fresh
+- Night cues are allowed as accents or transitions, not as the dominant mood
 - Food, room, and music can sit in the same visual world
 
 Guardrail:
 
 - Chef and operator credibility stays first.
 - Music is part of atmosphere and selected collaborations, not the primary profession.
+- Avoid fire drama, red-light club drama, and heavy black-first compositions.
 
 ## Layout Rules
 
@@ -43,7 +47,11 @@ Prefer:
 
 - Large poster-like sections
 - Asymmetric image and text placement
+- Exposed grid, stamp, label, chapter, and coordinate/manual cues when they add character
+- Chunky rounded cards and pill nav used as structure, not decoration
 - Strong section-to-section contrast
+- Bright layouts with tactile image energy
+- A side-rail or side-menu gesture if it helps the page feel modern
 - Selective marquee or graphic gestures
 - Big visual moments with fewer words
 
@@ -53,6 +61,7 @@ Avoid:
 - Centered SaaS-style hero layouts
 - Stock restaurant template composition
 - Over-polished luxury minimalism
+- Standardized magazine layouts
 - Repeating the same section mood too often
 
 Implementation test:
@@ -61,15 +70,24 @@ If a section starts looking like a generic hospitality portfolio, push it back t
 
 ## Color
 
-Use the existing warm palette as the base, but let the redesign introduce stronger night contrast.
+Use the existing warm palette as the base, but let the redesign introduce brighter food-led contrast.
 
 Likely roles:
 
-- Black / near-black: night, depth, footer, atmosphere
-- Warm yellow: energy, food, sunlight, emphasis
-- Green: grounding, restaurant/operator credibility
-- Red: heat, small accents, motion, graphic punctuation
+- Black / near-black: depth, footer, small atmosphere moments
+- Electric blue: hero energy, contact, modernity, selected accents
+- Warm yellow: work panel, food, sunlight, emphasis
+- Green: culture, island freshness, restaurant/operator credibility
+- Coral/pink: memory, collaboration, heat, graphic punctuation
 - White / cream: readable text and breathing room
+
+Design-shotgun refinement:
+
+- Avoid an Italian tricolor read where red, green, and cream dominate equally.
+- Avoid traffic-light color logic.
+- Use black sparingly; do not let it become the first visual impression.
+- Use blue, pink/coral, yellow, and green together to avoid an Italian-tricolor or traffic-light read.
+- Let bright images and color blocking carry more of the homepage energy.
 
 Accessibility rule:
 
@@ -88,6 +106,8 @@ Rules:
 - Big type is preferred over many small labels.
 - Keep line lengths short in atmospheric sections.
 - Do not let playful type reduce readability.
+- Push typography stranger, bolder, and less conventional than the first mockups.
+- Avoid ordinary magazine-serif treatment and soft lifestyle-script cliches.
 
 ## Imagery
 
@@ -107,6 +127,7 @@ Rules:
 - Use fewer, stronger images.
 - Prefer specific food, hands, room, or personality over generic beauty.
 - Do not over-darken food until it disappears.
+- Avoid dramatic fire, red lighting, and staged nightlife images for primary moments.
 - Keep imperfect human texture where it helps.
 - Do not commit the untracked `new assets/` folder until a deliberate curation and optimization pass selects public images.
 

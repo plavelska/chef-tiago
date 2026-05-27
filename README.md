@@ -2,20 +2,19 @@
 
 Static website for chef-tiago.com.
 
-This repo is being prepared for a full redesign and relaunch of Tiago Borges' online presence. The site should no longer behave like a private-chef booking funnel. The approved direction is a bold, image-led, one-page editorial profile for Tiago as a chef, executive chef, restaurant operator/coordinator, consultant, and music-aware hospitality collaborator.
+This repo contains the first local review build for the redesigned Tiago Borges website. The site no longer behaves like a private-chef booking funnel. The appro
+on is a bold, image-led, one-page editorial profile for Tiago as a chef, executive chef, restaurant operator/coordinator, consultant, and music-aware hospitality collaborator.
 
 ## Current Status
 
-The repository still contains the older Webflow-style export, including `services.html`, `booking.html`, generated CSS, and generated Webflow JavaScript.
-
-That legacy code is reference material only. The approved relaunch path is to rebuild the public site from scratch with:
+The public site has been rebuilt as a clean static first version:
 
 - `index.html`
 - `css/site.css`
 - `js/site.js`
-- curated, optimized public images in a folder such as `images/tiago-2026/`
+- curated, optimized public images under `images/tiago-2026/`
 
-Inactive Webflow legacy files should be removed in the relaunch commit.
+The old `services.html`, `booking.html`, generated Webflow CSS, and generated Webflow JavaScript have been removed from the public surface.
 
 ## Source Of Truth
 
@@ -50,13 +49,19 @@ More local workflow notes live in `DEVELOPMENT.md`.
 - Keep the music angle as atmosphere and selected collaboration, not a separate DJ brand.
 - Use gstack `/qa` or `/qa-only` for browser QA after meaningful visual changes.
 
-## Planned Verification
+## Verification
 
-During the relaunch, add minimal dev-only Playwright checks for:
+Use the local verification script for:
 
 - Anchor navigation.
 - Visible email and `mailto:` contact link.
 - Absence of stale private-chef booking language.
-- Desktop and mobile rendering sanity.
-- Clean browser console.
-- Progressive enhancement if JavaScript fails.
+- Absence of old Webflow runtime dependencies.
+
+Run:
+
+```sh
+npm test
+```
+
+Use gstack `/qa` or `/qa-only` for browser-level visual review after meaningful changes.

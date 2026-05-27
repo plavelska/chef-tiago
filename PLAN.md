@@ -1,3 +1,4 @@
+<!-- /autoplan restore point: /Users/lolalu/.gstack/projects/plavelska-chef-tiago/main-autoplan-restore-20260526-160625.md -->
 # Plan: Tiago Borges Website Redesign
 
 Generated: 2026-05-08
@@ -383,6 +384,30 @@ Possible aesthetic label:
 
 `Mediterranean editorial with kitchen heat.`
 
+## Design-Shotgun Feedback
+
+Source:
+
+- `/design-shotgun` comparison board generated 2026-05-26.
+- Artifacts live outside the repo at `~/.gstack/projects/plavelska-chef-tiago/designs/homepage-shotgun-final-20260526-143845/`.
+- No variant was submitted as a final approval; the feedback should guide the next design pass rather than lock an `approved.json`.
+
+Ratings:
+
+| Variant | Concept | Rating | Keep | Avoid |
+|---------|---------|--------|------|-------|
+| A | Ibiza Night Editorial | 2/5 | Side menu, modern rhythm, music as a theme | Too much black, fire/red-light drama, ordinary typography |
+| B | Market Heat | 3/5 | Color blocking, bold color clashes, bright layout, bright food imagery | Standardized/old-fashioned feel, boring typography, too Italian, uncreative CTA elements |
+| C | Music And Table | 2/5 | Best overall tone, small illustrations, better typography direction | Traffic-light colors, typography still not bold enough, dramatic imagery is wrong for Tiago |
+
+Autoplan design constraints from this round:
+
+- Use B as the structural baseline for brightness, food energy, and color blocking.
+- Pull C's softer tone and illustrative detail into the next direction.
+- Borrow A's side-menu/music cue only if it stays light and modern.
+- Avoid heavy black, fire imagery, red club lighting, generic restaurant template layouts, Italian-tricolor palettes, and conventional magazine typography.
+- Push typography bolder, stranger, and more distinctive while keeping chef/operator credibility.
+
 ## Content Voice
 
 Voice should feel:
@@ -716,7 +741,7 @@ Use one public page:
 ├── #work
 ├── #point-of-view
 ├── #collaborations
-├── #music
+├── #atmosphere
 └── #contact
 ```
 
@@ -777,6 +802,7 @@ Primary QA artifact:
 - No Webflow compatibility layer.
 - No old `booking.html` or `services.html` aliases for first relaunch.
 - No booking form in the first launch.
+- No standalone music/DJ section in the first launch.
 - No JavaScript single-page app routing.
 - No Vite, npm build step, or static generator for production.
 - No external image CDN for the first launch.
@@ -790,6 +816,7 @@ CODE PATHS                                  USER FLOWS
   ├── Hero identity is current                ├── Tiago is not framed as private chef
   ├── Anchor nav targets exist                ├── Visitor understands selected projects
   ├── Email CTA is visible                    └── Contact works without a form
+  ├── Atmosphere section supports the food story
   └── Old booking language removed
 
 [+] css/site.css                            [+] Responsive visual system
@@ -811,6 +838,7 @@ CODE PATHS                                  USER FLOWS
 - Mobile collapse: test small viewport layout before launch.
 - JavaScript dependency creep: ensure the site remains readable with JS disabled.
 - Accessibility regression: verify contrast, focus states, alt text, and reduced-motion handling.
+- Music positioning drift: verify music appears as atmosphere or selected collaboration texture, not as a second profession.
 
 ### Parallelization
 
@@ -899,6 +927,339 @@ cd chef-tiago
 open http://127.0.0.1:8000
 ```
 
+## Autoplan Review Refresh
+
+Status: Approved
+Date: 2026-05-26
+Trigger: user submitted `/design-shotgun` feedback and asked `/autoplan` to proceed.
+Approval: user approved all final-gate recommendations on 2026-05-26.
+
+### Intake
+
+Plan summary:
+
+The plan remains an image-led one-page relaunch for Tiago Borges as chef, executive chef, restaurant operator/coordinator, consultant, and selected hospitality collaborator. The design-shotgun feedback does not change Approach B, but it does change the visual center: brighter food energy, stronger color blocking, softer atmosphere, stranger typography, and less dark nightlife drama.
+
+Scope detection:
+
+| Scope | Detected | Evidence |
+|-------|----------|----------|
+| UI | Yes | One-page editorial homepage, anchor navigation, visual system, typography, imagery |
+| DX | Yes | Maintainer workflow, local preview, asset rules, dev-only verification |
+| Base branch | `main` | `origin/HEAD` points to `origin/main` |
+| Codex outside voice | Unavailable | Approval reviewer blocked external Codex CLI review of repo docs |
+| Independent subagent voice | Available | CEO strategy review completed |
+
+Restore point:
+
+`~/.gstack/projects/plavelska-chef-tiago/main-autoplan-restore-20260526-160625.md`
+
+### Phase 1: CEO Review
+
+Premise challenge:
+
+| Premise | Assessment | Decision |
+|---------|------------|----------|
+| The urgent problem is positioning, not lack of personality | Valid. Existing site already has visual personality, but frames Tiago as `Private Chef 24/7` and routes visitors to booking. | Keep |
+| A one-page editorial relaunch is the right v1 | Valid. It removes stale booking structure fastest without creating a content-maintenance burden. | Keep |
+| Current-role facts can be drafted before Tiago confirms them | Risky. Public wording for Mira, Bottega, consulting availability, public email, and image permissions must be verified before launch copy. | Accepted: add launch claims sheet |
+| Music should be present | Valid, but it must be atmosphere, not a standalone profession. | Fold into `#atmosphere` and collaborations |
+| Selected projects is the right CTA | Valid, but broad. It needs a sharper v1 hierarchy or the homepage may speak weakly to every visitor. | Accepted: prioritize restaurant/opening support plus extraordinary food-led events |
+
+What already exists:
+
+| Need | Existing asset | Use |
+|------|----------------|-----|
+| Local preview | `scripts/serve.sh` | Keep as primary preview command |
+| Visual direction | `DESIGN.md` | Updated with design-shotgun feedback |
+| Product/content plan | `PLAN.md` | Remains source of truth |
+| Maintainer workflow | `README.md`, `DEVELOPMENT.md`, `AGENTS.md` | Keep aligned with static relaunch |
+| Old content and styles | `index.html`, `services.html`, `booking.html`, `css/`, `js/` | Reference only; do not let Webflow structure dictate v1 |
+| Image sources | committed `images/`, untracked `new assets/` | Curate derivatives only, leave raw sources untracked |
+
+Dream state delta:
+
+```text
+CURRENT
+  Private-chef booking export
+  Services / Booking journey
+  Webflow-era structure
+  Stale role language
+
+THIS PLAN
+  One-page chef/operator profile
+  Work / Point of View / Collaborations / Atmosphere / Contact
+  Static vanilla relaunch
+  Bright food-led visual direction
+
+12-MONTH IDEAL
+  Living editorial identity
+  Verified current projects
+  Strong image archive
+  Optional About/Gallery/Journal pages
+  Clear selected-project inbound pipeline
+```
+
+Implementation alternatives:
+
+| Approach | Effort | Risk | Decision |
+|----------|--------|------|----------|
+| Minimal content pivot | S | Low launch risk, high brand-staleness risk | Rejected for v1; too close to old booking structure |
+| Image-led one-page profile | M | Needs copy/image verification | Approved baseline |
+| Full editorial portfolio | L | Maintenance and content burden | Deferred to post-launch |
+
+CEO outside voice:
+
+The independent review agreed that Approach B should proceed. The final gate accepted both high-severity recommendations:
+
+| Finding | Severity | Type | Fix |
+|---------|----------|------|-----|
+| Public claims are unverified | High | User challenge | Create launch claims sheet before final copy |
+| Selected projects is broad | High | User challenge | Pick top two v1 inbound outcomes or explicitly keep broader positioning |
+| Dark Ibiza night thesis underperformed | Medium | Auto-decision | Shift to bright market heat plus soft room/music energy |
+| Standalone music section risks DJ positioning | Medium | Taste decision | Fold music into atmosphere and collaborations |
+
+CEO consensus:
+
+| Dimension | Primary review | Subagent | Consensus |
+|-----------|----------------|----------|-----------|
+| Premises valid | Mostly yes, with claims risk | Mostly yes, with claims risk | Confirmed |
+| Right problem | Reposition away from booking | Same | Confirmed |
+| Scope calibration | One-page v1 | One-page v1 | Confirmed |
+| Alternatives explored | Enough for v1 | Enough for v1 | Confirmed |
+| Market/position risk | Broad CTA, unverified claims | Same | Confirmed |
+| 6-month trajectory | Good if shipped quickly after verification | Same | Confirmed |
+
+CEO output:
+
+- NOT in scope: standalone DJ/music brand, multi-page editorial portfolio, contact form, framework migration, image CDN.
+- Error/rescue registry: see table below.
+- Failure modes registry: see cross-phase registry below.
+- Completion: Phase 1 clears Approach B, with two final-gate decisions.
+
+### Phase 2: Design Review
+
+Design completeness score: 8/10 after incorporating design-shotgun feedback.
+
+Design-shotgun interpretation:
+
+| Signal | Implication |
+|--------|-------------|
+| B rated highest | Use bright layout, food energy, color blocking, and color clash as baseline |
+| C had the best tone | Pull in softer room/music tone and small illustrative details |
+| A had useful side-menu/music cues | Borrow the side-rail idea only if it stays light and modern |
+| Heavy black/fire/red drama disliked | Remove dark club drama from primary direction |
+| Typography disliked across variants | Push bolder, stranger, more distinctive type |
+
+Design litmus scorecard:
+
+| Dimension | Score | Finding | Decision |
+|-----------|-------|---------|----------|
+| First 5-second hierarchy | 8/10 | Identity is clear if hero copy stays direct | Keep hero role line explicit |
+| Visual originality | 7/10 | Typography is the biggest unresolved taste risk | Push type more unusual |
+| Imagery strategy | 8/10 | Image roles are named, but rights/approval are unresolved | Add launch claims sheet |
+| Color system | 7/10 | Warm palette works, but Italian/traffic-light risk is real | Add explicit color guardrails |
+| Mobile readability | 7/10 | Plan names mobile checks but not exact section behavior | Verify in Playwright and gstack QA |
+| Accessibility | 8/10 | Contrast, focus, alt text, reduced motion are specified | Keep as launch gate |
+| AI slop resistance | 8/10 | Generic cards are rejected; route still needs decisive layout execution | Poster rhythm over card grids |
+
+Design decisions:
+
+- `#music` becomes `#atmosphere` for v1, so music can support the room/food story without becoming a second profession.
+- `DESIGN.md` now supersedes the older dark-first mood with bright market heat plus soft atmosphere.
+- Avoid heavy black-first composition, fire, red club lighting, Italian tricolor, traffic-light colors, ordinary magazine typography, and lifestyle-script cliches.
+- Keep color blocking, tactile food imagery, small illustration, and a possible side-rail gesture.
+
+### Phase 3: Engineering Review
+
+Architecture decision:
+
+Keep the production site boring and static: `index.html`, `css/site.css`, `js/site.js`, curated image derivatives. No framework, build step, client-side router, or Webflow compatibility layer for v1.
+
+Dependency graph:
+
+```text
+Browser
+  |
+  v
+index.html
+  |-- css/site.css
+  |-- js/site.js
+  |-- images/tiago-2026/*
+  |-- fonts/*
+  |
+  v
+mailto: public email
+```
+
+Code quality review:
+
+| Area | Finding | Decision |
+|------|---------|----------|
+| Legacy Webflow export | Current files are brittle and booking-shaped | Rebuild v1 cleanly, use export as reference only |
+| Asset handling | Raw `new assets/` folder is unsafe to commit | Curate optimized derivatives only |
+| URL model | Old `services.html` and `booking.html` aliases can preserve stale mental model | Clean URL break remains approved |
+| JS | The site should not need JS for core content | JS only progressive enhancement |
+
+Test diagram:
+
+```text
+CONTENT FLOWS                              TESTS
+[+] Hero identity                           [+] text assertion, visual QA
+  ├── role line verified                      ├── no stale private-chef framing
+  └── selected-project CTA                    └── 10-second comprehension check
+
+[+] Navigation                              [+] anchor checks
+  ├── #work                                   ├── target exists
+  ├── #point-of-view                          ├── keyboard focus remains visible
+  ├── #collaborations                         └── mobile tap targets are usable
+  ├── #atmosphere
+  └── #contact
+
+[+] Contact                                 [+] mailto and visible email
+  ├── visible public email                    ├── href starts with mailto:
+  └── no booking form                         └── copy filters selected projects
+
+[+] Images                                  [+] asset checks
+  ├── hero optimized                          ├── alt text exists where meaningful
+  ├── noncritical lazy-loaded                 ├── width/height set where practical
+  └── raw source files excluded               └── no new assets/ committed
+```
+
+Performance review:
+
+- Hero image optimization is a launch gate.
+- Non-critical images should be lazy-loaded.
+- Large source archives must remain out of git.
+- Use explicit image dimensions to reduce layout shift.
+- No third-party runtime dependencies should remain unless deliberately approved.
+
+Engineering test artifact:
+
+`~/.gstack/projects/plavelska-chef-tiago/lolalu-main-autoplan-test-plan-20260526-1615.md`
+
+### Phase 3.5: DX Review
+
+Product type:
+
+This is not a developer platform. DX means maintainer experience for Lika plus Codex/Codex CLI.
+
+Developer journey:
+
+| Stage | Expected path | Risk | Fix |
+|-------|---------------|------|-----|
+| Discover | Read `README.md` | Old export can confuse scope | README names legacy vs relaunch |
+| Understand | Read `PLAN.md` and `DESIGN.md` | Conflicting visual direction | Updated `DESIGN.md` and this review |
+| Preview | Run `./scripts/serve.sh` | Python missing | Requirement documented |
+| Edit | Work in vanilla files | Webflow clutter distracts | Rebuild clean files |
+| Curate assets | Select derivatives only | Raw assets accidentally committed | Asset rules and git checks |
+| Verify | Run Playwright and gstack QA | Checks not yet implemented | Add dev-only tests |
+| Ship | Commit static files | Stale booking language leaks | Regression checks |
+| Maintain | Future edits in docs | Decisions lost in chat | PLAN/DESIGN/TODOS updated |
+
+Developer empathy narrative:
+
+A future Codex session should not need to rediscover the relaunch rationale. It should open the repo, see that the Webflow export is legacy reference, read the updated visual direction, run the preview command, and know exactly which files to build and which assets not to touch.
+
+DX scorecard:
+
+| Dimension | Score | Target | Decision |
+|-----------|-------|--------|----------|
+| Getting started | 8/10 | 9/10 | Keep `./scripts/serve.sh` path |
+| Source of truth | 8/10 | 9/10 | PLAN, DESIGN, TODOS now align better |
+| Asset workflow | 7/10 | 9/10 | Needs curation pass and derivative naming |
+| Verification | 6/10 | 9/10 | Add Playwright checks before launch |
+| Error recovery | 7/10 | 9/10 | Restore point and test artifact exist |
+| Codex continuity | 8/10 | 9/10 | Autoplan decisions recorded |
+| Production simplicity | 9/10 | 9/10 | No framework or build step |
+| Launch confidence | 7/10 | 9/10 | Depends on claims sheet and QA |
+
+TTHW remains under 2 minutes:
+
+```text
+cd /Users/lolalu/development/chef-tiago
+./scripts/serve.sh
+open http://127.0.0.1:8000
+```
+
+### Error And Rescue Registry
+
+| Failure | Trigger | User sees | Rescue |
+|---------|---------|-----------|--------|
+| Wrong public role claim | Mira/Bottega wording guessed | Trust damage or awkward correction | Launch claims sheet before final copy |
+| Stale booking language leaks | Old Webflow files or copy reused | Site still feels like private-chef booking | Playwright text checks and gstack QA |
+| Music over-positioned | Standalone `#music` reads like DJ service | Chef/operator credibility diluted | Use `#atmosphere` and keep music contextual |
+| Raw assets committed | `new assets/` copied wholesale | Repo bloat and rights risk | Curate derivatives under `images/tiago-2026/` |
+| Visual direction goes too dark | First mockup aesthetic reused too literally | Food disappears, Tiago feels too dramatic | Follow updated `DESIGN.md` feedback constraints |
+| Contact too vague | Email-only CTA has no fit filter | Wrong inquiries or weak conversion | Add selected-project fit list near contact |
+
+### Cross-Phase Themes
+
+| Theme | Phases | Decision |
+|-------|--------|----------|
+| Claims before polish | CEO, Eng, DX | Verify facts before final copy and launch |
+| Bright food energy over dark drama | CEO, Design | Update design source of truth |
+| Music as texture, not profession | CEO, Design | Rename `#music` to `#atmosphere` |
+| Static simplicity is a strength | Eng, DX | Keep production framework-free |
+| Verification must catch old positioning | Eng, DX | Add stale-language regression checks |
+
+### Decision Audit Trail
+
+| # | Phase | Decision | Classification | Principle | Rationale | Rejected |
+|---|-------|----------|----------------|-----------|-----------|----------|
+| 1 | CEO | Keep Approach B as v1 | Auto-decision | Completeness + bias toward action | Solves the real positioning problem without building a content-heavy portfolio | Minimal pivot, full portfolio |
+| 2 | CEO | Add launch claims sheet as pre-copy gate | User challenge | Explicit over clever | Public role claims and image permissions are trust risks | Guessing from public references |
+| 3 | CEO | Surface top-two inbound outcomes as final gate choice | User challenge | Focus as subtraction | Broad selected-project copy may dilute proof and CTA | Speaking equally to every visitor |
+| 4 | Design | Shift from dark Ibiza night to bright market heat plus soft atmosphere | Auto-decision | Evidence from feedback | Heavy black/fire/red drama underperformed | Dark-first homepage |
+| 5 | Design | Rename `#music` to `#atmosphere` for v1 | Taste decision | Chef credibility first | Music should support the room, not become a second profession | Standalone music/DJ section |
+| 6 | Eng | Keep vanilla static architecture | Auto-decision | Boring by default | The site needs clarity and speed, not a framework | Vite, SPA, static generator |
+| 7 | Eng | Clean URL break for old booking/services pages | Auto-decision | Explicit over clever | The site is offline and old routes preserve stale framing | Compatibility aliases |
+| 8 | Eng | Add dev-only verification before launch | Auto-decision | Completeness | Static sites still regress through stale copy, broken anchors, and image mistakes | Manual-only QA |
+| 9 | DX | Create `TODOS.md` for deferred scope | Auto-decision | No vague deferrals | Post-launch items should be visible to future sessions | Leaving deferred work in prose only |
+
+### Final Gate Outcome
+
+All final-gate recommendations were approved on 2026-05-26.
+
+Accepted decisions:
+
+- Add a launch claims sheet before final copy: exact Mira title/name, Bottega relationship, consulting availability, public email, and image permissions.
+- Prioritize restaurant/opening support plus extraordinary food-led events as the top two v1 inbound outcomes, while still allowing selected other inquiries.
+- Use `#atmosphere` instead of a standalone `#music` section.
+
+### User Challenges For Final Gate
+
+Challenge 1: Launch claims sheet before final copy
+
+You said the plan should proceed toward implementation. The review recommends inserting a short verification checkpoint before final copy: exact Mira title/name, Bottega relationship, consulting availability, public email, and image permissions. If this is wrong, the cost is a small delay. If omitted, the cost is a polished site with a false public claim.
+
+Outcome: approved.
+
+Challenge 2: Pick top two inbound outcomes for v1
+
+The current CTA covers restaurant owners, event producers, hospitality collaborators, press, friends-of-friends, and creative operators. The review recommends prioritizing restaurant/opening support plus extraordinary food-led events for v1, while still allowing other selected inquiries. If this is wrong, the cost is narrowing the site too much. If omitted, the cost is a homepage that feels expressive but less decisive.
+
+Outcome: approved. V1 should prioritize restaurant/opening support plus extraordinary food-led events.
+
+### Taste Choice For Final Gate
+
+Choice 1: `#atmosphere` instead of standalone `#music`
+
+Recommendation: use `#atmosphere`. It preserves the music signal your feedback liked, but avoids making music read as a second public profession. Keeping `#music` is viable if Tiago wants that identity more visible now.
+
+Outcome: approved. Use `#atmosphere` for v1.
+
+### Implementation Tasks
+
+- [ ] **AP-001 (P1, human: 15 min with Tiago / CC: 5 min) - claims** - Create and confirm launch claims sheet before final copy.
+- [ ] **AP-002 (P1, human: 10 min decision / CC: 5 min plan update) - homepage-positioning** - Prioritize the top two v1 inbound outcomes or explicitly keep broad selected-project positioning.
+- [ ] **AP-003 (P2, human: taste review / CC: 1-2 hours implementation pass) - visual-system** - Implement bright market heat plus soft atmosphere direction from design-shotgun feedback.
+- [ ] **AP-004 (P2, human: review results / CC: 45-60 min) - qa** - Add dev-only checks for anchors, visible email, stale booking language, JS-off usability, and mobile sanity.
+
+Task artifact:
+
+`~/.gstack/projects/plavelska-chef-tiago/tasks-autoplan-20260526-1618.jsonl`
+
 ## GSTACK REVIEW REPORT
 
 | Review | Trigger | Why | Runs | Status | Findings |
@@ -906,7 +1267,9 @@ open http://127.0.0.1:8000
 | CEO Review | `/plan-ceo-review` | Scope and strategy | 1 | CLEAR | Scope expanded to editorial chef/operator profile with selected-project CTA |
 | Codex Review | `/codex review` | Independent second opinion | 0 | NOT RUN | Run before shipping implementation diff |
 | Eng Review | `/plan-eng-review` | Architecture and tests | 1 | CLEAR | Vanilla one-page relaunch, curated assets, Playwright QA, image budget, Webflow cleanup |
-| Design Review | `/plan-design-review` | UI/UX gaps | 1 | CLEAR | Direction captured in `DESIGN.md`; mockup generation blocked by missing OpenAI API key |
+| Design Review | `/plan-design-review` | UI/UX gaps | 1 | CLEAR | Direction captured in `DESIGN.md`; design-shotgun feedback now refines typography, color, tone, and imagery constraints |
 | DX Review | `/plan-devex-review` | Maintainer workflow gaps | 1 | CLEAR | README and DEVELOPMENT now align with the vanilla relaunch workflow |
+| Autoplan Refresh | `/autoplan` | Reconcile design-shotgun feedback with plan | 1 | APPROVED | Bright market heat direction, `#atmosphere`, launch claims sheet, focused inbound-outcome decision |
 
 - VERDICT: CEO, DESIGN, ENG, and DX cleared for implementation.
+- AUTOPLAN VERDICT: Approved for implementation with launch claims sheet, top-two inbound outcome focus, and `#atmosphere` locked for v1.

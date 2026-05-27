@@ -1,10 +1,11 @@
 # Development
 
-This site should stay a small static project. The current repository still contains the older Webflow export, but the approved relaunch direction is a clean vanilla implementation.
+This site should stay a small static project. The current local review build is a clean vanilla implementation.
 
 ## Requirements
 
 - Python 3
+- Node.js, for the lightweight verification script
 
 ## Preview Locally
 
@@ -33,14 +34,14 @@ You can choose a different port:
 - Refresh the browser to see changes.
 - For quick terminal verification, use `curl http://127.0.0.1:8000`.
 
-## Relaunch Workflow
+## Relaunch Structure
 
-The relaunch should replace the Webflow export with:
+The relaunch build uses:
 
 - `index.html`
 - `css/site.css`
 - `js/site.js`
-- curated optimized images, likely under `images/tiago-2026/`
+- curated optimized images under `images/tiago-2026/`
 
 Production should remain static. Do not add a framework or build step unless a future plan explicitly changes that decision.
 
@@ -55,19 +56,22 @@ Production should remain static. Do not add a framework or build step unless a f
 
 ## Verification
 
-Before launch, the repo should gain minimal dev-only Playwright checks. Those checks should cover:
+Run:
+
+```sh
+npm test
+```
+
+The current script checks:
 
 - Anchor navigation targets.
 - Visible email and working `mailto:` link.
 - No stale `Private Chef`, `Booking`, `Services`, `booking.html`, or `services.html` references in the main journey.
-- Desktop and mobile rendering sanity.
-- Clean browser console.
-- Usability when JavaScript is disabled or fails.
+- No old Webflow runtime dependencies.
 
 For visual QA, use gstack `/qa` or `/qa-only`.
 
 ## Notes
 
-- The site currently depends on some third-party runtime assets from Webflow CDN and Formspree.
-- The relaunch should remove those dependencies unless a deliberate replacement is approved.
-- `PLAN.md` and `DESIGN.md` are the current sources of truth for what to build next.
+- The public site no longer depends on Webflow runtime assets or Formspree.
+- `PLAN.md` and `DESIGN.md` are the current sources of truth for what to refine next.
