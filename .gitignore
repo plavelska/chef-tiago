@@ -5,6 +5,7 @@ Thumbs.db
 # Editors
 .idea/
 .vscode/
+.obsidian/
 *.swp
 *.swo
 *~
@@ -36,6 +37,9 @@ coverage/
 # Local Codex gstack sidecar
 .agents/skills/gstack
 .agents/skills/gstack-*
+
+# Raw photography source exports
+new assets/
 
 # Local test and preview artifacts
 playwright-report/

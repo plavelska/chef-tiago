@@ -1,31 +1,29 @@
-const navLinks = Array.from(document.querySelectorAll(".site-nav a"));
-const sections = navLinks
-  .map((link) => document.querySelector(link.getAttribute("href")))
-  .filter(Boolean);
+const normalizePage = (href) => {
+  const url = new URL(href, window.location.href);
+  const file = url.pathname.split("/").filter(Boolean).pop() || "index.html";
+  return file === "" ? "index.html" : file;
+};
 
-if ("IntersectionObserver" in window) {
-  const observer = new IntersectionObserver(
-    (entries) => {
-      const visible = entries
-        .filter((entry) => entry.isIntersecting)
-        .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+const currentPage = normalizePage(window.location.href);
 
-      if (!visible) return;
+document.querySelectorAll(".site-nav a[href]").forEach((link) => {
+  const href = link.getAttribute("href");
+  if (!href || href.startsWith("#")) return;
 
-      navLinks.forEach((link) => {
-        const isCurrent = link.getAttribute("href") === `#${visible.target.id}`;
-        if (isCurrent) {
-          link.setAttribute("aria-current", "true");
-        } else {
-          link.removeAttribute("aria-current");
-        }
-      });
-    },
-    {
-      rootMargin: "-20% 0px -55%",
-      threshold: [0.2, 0.45, 0.7],
-    },
-  );
+  if (normalizePage(href) === currentPage) {
+    link.setAttribute("aria-current", "page");
+  } else if (link.getAttribute("aria-current") === "page") {
+    link.removeAttribute("aria-current");
+  }
+});
 
-  sections.forEach((section) => observer.observe(section));
-}
+document.querySelectorAll('a[href^="#"]').forEach((link) => {
+  const hash = link.getAttribute("href");
+  const target = hash && hash.length > 1 ? document.getElementById(hash.slice(1)) : null;
+  if (!target) return;
+
+  link.addEventListener("click", () => {
+    target.setAttribute("tabindex", "-1");
+    window.setTimeout(() => target.focus({ preventScroll: true }), 350);
+  });
+});

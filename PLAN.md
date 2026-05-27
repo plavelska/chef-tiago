@@ -1,4 +1,4 @@
-<!-- /autoplan restore point: /Users/lolalu/.gstack/projects/plavelska-chef-tiago/main-autoplan-restore-20260526-160625.md -->
+<!-- /autoplan restore point: /Users/lolalu/.gstack/projects/plavelska-chef-tiago/main-autoplan-restore-20260527-181254.md -->
 # Plan: Tiago Borges Website Redesign
 
 Generated: 2026-05-08
@@ -13,7 +13,182 @@ The site should no longer present Tiago primarily as a private chef or use booki
 
 The new site should keep Tiago's character: direct, warm, playful, food-obsessed, music-aware, and not corporate. It should feel more mature than the current site without sanding off the personality.
 
-## Current Situation
+## Current Direction Override
+
+Status: locked for the next working prototype on 2026-05-27.
+
+This section supersedes older review notes that treated the launch claims sheet, `Gallery` route, image permissions, and standalone music page as unresolved.
+
+For implementation, this section is authoritative. Older one-page, `#atmosphere`-only, no-standalone-music, and unresolved-claims notes are historical context unless repeated here.
+
+- Build the next prototype as a small multi-page editorial site: `Home`, `About`, `Work`, `Collaborations`, `Gallery`, `Music`, and `Contact`.
+- `Gallery` is the route name. Do not keep the older `Gallery / Notes` or `Gallery / Journal` ambiguity.
+- `Music` gets its own page and should be visibly present. It must read as food, room rhythm, gatherings, atmosphere, and hospitality sensitivity, not as a generic DJ portfolio.
+- Do not focus current-work positioning on the Azores. Faial/Azores remains origin and background context only.
+- Mira and Bottega il Buco are cleared for public use.
+- Consulting is active and should be treated as a real work lane.
+- The public email remains visible as `tiagodoborges@gmail.com`.
+- Image usage is cleared. Select, optimize, and convert public derivatives from `new assets/`; do not commit the raw source folder.
+- Approved visual reference: `/Users/lolalu/.gstack/projects/plavelska-chef-tiago/designs/multi-page-editorial-sitemap-20260527-173551/round-2/variant-B-remix.png`.
+- Rejected visual reference: `/Users/lolalu/.gstack/projects/plavelska-chef-tiago/designs/multi-page-editorial-sitemap-20260527-173551/round-2/variant-B-remix-cleaner.png`, because it reduced too much personality.
+- Implementation should borrow the approved remix's poster energy, handmade marks, blue portrait field, yellow work panel, coral CTA, blue contact card, gallery/image rhythm, and visible music route while keeping text readable and the page usable.
+
+### Current Prototype Job
+
+The prototype's primary job is proof-first referral conversion: make a serious restaurant owner, operator, collaborator, or producer understand within 30 seconds that Tiago is credible for restaurant/opening support, active consulting, and selected food-led experiences.
+
+Priority hierarchy:
+
+1. Restaurant/opening support and consulting.
+2. Extraordinary food-led events and collaborations.
+3. Public profile, press context, Gallery, and Music as proof of taste and room sense.
+
+Page roles:
+
+- `Home`: fastest proof of who Tiago is, what he builds, and why to contact him.
+- `About`: origin and professional arc without making Azores the current-work focus.
+- `Work`: proof board for Mira, Bottega il Buco, consulting, restaurant openings, menu/concept work, and kitchen coordination.
+- `Collaborations`: filtered invitation for selected projects, led by restaurant/opening support and extraordinary food-led events.
+- `Gallery`: image proof from optimized `new assets/` derivatives, not a dumping ground.
+- `Music`: hospitality rhythm page. It should show how music shapes rooms, gatherings, and food experiences without implying a generic DJ brand.
+- `Contact`: visible email and a short project-fit prompt.
+
+Copy governance:
+
+- Use the user-cleared Mira and Bottega permission, but avoid over-specific venue titles unless the exact wording is confirmed in the working copy.
+- Prefer durable positioning: `chef / operator / consultant` and `builds kitchens, menus, teams, and rooms`.
+- Current roles prove the positioning; they should not become the whole positioning.
+
+### Implementation Source Of Truth
+
+Files to build for the working prototype:
+
+```text
+index.html
+about.html
+work.html
+collaborations.html
+gallery.html
+music.html
+contact.html
+css/site.css
+js/site.js
+images/tiago-2026/*
+```
+
+Navigation order:
+
+```text
+Home -> About -> Work -> Collaborations -> Gallery -> Music -> Contact
+```
+
+Priority treatment:
+
+- `Work` and `Collaborations` must be visually stronger than `Gallery` and `Music`.
+- `Music` can sit in the nav, but it must not be the primary CTA, first proof point, or profession label.
+- Home first screen order on desktop and mobile: `Tiago Borges`, role line, proof strip, primary CTA, portrait/image.
+- The role line must remain visible on mobile.
+
+Proof module contract:
+
+Each `Work` proof item should include:
+
+- venue or context
+- role or contribution
+- what Tiago did
+- why it matters
+- image, link, or caption evidence when available
+- confidence level: `confirmed`, `public reference`, or `draft wording`
+
+Minimum page modules:
+
+| Page | First-screen job | Required modules |
+|------|------------------|------------------|
+| Home | Prove credibility and invite the right inquiry in 30 seconds | hero, role line, proof strip, work CTA, image, contact cue |
+| About | Explain the person and path without shifting current-work focus to Azores | origin note, professional arc, portrait/image, return CTA |
+| Work | Carry the serious operator/consulting proof | proof cards for Mira/Bottega/consulting/openings, work lanes, CTA |
+| Collaborations | Filter selected opportunities | two primary lanes, secondary lanes, fit/not-fit copy, project prompt |
+| Gallery | Prove taste through images | 8-12 optimized images, short captions, categories or rhythm sections |
+| Music | Prove room sense and hospitality rhythm | room-rhythm POV, food/gathering use cases, one atmosphere/media-style artifact, CTA back to collaborations/contact |
+| Contact | Convert without a form | visible email, `mailto:`, prompts for what/where/support needed, fallback copy for mail-app failure |
+
+Static state rules:
+
+| State | User should see |
+|-------|-----------------|
+| Image missing or slow | Reserved color/image panel, useful alt/caption context, no layout collapse |
+| JavaScript unavailable | All nav links and email links still work |
+| Mail app does not open | Email remains visible and selectable with a short fallback note |
+| Gallery has fewer than 8 good images | Keep route draft-only or fold into Home until enough proof exists |
+| Music content is thin | Keep page concise and route back to Work/Collaborations instead of padding |
+| Mobile nav crowded | Use a wrapping or horizontally scrollable pill nav before adding a heavy menu system |
+
+Responsive rules:
+
+- Do not hide the role line at mobile/tablet widths.
+- Keep touch targets at least 44px.
+- Oversized display type must scale with `clamp()` and avoid horizontal overflow.
+- Poster grids collapse into intentional stacked chapters: heading, proof, image, CTA.
+- Gallery uses mixed but controlled image ratios; captions stay readable below images on mobile.
+- Contact email must remain readable and selectable on small screens.
+
+Accessibility rules:
+
+- Keep `lang`, skip link, landmarks, and visible focus states.
+- Body text contrast target is WCAG AA: 4.5:1 or better.
+- Large decorative display text can be expressive, but essential copy must stay readable.
+- Heading order must remain logical on every page.
+- Meaningful images get specific alt text; decorative marks are hidden from assistive tech.
+- Respect reduced-motion preferences.
+
+### Proof And Claims Source Table
+
+The public site can use cleared Mira/Bottega/image permission, but implementation should still avoid brittle title inflation. Internal confidence labels are for editing only; do not print `confirmed`, `public reference`, or `draft wording` labels on the public site.
+
+| Claim or proof | Public treatment | Status | Implementation rule |
+|----------------|------------------|--------|---------------------|
+| Tiago is a chef/operator/consultant | Primary positioning | Confirmed by user direction | Use across header, hero, Work, and Contact |
+| Mira | Named proof item | Cleared by user | Use as current/work proof; avoid exact public title unless the working copy is exact |
+| Bottega il Buco | Named proof item | Cleared by user | Use as experience/proof; avoid implying ownership or a precise title not written in copy |
+| Consulting is active | Primary work lane | Confirmed by user | Present as restaurant/opening support and consulting, not as vague availability |
+| Public email | Visible contact | Confirmed by user | Keep `tiagodoborges@gmail.com` visible and linked with `mailto:` |
+| `17 years` style stat | Optional atmosphere/proof | Needs exactness check | Remove or soften unless exact years remain defensible at launch |
+| `friends and clients` strip | Risky generic proof | Needs exactness check | Replace with verified proof/context labels or omit |
+| Music | Dedicated supporting page | Confirmed by user | Frame as room rhythm, food-led gatherings, and hospitality sense; not DJ positioning |
+
+### Shared Shell Contract
+
+The prototype stays hand-authored flat HTML. That is acceptable only if every page follows one shared shell:
+
+- Same header/nav order on every page: `Home`, `About`, `Work`, `Collaborations`, `Gallery`, `Music`, `Contact`.
+- Same visible role line on every page and at every breakpoint.
+- Same visible email contact cue in the footer or page CTA.
+- Current page state is set with `aria-current="page"` on page links, not anchor observers.
+- In-page hash links are allowed only where the target exists on that page.
+- `site.js` must ignore non-hash links when doing any section observation.
+- No contact form in this prototype. Contact remains email-first with fallback copy.
+
+### Verification Contract
+
+`npm test` must fail until the multi-page prototype exists and must validate more than `index.html`.
+
+Required static checks:
+
+- All planned pages exist: `index.html`, `about.html`, `work.html`, `collaborations.html`, `gallery.html`, `music.html`, `contact.html`.
+- Every page declares `lang`, loads `css/site.css` and `js/site.js`, has a skip link, a `<main id="main">`, metadata, and the visible email.
+- Shared nav links are consistent across pages and point to real local pages.
+- Local `href` and `src` values resolve, excluding `mailto:`, external URLs, phone links, and valid same-page hashes.
+- No public page references raw `new assets/` paths.
+- No old public framing leaks: `Private Chef`, `Booking`, `Services`, `booking.html`, `services.html`, `Formspree`, `Webflow`, or `jquery`.
+- CSS must not hide `.role-line` at mobile/tablet sizes and nav touch targets must stay at least `44px`.
+- Gallery uses optimized public derivatives under `images/tiago-2026/`.
+- Music page exists and routes back to `Work`, `Collaborations`, or `Contact`.
+
+## Historical Plan Context
+
+The sections below preserve the research and prior review history that led here. They are non-authoritative where they conflict with `Current Direction Override`, `Implementation Source Of Truth`, `Proof And Claims Source Table`, `Shared Shell Contract`, or `Verification Contract`.
+
+### Current Situation
 
 ### What Changed
 
@@ -1260,16 +1435,130 @@ Task artifact:
 
 `~/.gstack/projects/plavelska-chef-tiago/tasks-autoplan-20260526-1618.jsonl`
 
+## Design Review Ceremony Refresh
+
+Status: Practical `/plan-design-review` ceremony completed
+Date: 2026-05-27
+Trigger: user asked to substantiate, organize, refine, clean up, and implement the current design structure.
+
+The formal `/plan-design-review` ceremony expects an interactive `AskUserQuestion` tool. This host does not expose that tool in the current Default session, so this review used the approved design-shotgun feedback, Variant C direction, the current implementation diff, and live gstack browser QA as the working design board.
+
+### Source Inputs
+
+- Approved visual direction: playful, colorful, modern brutalist Variant C from the reference-brutal design-shotgun round.
+- User correction: restore the handmade visual elements from the supplied paper-note reference image.
+- Live local page: `http://127.0.0.1:8000/`.
+- Current implementation files: `index.html`, `css/site.css`, `js/site.js`, `DESIGN.md`, `PLAN.md`, and `TODOS.md`.
+
+### What Already Exists
+
+- Strong one-page route model: `#top`, `#work`, `#point-of-view`, `#collaborations`, `#atmosphere`, `#contact`.
+- Distinctive poster hero with stamp, pill navigation, scrawl, portrait arch, work panel, selected-project CTA, and contact card.
+- Handmade note language now present: paper scraps, blue doodles, yellow brush highlight, paper-plane contact block, ingredient strip, green handwritten culture note, arrow, and smiley mark.
+- Static verification already catches stale booking/private-chef language, missing anchor targets, visible email, and legacy Webflow/jQuery/Formspree leakage.
+
+### Review Passes
+
+| Pass | Before | After cleanup target | Finding | Decision |
+|------|--------|----------------------|---------|----------|
+| Information architecture | 8/10 | 9/10 | The section order is right, but the paper-note band needed a named job in the story. | Treat it as the tactile proof bridge between hero identity and manifesto. |
+| Interaction state coverage | 7/10 | 8.5/10 | Focus states exist, but hover/touch affordance was thin for cards and notes. | Add restrained hover/focus motion that respects reduced motion. |
+| User journey and emotional arc | 8/10 | 9/10 | The arc is clear: impact, proof, point of view, work, imagery, collaborations, room rhythm, contact. | Document the arc so future edits do not flatten it into cards. |
+| AI slop risk | 8/10 | 9/10 | The handmade pieces could become decoration if repeated without rules. | Paper-note elements must carry content, not ornamental filler. |
+| Design system alignment | 7/10 | 9/10 | Components were implemented before they were named. | Name the component vocabulary in `DESIGN.md`. |
+| Responsive and accessibility | 7.5/10 | 8.5/10 | Mobile has no horizontal overflow and console is clean; contact email needed better readability. | Tune the contact email scale and keep mobile clipping checks in QA. |
+| Unresolved decisions | 7/10 | 8/10 | Public role/image claims still need final approval. | Keep the launch claims sheet as a pre-launch gate. |
+
+### Final Page Architecture
+
+1. `Hero poster`: who Tiago is now, where he is based, what he builds, and how to contact him.
+2. `Handmade visual notes`: tactile proof of personality, ingredients, global influence, island movement, and warm contact.
+3. `Point of view`: short manifesto that makes the visual personality feel intentional.
+4. `Work board`: concrete inbound lanes, led by restaurant/opening work and extraordinary food-led events.
+5. `Image break`: food and atmosphere carry proof without over-explaining.
+6. `Collaborations`: selected project types without reopening the old booking/service funnel.
+7. `Atmosphere`: music appears as room energy, not as a second profession.
+8. `Contact`: email-first CTA that filters for people building something real.
+
+### Component Vocabulary
+
+- `poster hero`: grid-led first impression with oversized type and role clarity.
+- `stamp`: circular mark for handmade chef identity.
+- `pill nav`: visible wayfinding, not a generic header.
+- `tag stack`: compact proof of place and themes.
+- `portrait arch`: primary image signature.
+- `work panel`: yellow structured credibility block.
+- `paper note`: tactile content card with paper texture and doodle language.
+- `ingredient strip`: compact two-part proof module.
+- `smile note`: small memory/emotion beat.
+- `work board`: brutalist lane grid for what Tiago builds.
+- `contact card`: email-first action point.
+
+### Not In Scope
+
+- Standalone DJ/music identity: music remains atmosphere until Tiago asks for a separate public lane.
+- Multi-page editorial portfolio: defer until final role copy, image rights, and project facts are verified.
+- Contact form: email-first is the v1 filter.
+- Raw `new assets/` commit: public derivatives only.
+- New framework/build step: the site stays vanilla static for this relaunch.
+
+### Approved Mockups
+
+| Screen/Section | Mockup Path | Direction | Notes |
+|----------------|-------------|-----------|-------|
+| Homepage | `/Users/lolalu/.gstack/projects/plavelska-chef-tiago/designs/homepage-shotgun-reference-brutal-20260526-175041/variant-C.png` | playful/colorful modern brutalist | Use as the tonal baseline, amended by the user's handmade paper-note reference. |
+
+### Implementation Tasks
+
+- [x] **DR-001 (P1, human: review / CC: 15 min) - design-structure** - Record the final page architecture, component vocabulary, and handmade-note rules in the plan/design docs.
+- [x] **DR-002 (P2, human: review / CC: 20 min) - visual-system** - Integrate handmade visual elements as content-bearing paper notes, not loose decoration.
+- [x] **DR-003 (P2, human: review / CC: 10 min) - interaction-polish** - Add restrained hover/focus motion and tune the oversized contact email so it stays bold but readable.
+- [x] **DR-004 (P2, human: none / CC: 10 min) - verification** - Add static regression checks for the handmade visual-note language.
+- [ ] **DR-005 (P1, human: 15 min with Tiago / CC: 5 min) - launch-claims** - Confirm exact public role, Mira/Bottega wording, public email, consulting availability, and image permissions before final public launch.
+
 ## GSTACK REVIEW REPORT
 
 | Review | Trigger | Why | Runs | Status | Findings |
 |--------|---------|-----|------|--------|----------|
-| CEO Review | `/plan-ceo-review` | Scope and strategy | 1 | CLEAR | Scope expanded to editorial chef/operator profile with selected-project CTA |
-| Codex Review | `/codex review` | Independent second opinion | 0 | NOT RUN | Run before shipping implementation diff |
-| Eng Review | `/plan-eng-review` | Architecture and tests | 1 | CLEAR | Vanilla one-page relaunch, curated assets, Playwright QA, image budget, Webflow cleanup |
-| Design Review | `/plan-design-review` | UI/UX gaps | 1 | CLEAR | Direction captured in `DESIGN.md`; design-shotgun feedback now refines typography, color, tone, and imagery constraints |
-| DX Review | `/plan-devex-review` | Maintainer workflow gaps | 1 | CLEAR | README and DEVELOPMENT now align with the vanilla relaunch workflow |
-| Autoplan Refresh | `/autoplan` | Reconcile design-shotgun feedback with plan | 1 | APPROVED | Bright market heat direction, `#atmosphere`, launch claims sheet, focused inbound-outcome decision |
+| CEO dual review | `/autoplan` Phase 1 | Strategy, scope, proof-first conversion | 1 | CLEAR WITH GUARDRAILS | Primary job is proof-first referral conversion; prioritize restaurant/opening support and active consulting, with extraordinary food-led events second |
+| Design dual review | `/autoplan` Phase 2 | Multi-page visual/content structure | 1 | CLEAR WITH GUARDRAILS | Use approved `variant-B-remix.png`; keep its personality, reduce unreadable paper/vintage excess, and subordinate Gallery/Music to Work/Collaborations |
+| Eng dual review | `/autoplan` Phase 3 | Static architecture and tests | 1 | REQUIRES IMPLEMENTATION GATES | Build seven flat pages, rewrite page nav handling, preserve mobile role line, upgrade verifier, and ignore raw `new assets/` |
+| DX review | `/autoplan` Phase 3.5 | Developer-facing product audit | 0 | SKIPPED | Static marketing site is not developer-facing; maintainer workflow remains covered by README/DEVELOPMENT |
 
-- VERDICT: CEO, DESIGN, ENG, and DX cleared for implementation.
-- AUTOPLAN VERDICT: Approved for implementation with launch claims sheet, top-two inbound outcome focus, and `#atmosphere` locked for v1.
+### Autoplan Consensus
+
+- `Home`, `About`, `Work`, `Collaborations`, `Gallery`, `Music`, and `Contact` are locked for the next prototype.
+- `Music` remains a visible dedicated page because the user explicitly confirmed it; both review voices agree it must be constrained to room rhythm and hospitality, not DJ positioning.
+- The old one-page `#atmosphere` guidance is historical and must not drive implementation.
+- The proof layer is the trust boundary. Do not ship vague `friends and clients`, exact role titles, or decorative stats unless the copy is defensible.
+- `npm test` currently passing is not launch confidence; the verifier must become multi-page-aware during implementation.
+
+### Decision Audit Trail
+
+| # | Phase | Decision | Classification | Principle | Rationale | Rejected |
+|---|-------|----------|----------------|-----------|-----------|----------|
+| 1 | CEO | Make proof-first referral conversion the prototype job | Auto-decision | Explicit over clever | It turns the site from brand exploration into a clear buyer/collaborator decision path | Equal-weight portfolio |
+| 2 | CEO | Prioritize restaurant/opening support and consulting | Auto-decision | Focus as subtraction | It gives the strongest commercial lane first while still allowing selected events | Speaking to every possible inquiry equally |
+| 3 | CEO | Keep Music page but constrain its job | User challenge retained | User-confirmed premise | Both model voices warned about DJ-positioning risk, but the user explicitly wants a visible music page | Removing standalone Music |
+| 4 | Design | Use `variant-B-remix.png` as the visual source | Taste decision | Evidence from feedback | It best preserves the selected poster/gallery/music personality | Cleaner rejected remix |
+| 5 | Design | Keep paper notes content-bearing and limited | Auto-decision | Clarity | User asked to reduce paper/vintage excess, then selected the more personality-heavy route | Decorative scrapbook notes |
+| 6 | Eng | Stay flat static, no framework/build step | Auto-decision | Boring by default | Seven pages are manageable by hand and preserve deployment simplicity | SPA/static generator |
+| 7 | Eng | Add shared shell and multi-page verifier gates | Auto-decision | Boil lakes | Hand-authored pages need automated drift checks | Manual-only QA |
+| 8 | Eng | Ignore raw `new assets/` and commit derivatives only | Auto-decision | Risk control | The source folder is large and should not become a repo payload | Bulk-copying source photography |
+
+### Implementation Tasks
+
+Task artifact:
+
+`~/.gstack/projects/plavelska-chef-tiago/tasks-autoplan-20260527-164346.jsonl`
+
+- [x] **AP-101 (P1, CC: 2-3h) - static-pages** - Build the seven-page prototype with shared header/nav/footer, page-level active states, and no contact form.
+- [x] **AP-102 (P1, CC: 45-60m) - verification** - Replace the one-page verifier with multi-page checks for pages, nav, local assets, stale language, raw asset references, visible email, and shell consistency.
+- [x] **AP-103 (P1, CC: 45-60m) - proof-copy** - Convert Work content into proof cards using the claims table; remove or soften unverified exact titles, `17 years`, and `friends and clients`.
+- [x] **AP-104 (P2, CC: 60-90m) - imagery** - Select 8-12 cleared images from `new assets/`, convert optimized derivatives into `images/tiago-2026/`, and use them across Home/Gallery/Work/Music.
+- [x] **AP-105 (P2, CC: 45-60m) - responsive-design** - Keep role line visible, maintain 44px touch targets, and collapse poster grids into readable mobile chapters.
+- [x] **AP-106 (P2, CC: 30-45m) - browser-qa** - Run gstack/browser QA after implementation for desktop/mobile, no-JS fallback, mailto fallback copy, Gallery image rhythm, and Music positioning.
+
+### Final Gate Status
+
+Approved and implemented on 2026-05-27. The next gate is visual/taste review before shipping.

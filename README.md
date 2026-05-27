@@ -2,14 +2,19 @@
 
 Static website for chef-tiago.com.
 
-This repo contains the first local review build for the redesigned Tiago Borges website. The site no longer behaves like a private-chef booking funnel. The appro
-on is a bold, image-led, one-page editorial profile for Tiago as a chef, executive chef, restaurant operator/coordinator, consultant, and music-aware hospitality collaborator.
+This repo contains the local review build for the redesigned Tiago Borges website. The site no longer behaves like a private-chef booking funnel. The active prototype direction is a bold, image-led, multi-page editorial profile for Tiago as a chef, restaurant operator/coordinator, active consultant, and music-aware hospitality collaborator.
 
 ## Current Status
 
-The public site has been rebuilt as a clean static first version:
+The current public surface is a clean multi-page static prototype built from plain HTML pages:
 
 - `index.html`
+- `about.html`
+- `work.html`
+- `collaborations.html`
+- `gallery.html`
+- `music.html`
+- `contact.html`
 - `css/site.css`
 - `js/site.js`
 - curated, optimized public images under `images/tiago-2026/`
@@ -45,18 +50,19 @@ More local workflow notes live in `DEVELOPMENT.md`.
 - Use expressive design, but keep the implementation explicit and easy to edit.
 - Do not commit raw `new assets/` files.
 - Commit only curated, optimized image derivatives.
-- Keep Tiago's chef/operator credibility primary.
-- Keep the music angle as atmosphere and selected collaboration, not a separate DJ brand.
+- Keep Tiago's chef/operator/consultant credibility primary.
+- Give music a dedicated page only as food, room rhythm, gatherings, and atmosphere. Do not let it read as a generic DJ portfolio.
 - Use gstack `/qa` or `/qa-only` for browser QA after meaningful visual changes.
 
 ## Verification
 
 Use the local verification script for:
 
-- Anchor navigation.
+- The full planned page set.
+- Shared navigation and local asset references.
 - Visible email and `mailto:` contact link.
 - Absence of stale private-chef booking language.
-- Absence of old Webflow runtime dependencies.
+- Absence of raw `new assets/` references and old Webflow runtime dependencies.
 
 Run:
 

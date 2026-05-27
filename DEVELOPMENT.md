@@ -39,6 +39,12 @@ You can choose a different port:
 The relaunch build uses:
 
 - `index.html`
+- `about.html`
+- `work.html`
+- `collaborations.html`
+- `gallery.html`
+- `music.html`
+- `contact.html`
 - `css/site.css`
 - `js/site.js`
 - curated optimized images under `images/tiago-2026/`
@@ -64,9 +70,11 @@ npm test
 
 The current script checks:
 
-- Anchor navigation targets.
+- The full planned page set.
+- Shared navigation and local page/image references.
 - Visible email and working `mailto:` link.
-- No stale `Private Chef`, `Booking`, `Services`, `booking.html`, or `services.html` references in the main journey.
+- No raw `new assets/` references.
+- No stale `Private Chef`, `Booking`, `Services`, `booking.html`, or `services.html` references in the public journey.
 - No old Webflow runtime dependencies.
 
 For visual QA, use gstack `/qa` or `/qa-only`.

@@ -11,14 +11,21 @@ It should be bold, image-led, warm, atmospheric, slightly mischievous, and struc
 
 The design-shotgun feedback moved the direction away from heavy black, fire, red club lighting, and dramatic nightlife imagery. It should not become a beige luxury restaurant template, a generic private-chef brochure, an Italian trattoria template, or a DJ portfolio.
 
+Latest prototype decision:
+
+- The approved visual reference for the multi-page working prototype is `/Users/lolalu/.gstack/projects/plavelska-chef-tiago/designs/multi-page-editorial-sitemap-20260527-173551/round-2/variant-B-remix.png`.
+- The cleaner revision is rejected as the primary reference because it lost too much personality.
+- Use the approved remix's bold poster-board structure and handmade cues, but keep the implementation disciplined: paper notes must carry content and must not become unreadable vintage scrapbook texture.
+
 ## Identity Hierarchy
 
 The first screen should be Tiago-first and editorial:
 
 1. `Tiago Borges`
-2. Role line: chef, executive chef, restaurant operator/coordinator, consultant
-3. Strong image
-4. Selected-project CTA
+2. Role line: chef, restaurant operator/coordinator, consultant
+3. Proof strip: Mira, Bottega il Buco, restaurant openings, consulting
+4. Strong image
+5. Selected-project CTA
 
 The visitor should understand quickly that Tiago is no longer positioned as a standard private chef booking product.
 
@@ -29,6 +36,7 @@ Approved direction:
 - Bright food energy / market heat / soft music and room atmosphere
 - More atmospheric than polite hospitality design
 - Playful colorful brutalism with a visible grid, chunky type, pill navigation, sticker tags, and poster-card modules
+- Handmade paper-note details: brush highlights, blue doodle icons, paper-plane contact blocks, ingredient strips, arrows, smiley marks, and textured scraps
 - Color blocking and bold color clashes are encouraged when they feel fresh
 - Night cues are allowed as accents or transitions, not as the dominant mood
 - Food, room, and music can sit in the same visual world
@@ -36,7 +44,7 @@ Approved direction:
 Guardrail:
 
 - Chef and operator credibility stays first.
-- Music is part of atmosphere and selected collaborations, not the primary profession.
+- Music is part of atmosphere, selected collaborations, and now a dedicated page, not the primary profession.
 - Avoid fire drama, red-light club drama, and heavy black-first compositions.
 
 ## Layout Rules
@@ -67,6 +75,47 @@ Avoid:
 Implementation test:
 
 If a section starts looking like a generic hospitality portfolio, push it back toward poster composition.
+
+## Design Structure
+
+Current prototype arc:
+
+1. `Home`: immediate identity, role, poster energy, selected work entry, and email-first contact.
+2. `About`: human/professional arc with Faial/Azores as origin context, not current-work focus.
+3. `Work`: restaurant openings, menus/concepts, kitchen coordination, consulting, Mira, and Bottega il Buco proof.
+4. `Collaborations`: selected future project lanes, not a services menu.
+5. `Gallery`: curated image proof from optimized `new assets/` derivatives.
+6. `Music`: a dedicated food-and-room-rhythm page that supports hospitality, not a standalone DJ portfolio.
+7. `Contact`: decisive visible-email CTA.
+
+Component vocabulary:
+
+- Poster hero
+- Stamp
+- Pill nav
+- Tag stack
+- Portrait arch
+- Work panel
+- Story card
+- Paper note
+- Ingredient strip
+- Smile note
+- Work board
+- Contact card
+
+## Handmade Note Rules
+
+The paper-note language is now part of the brand system, not extra decoration.
+
+Rules:
+
+- Every note must carry real content: point of view, ingredient logic, contact, origin, or atmosphere.
+- Blue doodles should feel hand-marked and specific: star, underline, arrow, plane, icons, or smile.
+- Use yellow brush highlights for emphasis, not as a generic highlighter on every headline.
+- Keep paper textures warm and imperfect, but never reduce text contrast.
+- Do not repeat the note motif in every section; use concentrated content-bearing notes plus small contact echoes.
+- Paper-plane notes always link to the visible `mailto:` destination when interactive.
+- Ingredient strips should express a paired idea, such as `Seasonal ingredients` and `Global influences`, not become a generic icon grid.
 
 ## Color
 
@@ -120,7 +169,8 @@ Needed image roles:
 - Food detail
 - Restaurant or room atmosphere
 - Kitchen / work moment
-- Optional music or night atmosphere
+- Gallery image set
+- Music / room rhythm atmosphere
 
 Rules:
 
@@ -129,7 +179,7 @@ Rules:
 - Do not over-darken food until it disappears.
 - Avoid dramatic fire, red lighting, and staged nightlife images for primary moments.
 - Keep imperfect human texture where it helps.
-- Do not commit the untracked `new assets/` folder until a deliberate curation and optimization pass selects public images.
+- Select from the cleared untracked `new assets/` folder, optimize public derivatives into the site image directory, and do not commit the raw source folder.
 
 ## Motion
 
@@ -149,18 +199,84 @@ Avoid:
 
 Respect reduced-motion preferences where practical during implementation.
 
+Interaction rule:
+
+- Cards, contact blocks, and handmade notes may lift or tilt slightly on hover/focus, but the motion should feel tactile and paper-like rather than slick app UI.
+
 ## Navigation
 
-Approved clean structure:
+Approved prototype structure:
 
 - Home
+- About
 - Work
 - Collaborations
+- Gallery
+- Music
 - Contact
 
 The user selected a clean URL break rather than preserving `services.html` and `booking.html` aliases.
 
 QA must check for stale internal references to old filenames.
+
+Navigation hierarchy:
+
+- `Work` and `Collaborations` are the strongest business routes.
+- `Gallery` and `Music` support taste and room sense.
+- `Music` must never be styled as the primary professional offer.
+- On mobile, keep the role line visible before the image and use wrapping or horizontally scrollable pill navigation before introducing a heavy menu.
+- Use page-level current states for page links. Do not rely on one-page anchor observers for the multi-page prototype.
+
+## Proof Design Rules
+
+Proof should feel editorial, but it cannot be vague.
+
+- Work cards need concrete context: place or project type, Tiago's contribution, why it mattered, and an image/link/caption when available.
+- Do not print internal confidence labels such as `draft wording`.
+- Replace generic `friends and clients` language with named, cleared, or context-specific proof.
+- Remove decorative stats unless exact values are defensible.
+- Consulting should look active and intentional, not like a fallback service list.
+
+## Page Module Contracts
+
+Home:
+
+- Giant `Tiago Borges` poster wordmark.
+- Visible role line.
+- Proof strip for Mira, Bottega il Buco, restaurant/opening support, and consulting.
+- One primary CTA toward Work or Contact.
+- Image-led proof and contact cue.
+
+Work:
+
+- Yellow/operator work-board language.
+- Proof cards with context, role/contribution, what Tiago did, why it matters, and evidence.
+- Consulting must read as active work, not vague advice.
+
+Collaborations:
+
+- Lead with restaurant/opening support and extraordinary food-led events.
+- Secondary lanes are allowed, but visually subordinate.
+- Include fit/not-fit copy so email-first contact stays selective.
+
+Gallery:
+
+- 8-12 curated optimized images minimum for the full route.
+- Use short captions and categories.
+- Avoid dumping every available photo.
+
+Music:
+
+- Dedicated route, but framed as room rhythm and hospitality sense.
+- Required beats: room-rhythm point of view, food/gathering use cases, one media or atmosphere artifact, CTA back to Collaborations/Contact.
+- Avoid playlist-first, DJ-bio, nightlife-hero, or party-service framing.
+
+Contact:
+
+- Visible `tiagodoborges@gmail.com`.
+- `mailto:` link with useful subject.
+- Prompt the sender for what they are building, where/when it happens, and what support they need.
+- Keep fallback copy for users whose mail app does not open.
 
 ## Contact
 
@@ -189,7 +305,7 @@ Approved collaboration lanes:
 - Culinary escapades
 - Food + music moments
 
-Food + music is allowed as a real collaboration lane, but must be framed as selected hospitality atmosphere, not as a separate DJ brand.
+Food + music is allowed as a real collaboration lane and as a dedicated route, but must be framed as selected hospitality atmosphere, room rhythm, and gatherings, not as a separate DJ brand.
 
 ## Accessibility
 
@@ -202,6 +318,10 @@ Baseline rules:
 - Write useful alt text for meaningful images.
 - Avoid essential text baked only into images.
 - Preserve readable mobile spacing.
+- Keep touch targets at least 44px.
+- Body text contrast should meet WCAG AA, 4.5:1 or better.
+- Keep heading order logical on every page.
+- Use `clamp()` or equivalent constraints for oversized display text to prevent mobile overflow.
 
 ## Anti-Slop Checklist
 
