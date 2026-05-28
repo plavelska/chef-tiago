@@ -59,6 +59,13 @@ Copy governance:
 - Prefer durable positioning: `chef / operator / consultant` and `builds kitchens, menus, teams, and rooms`.
 - Current roles prove the positioning; they should not become the whole positioning.
 
+Content-first update on 2026-05-28:
+
+- The supplied poster mood board is now the guide for content tone and hierarchy before further visual work.
+- Use its vocabulary in public copy: `chef + executive chef`, `restaurant operator`, `culinary consultant`, `food culture, people and good energy`, `from the islands to the table`, `restaurant openings`, `menus and concepts`, `kitchen coordination`, `extraordinary events`, and `music, moments, memories`.
+- Remove internal/prototype-facing language from public pages.
+- Keep the copy punchy, concrete, and invitation-led; each page should feel like a confident poster, not a planning document.
+
 ### Implementation Source Of Truth
 
 Files to build for the working prototype:

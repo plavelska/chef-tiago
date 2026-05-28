@@ -13,9 +13,58 @@ The design-shotgun feedback moved the direction away from heavy black, fire, red
 
 Latest prototype decision:
 
+- Current mood board guide: the supplied Tiago Borges poster board with oversized black wordmark, blue portrait arch, yellow `What I do` panel, coral selected-work CTA, blue contact card, island/map cues, handmade green scrawl, and bottom client/logo strip. Treat it as the guiding reference for tone, content hierarchy, and visual energy.
 - The approved visual reference for the multi-page working prototype is `/Users/lolalu/.gstack/projects/plavelska-chef-tiago/designs/multi-page-editorial-sitemap-20260527-173551/round-2/variant-B-remix.png`.
 - The cleaner revision is rejected as the primary reference because it lost too much personality.
 - Use the approved remix's bold poster-board structure and handmade cues, but keep the implementation disciplined: paper notes must carry content and must not become unreadable vintage scrapbook texture.
+- New surface rule: content pages should move away from tile-effect surfaces. Use open editorial fields, typographic scale, rules, rhythm, and color as accents instead of boxed cards with radius and shadow.
+
+## Content Direction
+
+Work content-first before making more visual changes.
+
+Content vocabulary from the mood board:
+
+- `Chef + executive chef`
+- `Restaurant operator`
+- `Culinary consultant`
+- `Food culture, people, and good energy`
+- `From the islands to the table`
+- `Restaurant openings`
+- `Menus and concepts`
+- `Kitchen coordination`
+- `Extraordinary events`
+- `Music, moments, memories`
+- `Let's cook something memorable`
+
+Content guardrails:
+
+- Use the mood board's boldness, but avoid turning public copy into internal planning notes.
+- Do not say `cleared assets`, `prototype`, `draft`, or `not a second profession page` in public copy.
+- Keep Azores/Faial as origin and island memory, not the current-work headline.
+- Make consulting active and concrete: opening support, menu/concept development, kitchen coordination, and room rhythm.
+- Music is a real page and a visible touch, but public language should say room rhythm, atmosphere, gatherings, and hospitality timing.
+
+## Voice Direction
+
+Use Tiago's old self-written site copy as the voice seed, but sharpen it.
+
+Observed old-site patterns:
+
+- Blunt opener energy: `Skipping all the BS`.
+- Practical confidence: `Better call Tiago`, `Let's sit and find out what is the real problem`.
+- Warm imperfection and humor: `No sushi`, `Comme-ci comme-ca french`, smiley marks, odd small details.
+- Food, products, tunes, friends, and island connections sit in the same sentence.
+- Direct operational honesty: recovery, scheduling, staff food, identity, energy, kitchen cleanliness.
+
+New public voice:
+
+- Direct, clever, and warm. It should sound like Tiago after one espresso, not a PR agency.
+- Keep the mischief, but clean up the grammar enough for serious restaurant owners.
+- Use concrete facts before adjectives: Faial, EFTH, Juniper Hill, Bottega il Buco, WOW Ibiza, Milagros Goa, Mira, Matan Klevan.
+- Prefer short confident sentences over polished biography paragraphs.
+- Let food and music explain each other: ingredients, timing, balance, love, room energy.
+- Avoid luxury brochure language, corporate consultant language, and generic chef mythology.
 
 ## Identity Hierarchy
 
@@ -35,7 +84,7 @@ Approved direction:
 
 - Bright food energy / market heat / soft music and room atmosphere
 - More atmospheric than polite hospitality design
-- Playful colorful brutalism with a visible grid, chunky type, pill navigation, sticker tags, and poster-card modules
+- Playful colorful brutalism with a visible grid, chunky type, pill navigation, sticker tags, and editorial poster rhythm
 - Handmade paper-note details: brush highlights, blue doodle icons, paper-plane contact blocks, ingredient strips, arrows, smiley marks, and textured scraps
 - Color blocking and bold color clashes are encouraged when they feel fresh
 - Night cues are allowed as accents or transitions, not as the dominant mood
@@ -56,7 +105,7 @@ Prefer:
 - Large poster-like sections
 - Asymmetric image and text placement
 - Exposed grid, stamp, label, chapter, and coordinate/manual cues when they add character
-- Chunky rounded cards and pill nav used as structure, not decoration
+- Open editorial fields, strong type, rule lines, scale shifts, and generous negative space
 - Strong section-to-section contrast
 - Bright layouts with tactile image energy
 - A side-rail or side-menu gesture if it helps the page feel modern
@@ -66,6 +115,8 @@ Prefer:
 Avoid:
 
 - Generic three-card hospitality grids
+- Tile-effect surfaces as the default page structure
+- Repeated rounded-card blocks with thick borders and drop shadows
 - Centered SaaS-style hero layouts
 - Stock restaurant template composition
 - Over-polished luxury minimalism
