@@ -120,7 +120,7 @@ for (const [page, html] of pageHtml.entries()) {
 }
 
 const gallery = pageHtml.get("gallery.html");
-const galleryImages = Array.from(gallery.matchAll(/<img src="(images\/tiago-2026\/[^"]+)"/g)).map((match) => match[1]);
+const galleryImages = Array.from(gallery.matchAll(/<img src="(images\/(?:tiago-2026|gallery\/lika)\/[^"]+)"/g)).map((match) => match[1]);
 if (galleryImages.length < 8) {
   fail(`gallery.html must include at least 8 curated images; found ${galleryImages.length}.`);
 }

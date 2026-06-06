@@ -1548,33 +1548,25 @@ p {
 
 .gallery-wall {
   counter-reset: gallery-frame;
-  display: grid;
-  grid-template-columns: repeat(12, minmax(0, 1fr));
-  grid-auto-flow: dense;
-  gap: 0;
-  padding: clamp(8px, 1vw, 14px);
+  column-count: 3;
+  column-gap: 0;
+  padding: 0;
   border: 3px solid var(--ink);
-  background:
-    linear-gradient(90deg, rgba(16, 16, 14, 0.16) 1px, transparent 1px),
-    linear-gradient(rgba(16, 16, 14, 0.16) 1px, transparent 1px),
-    var(--yellow);
-  background-size: 44px 44px;
+  background: var(--ink);
 }
 
 .gallery-wall figure,
 .gallery-block {
   position: relative;
-  grid-column: span 2;
-  min-height: 0;
-  border: 2px solid var(--ink);
+  width: 100%;
+  break-inside: avoid;
+  margin: 0;
+  border: 1.5px solid var(--ink);
   border-radius: 0;
 }
 
 .gallery-wall figure {
   counter-increment: gallery-frame;
-  display: grid;
-  grid-template-rows: auto minmax(0, 1fr) auto;
-  margin: 0;
   overflow: hidden;
   background: var(--cream);
   box-shadow: none;
@@ -1596,11 +1588,17 @@ p {
 }
 
 .frame-label {
-  min-height: 42px;
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  z-index: 2;
   display: flex;
   align-items: center;
-  padding: 8px 12px;
-  border-bottom: 2px solid var(--ink);
+  max-width: calc(100% - 20px);
+  min-height: 0;
+  padding: 7px 10px;
+  border: 2px solid var(--ink);
+  border-radius: 999px;
   background: var(--coral);
   font-size: clamp(0.78rem, 1vw, 0.95rem);
   font-weight: 950;
@@ -1623,6 +1621,8 @@ p {
 }
 
 .gallery-wall img {
+  position: absolute;
+  inset: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -1630,12 +1630,15 @@ p {
 }
 
 .gallery-wall figcaption {
-  min-height: 58px;
-  display: grid;
-  align-content: center;
-  padding: 10px 12px;
-  border-top: 2px solid var(--ink);
-  background: var(--paper);
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+  left: 10px;
+  z-index: 2;
+  min-height: 0;
+  padding: 8px 10px;
+  border: 2px solid var(--ink);
+  background: rgba(251, 247, 235, 0.92);
   color: var(--ink);
   font-size: 0.78rem;
   font-weight: 950;
@@ -1661,30 +1664,23 @@ p {
 }
 
 .gallery-wall .wide {
-  grid-column: span 4;
+  aspect-ratio: 5 / 4;
 }
 
 .block-large {
-  grid-column: span 3;
+  aspect-ratio: 5 / 3;
 }
 
 .gallery-wall .tall {
-  grid-column: span 2;
-  grid-row: span 2;
+  aspect-ratio: 3 / 5;
 }
 
 .block-small {
-  grid-column: span 1;
   aspect-ratio: 1 / 1;
 }
 
 .block-medium {
-  grid-column: span 2;
-  aspect-ratio: 3 / 4;
-}
-
-.block-large {
-  aspect-ratio: 4 / 3;
+  aspect-ratio: 5 / 2;
 }
 
 .gallery-block {
@@ -1942,13 +1938,12 @@ p {
   .route-grid,
   .collab-lines,
   .lane-grid,
-  .timeline,
-  .gallery-wall {
+  .timeline {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
   .gallery-wall {
-    grid-template-columns: repeat(4, minmax(0, 1fr));
+    column-count: 2;
   }
 
   .gallery-wall .wide {
@@ -2115,9 +2110,12 @@ p {
   .lane-grid,
   .timeline,
   .fit-grid,
-  .priority-grid,
-  .gallery-wall {
+  .priority-grid {
     grid-template-columns: 1fr;
+  }
+
+  .gallery-wall {
+    column-count: 1;
   }
 
   .fit-list article {
