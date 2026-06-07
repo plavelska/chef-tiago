@@ -26,6 +26,9 @@
   --pink: #ff8b9a;
   --line: rgba(16, 16, 14, 0.18);
   --soft-line: rgba(16, 16, 14, 0.1);
+  --font-body: "Work Sans", sans-serif;
+  --font-display: "Bebas Neue", "Eczar", sans-serif;
+  --font-deco: "Permanent Marker", cursive;
   --gutter: clamp(16px, 3vw, 38px);
   --radius: clamp(22px, 3vw, 42px);
   --shadow: 10px 10px 0 var(--ink);
@@ -51,7 +54,7 @@ body {
     linear-gradient(135deg, rgba(36, 199, 126, 0.1), transparent 40rem),
     var(--paper);
   color: var(--ink);
-  font-family: "Work Sans", sans-serif;
+  font-family: var(--font-body);
   font-size: 17px;
   line-height: 1.35;
 }
@@ -149,7 +152,7 @@ svg circle {
 }
 
 .stamp strong {
-  font-family: "Eczar", serif;
+  font-family: var(--font-display);
   font-size: 2rem;
   line-height: 0.7;
 }
@@ -231,6 +234,7 @@ main {
 .hero-copy {
   position: relative;
   grid-area: copy;
+  z-index: 4;
   align-self: center;
   min-width: 0;
 }
@@ -243,28 +247,38 @@ p {
 }
 
 .home-hero h1 {
+  position: relative;
+  z-index: 5;
   margin-top: 12px;
-  font-family: "Eczar", serif;
+  font-family: var(--font-display);
   font-size: clamp(5.8rem, 13.8vw, 13.8rem);
-  line-height: 0.72;
-  letter-spacing: -0.09em;
+  line-height: 0.86;
+  letter-spacing: 0.005em;
+  text-shadow: 0.035em 0.035em 0 rgba(255, 253, 245, 0.72);
   text-transform: uppercase;
 }
 
 .home-hero h1 span {
   display: block;
+  width: max-content;
+}
+
+.home-hero h1 span:nth-child(2) {
+  margin-left: clamp(1.1rem, 4.2vw, 5rem);
 }
 
 .scrawl {
-  max-width: 13ch;
-  margin: -8px 0 18px auto;
-  color: #099452;
-  font-family: "Eczar", serif;
-  font-size: clamp(1.7rem, 3.6vw, 4.3rem);
-  font-weight: 800;
-  line-height: 0.88;
-  letter-spacing: -0.08em;
-  transform: rotate(-7deg);
+  position: relative;
+  z-index: 5;
+  max-width: 32ch;
+  margin: clamp(10px, 1.8vw, 22px) 0 0;
+  color: var(--blue);
+  font-family: var(--font-deco);
+  font-size: clamp(1.15rem, 1.9vw, 2.1rem);
+  font-weight: 400;
+  line-height: 1.12;
+  letter-spacing: 0.01em;
+  text-transform: none;
 }
 
 .proof-strip {
@@ -343,6 +357,7 @@ p {
 .hero-portrait {
   position: relative;
   grid-area: portrait;
+  z-index: 2;
   align-self: stretch;
   display: grid;
   place-items: end center;
@@ -381,17 +396,17 @@ p {
 
 .hero-portrait img {
   position: absolute;
-  left: 54%;
+  left: 50%;
   bottom: 0;
   z-index: 1;
-  width: min(185%, 760px);
+  width: min(132%, 560px);
   max-width: none;
-  height: auto;
+  height: 100%;
   max-height: none;
-  object-fit: contain;
+  object-fit: cover;
   object-position: center bottom;
   filter: drop-shadow(18px 20px 0 rgba(6, 13, 31, 0.18));
-  transform: translateX(-56%);
+  transform: translateX(-50%);
 }
 
 .portrait-stamp {
@@ -406,7 +421,7 @@ p {
   border: 3px solid white;
   border-radius: 50%;
   color: white;
-  font-family: "Eczar", serif;
+  font-family: var(--font-display);
   font-size: clamp(1rem, 1.5vw, 1.35rem);
   font-weight: 900;
   line-height: 0.9;
@@ -430,10 +445,10 @@ p {
 
 .portrait-burst {
   position: absolute;
-  left: 4%;
-  bottom: 14%;
-  z-index: 3;
-  width: clamp(112px, 10vw, 160px);
+  top: clamp(40px, 4.8vw, 70px);
+  right: clamp(28px, 3.4vw, 48px);
+  z-index: 6;
+  width: clamp(132px, 11.5vw, 184px);
   aspect-ratio: 1;
   display: grid;
   place-items: center;
@@ -441,10 +456,11 @@ p {
   background: var(--coral);
   clip-path: polygon(50% 0%, 57% 14%, 72% 7%, 75% 24%, 93% 21%, 86% 37%, 100% 50%, 86% 60%, 93% 78%, 75% 76%, 72% 93%, 57% 86%, 50% 100%, 41% 86%, 27% 93%, 24% 76%, 7% 79%, 13% 61%, 0% 50%, 13% 38%, 7% 22%, 24% 24%, 28% 7%, 42% 14%);
   color: var(--ink);
-  font-size: clamp(0.72rem, 1vw, 0.95rem);
-  font-weight: 950;
+  font-family: var(--font-deco);
+  font-size: clamp(0.78rem, 1.08vw, 1.05rem);
+  font-weight: 400;
   line-height: 1.05;
-  letter-spacing: 0.08em;
+  letter-spacing: 0;
   text-align: center;
   text-transform: uppercase;
   transform: rotate(-10deg);
@@ -480,22 +496,11 @@ p {
 .work-panel {
   grid-area: panel;
   display: grid;
-  grid-template-columns: auto 1fr;
-  gap: 16px;
   align-self: start;
   padding: clamp(18px, 2.5vw, 30px);
   border-radius: 34px;
   background: var(--yellow);
   overflow: hidden;
-}
-
-.panel-number {
-  display: block;
-  font-family: "Eczar", serif;
-  font-size: clamp(4.8rem, 8vw, 8rem);
-  font-weight: 800;
-  line-height: 0.82;
-  letter-spacing: -0.08em;
 }
 
 .work-panel ul {
@@ -554,10 +559,10 @@ p {
 
 .story-card strong {
   max-width: 10ch;
-  font-family: "Eczar", serif;
+  font-family: var(--font-display);
   font-size: clamp(3.8rem, 7vw, 6.2rem);
-  line-height: 0.8;
-  letter-spacing: -0.08em;
+  line-height: 0.96;
+  letter-spacing: 0.005em;
   text-transform: uppercase;
 }
 
@@ -582,10 +587,10 @@ p {
 }
 
 .contact-card h2 {
-  font-family: "Eczar", serif;
+  font-family: var(--font-display);
   font-size: clamp(3rem, 6vw, 5.6rem);
-  line-height: 0.78;
-  letter-spacing: -0.08em;
+  line-height: 0.96;
+  letter-spacing: 0.005em;
   text-transform: uppercase;
 }
 
@@ -640,10 +645,10 @@ p {
 .flavour-note h2 {
   max-width: 12ch;
   margin-top: 8px;
-  font-family: "Eczar", serif;
+  font-family: var(--font-deco);
   font-size: clamp(2.1rem, 3.2vw, 4rem);
-  line-height: 0.88;
-  letter-spacing: -0.06em;
+  line-height: 1.02;
+  letter-spacing: 0.015em;
 }
 
 .flavour-note h2 span,
@@ -691,10 +696,10 @@ p {
 
 .culture-note p {
   color: #0c9655;
-  font-family: "Eczar", serif;
+  font-family: var(--font-deco);
   font-size: clamp(2rem, 3vw, 3.5rem);
-  line-height: 0.86;
-  letter-spacing: -0.08em;
+  line-height: 1.02;
+  letter-spacing: 0.015em;
   transform: rotate(-6deg);
 }
 
@@ -759,10 +764,10 @@ p {
 .split-section h2,
 .section-heading h2,
 .music-score h2 {
-  font-family: "Eczar", serif;
+  font-family: var(--font-display);
   font-size: clamp(3.6rem, 6.6vw, 7rem);
-  line-height: 0.82;
-  letter-spacing: -0.07em;
+  line-height: 0.92;
+  letter-spacing: 0.005em;
   text-transform: uppercase;
 }
 
@@ -834,10 +839,10 @@ p {
 
 .about-open h1 {
   max-width: 11ch;
-  font-family: "Eczar", serif;
+  font-family: var(--font-display);
   font-size: clamp(5.2rem, 13vw, 15rem);
-  line-height: 0.78;
-  letter-spacing: -0.085em;
+  line-height: 0.9;
+  letter-spacing: 0.005em;
   text-transform: uppercase;
 }
 
@@ -858,11 +863,11 @@ p {
 .story-quote blockquote {
   max-width: 13ch;
   margin: 0;
-  font-family: "Eczar", serif;
+  font-family: var(--font-display);
   font-size: clamp(4.4rem, 10.5vw, 13rem);
   font-weight: 900;
-  line-height: 0.78;
-  letter-spacing: -0.085em;
+  line-height: 0.9;
+  letter-spacing: 0.005em;
 }
 
 .story-quote p {
@@ -885,16 +890,16 @@ p {
 .about-maxims p {
   display: grid;
   gap: 18px;
-  font-family: "Eczar", serif;
+  font-family: var(--font-display);
   font-size: clamp(2.4rem, 4.5vw, 5.8rem);
   font-weight: 900;
-  line-height: 0.82;
-  letter-spacing: -0.075em;
+  line-height: 0.96;
+  letter-spacing: 0.005em;
   text-transform: uppercase;
 }
 
 .about-maxims span {
-  font-family: "Work Sans", sans-serif;
+  font-family: var(--font-body);
   font-size: 0.72rem;
   line-height: 1;
   letter-spacing: 0.12em;
@@ -948,10 +953,10 @@ p {
 
 .work-open h1 {
   max-width: 9ch;
-  font-family: "Eczar", serif;
+  font-family: var(--font-display);
   font-size: clamp(5.8rem, 14vw, 16rem);
-  line-height: 0.76;
-  letter-spacing: -0.085em;
+  line-height: 0.9;
+  letter-spacing: 0.005em;
   text-transform: uppercase;
 }
 
@@ -969,10 +974,10 @@ p {
 
 .collab-open h1 {
   max-width: 10ch;
-  font-family: "Eczar", serif;
+  font-family: var(--font-display);
   font-size: clamp(5.4rem, 13vw, 15.4rem);
-  line-height: 0.76;
-  letter-spacing: -0.085em;
+  line-height: 0.9;
+  letter-spacing: 0.005em;
   text-transform: uppercase;
 }
 
@@ -1055,10 +1060,10 @@ p {
 .project-list > h2 {
   max-width: 11ch;
   margin-bottom: clamp(28px, 5vw, 76px);
-  font-family: "Eczar", serif;
+  font-family: var(--font-display);
   font-size: clamp(4.8rem, 11vw, 13rem);
-  line-height: 0.78;
-  letter-spacing: -0.085em;
+  line-height: 0.92;
+  letter-spacing: 0.005em;
   text-transform: uppercase;
 }
 
@@ -1098,10 +1103,10 @@ p {
 .project-item h3 {
   max-width: 17ch;
   margin-bottom: 12px;
-  font-family: "Eczar", serif;
+  font-family: var(--font-display);
   font-size: clamp(2.9rem, 6vw, 7rem);
-  line-height: 0.82;
-  letter-spacing: -0.08em;
+  line-height: 0.96;
+  letter-spacing: 0.005em;
   text-transform: uppercase;
 }
 
@@ -1315,10 +1320,10 @@ p {
 .lane-grid span,
 .timeline span,
 .priority-card span {
-  font-family: "Eczar", serif;
+  font-family: var(--font-display);
   font-size: clamp(3.5rem, 6vw, 5.8rem);
-  line-height: 0.8;
-  letter-spacing: -0.08em;
+  line-height: 0.98;
+  letter-spacing: 0.005em;
 }
 
 .route-grid strong,
@@ -1329,10 +1334,10 @@ p {
 .fit-grid h3,
 .priority-card h3,
 .proof-card h3 {
-  font-family: "Eczar", serif;
+  font-family: var(--font-display);
   font-size: clamp(1.8rem, 2.7vw, 3.2rem);
-  line-height: 0.9;
-  letter-spacing: -0.05em;
+  line-height: 1;
+  letter-spacing: 0.01em;
   text-transform: uppercase;
 }
 
@@ -1459,10 +1464,10 @@ p {
 }
 
 .fit-list h3 {
-  font-family: "Eczar", serif;
+  font-family: var(--font-display);
   font-size: clamp(1.8rem, 2.6vw, 3.1rem);
-  line-height: 0.9;
-  letter-spacing: -0.05em;
+  line-height: 1;
+  letter-spacing: 0.01em;
   text-transform: uppercase;
 }
 
@@ -1530,10 +1535,10 @@ p {
 
 .contact-sheet-heading h1 {
   max-width: 10ch;
-  font-family: "Eczar", serif;
+  font-family: var(--font-display);
   font-size: clamp(4.5rem, 9vw, 11rem);
-  line-height: 0.78;
-  letter-spacing: -0.085em;
+  line-height: 0.92;
+  letter-spacing: 0.005em;
   text-transform: uppercase;
 }
 
@@ -1741,10 +1746,10 @@ p {
 
 .music-open h1 {
   max-width: 9ch;
-  font-family: "Eczar", serif;
+  font-family: var(--font-display);
   font-size: clamp(4.8rem, 8.4vw, 10.5rem);
-  line-height: 0.76;
-  letter-spacing: -0.085em;
+  line-height: 0.92;
+  letter-spacing: 0.005em;
   text-transform: uppercase;
 }
 
@@ -2040,6 +2045,7 @@ p {
 
   .scrawl {
     margin-left: 0;
+    max-width: 28ch;
   }
 
   .work-panel {
@@ -2099,8 +2105,8 @@ p {
 
   .hero-portrait img {
     left: 50%;
-    width: min(140%, 560px);
-    transform: translateX(-52%);
+    width: min(135%, 520px);
+    transform: translateX(-50%);
   }
 
   .image-row,
