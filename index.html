@@ -24,15 +24,12 @@
 
   <header class="site-header" aria-label="Primary navigation">
     <a class="stamp" href="index.html" aria-label="Tiago Borges home">
-      <span>Cozinha com alma</span>
-      <strong>TB</strong>
-      <span>Musica no prato</span>
+      <img src="images/illustrations/Illu_Tiago.svg" alt="" aria-hidden="true">
     </a>
 
     <p class="role-line">Chef + executive chef<br>Restaurant operator<br>Culinary consultant</p>
 
     <nav class="site-nav" aria-label="Site">
-      <a href="index.html" aria-current="page">Home</a>
       <a href="about.html">About</a>
       <a href="work.html">Work</a>
       <a href="collaborations.html">Collaborations</a>
@@ -44,8 +41,10 @@
 
   <main id="main">
     <section class="home-hero" aria-labelledby="home-title">
+      <img class="hero-illu hero-chilis" src="images/illustrations/Illu_Chili.svg" alt="" aria-hidden="true">
+      <img class="hero-illu hero-fork" src="images/illustrations/Illu_fork.svg" alt="" aria-hidden="true">
       <div class="hero-copy">
-        <p class="eyebrow">Ibiza + Formentera / food culture, people, good energy</p>
+        <p class="eyebrow">Ibiza + food culture + good people + amazing music</p>
         <h1 id="home-title"><span>Tiago</span><span>Borges</span></h1>
         <p class="scrawl">food culture, people and good energy, from kitchens to music-led moments</p>
         <div class="proof-strip" aria-label="Selected proof points">
@@ -57,6 +56,7 @@
       </div>
 
       <aside class="hero-audio" aria-labelledby="hero-audio-title">
+        <img class="hero-audio-arrow" src="images/illustrations/Illu_arrow01.svg" alt="" aria-hidden="true">
         <p class="mini-label" id="hero-audio-title">Audio love of now</p>
         <strong>One set for the current mood.</strong>
         <audio controls preload="none" src="audio/placeholders/island-warmup.mp3">Your browser does not support the audio element.</audio>
@@ -65,10 +65,10 @@
       <figure class="hero-portrait">
         <span class="portrait-stamp" aria-hidden="true">Cozinha<br>com<br>alma</span>
         <span class="portrait-waves" aria-hidden="true"></span>
-        <span class="portrait-burst" aria-hidden="true">From the islands<br>to the table</span>
         <img src="images/tiago-2026/tiago-homepage-kitchen.jpg" alt="Tiago Borges focused in the kitchen">
         <figcaption>Cozinha com alma</figcaption>
       </figure>
+      <span class="portrait-burst" aria-hidden="true">Bang<br>Bang</span>
 
       <aside class="work-panel" aria-labelledby="work-panel-title">
         <div>
@@ -83,6 +83,16 @@
       </aside>
 
       <aside class="contact-card home-contact" aria-label="Contact Tiago">
+        <svg class="contact-fish contact-fish-one" viewBox="0 0 210 92" aria-hidden="true" focusable="false">
+          <path d="M30 48c32-30 92-34 134 0-42 34-102 30-134 0Z"></path>
+          <path d="M164 48l34-24v48l-34-24ZM66 36c18 10 42 10 64 0M66 60c18-10 42-10 64 0M92 30c-8 12-8 24 0 36M122 30c8 12 8 24 0 36"></path>
+          <circle cx="150" cy="40" r="4"></circle>
+        </svg>
+        <svg class="contact-fish contact-fish-two" viewBox="0 0 210 92" aria-hidden="true" focusable="false">
+          <path d="M30 48c32-30 92-34 134 0-42 34-102 30-134 0Z"></path>
+          <path d="M164 48l34-24v48l-34-24ZM66 36c18 10 42 10 64 0M66 60c18-10 42-10 64 0M92 30c-8 12-8 24 0 36M122 30c8 12 8 24 0 36"></path>
+          <circle cx="150" cy="40" r="4"></circle>
+        </svg>
         <span class="paper-plane-mark" aria-hidden="true">
           <svg viewBox="0 0 64 64" focusable="false">
             <path d="M10 30 54 10 39 54 29 36 10 30Z"></path>
@@ -94,6 +104,34 @@
         <p>Restaurant idea, food-led event, opening support, or a project that needs taste.</p>
         <p>Or if you want to play a game of chess.</p>
       </aside>
+    </section>
+
+    <section class="section island-chapter" aria-labelledby="island-title">
+      <div class="section-heading island-heading">
+        <h2 id="island-title">Current island chapter</h2>
+        <a class="island-projects-link" href="work.html">See other projects</a>
+        <p>After many professional adventures - working as a chef on a private yacht, traveling around the world, opening Milagros in Goa, and much more - Tiago is back in Ibiza.</p>
+      </div>
+
+      <div class="island-spread">
+        <article class="chapter-card chapter-mira">
+          <img class="chapter-doodle doodle-lemon" src="images/illustrations/Illu_lemon.svg" alt="" aria-hidden="true">
+          <span class="bang-stamp" aria-hidden="true">See you<br>there!</span>
+          <span class="chapter-kicker">Mira Lounge</span>
+          <h3>Mira Lounge. Fusion at full heat.</h3>
+          <p><a href="https://www.miraloungeibiza.com/" target="_blank" rel="noreferrer">Mira Lounge</a> is Tiago's current chapter: bold combinations, island produce, global instinct, and food that should arrive with heat, confidence, and no polite little whisper.</p>
+        </article>
+
+        <figure class="chapter-photo chapter-photo-mira">
+          <img src="images/work/mira-lounge.webp" alt="A table at Mira Lounge with colorful dishes and drinks" loading="lazy">
+        </figure>
+
+        <article class="chapter-card chapter-bottega">
+          <span class="chapter-kicker">Bottega il Buco</span>
+          <h3>It's still a familly!</h3>
+          <p><a href="https://ilbuco.com/pages/bottega" target="_blank" rel="noreferrer">Bottega il Buco</a> is one of those places that stays under the skin. Tiago left, returned, grew with it, and keeps carrying its family feeling into sharper, more creative work.</p>
+        </article>
+      </div>
     </section>
 
     <section class="note-band" aria-label="Point of view notes">
@@ -135,84 +173,20 @@
       </figure>
     </section>
 
-    <section class="section split-section" aria-labelledby="pov-title">
+    <section class="section split-section home-pov" aria-labelledby="pov-title">
+      <svg class="pov-smile" viewBox="0 0 150 110" aria-hidden="true" focusable="false">
+        <path d="M20 72c26 28 78 28 110-8"></path>
+        <path d="M36 22l22 34M60 24 36 52M94 18l18 34M116 20 92 48"></path>
+      </svg>
       <div>
         <p class="chapter">Chapter 01 / point of view</p>
         <h2 id="pov-title">A kitchen can be loud without shouting.</h2>
       </div>
       <p class="big-copy">Tiago works where food, team rhythm, and island energy meet. The plate matters. So does the pass, the sourcing, the timing, the music, and the feeling when the night suddenly has a pulse.</p>
-    </section>
-
-    <section class="section image-row" aria-label="Food and table proof">
-      <figure>
-        <img src="images/tiago-2026/green-rice-fish.jpg" alt="Green rice with fish on a sunlit table" loading="lazy">
-        <figcaption>Product with heat and precision.</figcaption>
-      </figure>
-      <figure>
-        <img src="images/tiago-2026/bottega-table-toast.jpg" alt="A small restaurant team raising glasses on a terrace" loading="lazy">
-        <figcaption>Tables move better when the team has rhythm.</figcaption>
-      </figure>
-      <figure>
-        <img src="images/tiago-2026/terrace-table-bread-wine.jpg" alt="Terrace table with wine, bread, flowers, and plates" loading="lazy">
-        <figcaption>Atmosphere is built, not sprinkled on top.</figcaption>
-      </figure>
-    </section>
-
-    <section class="section island-chapter" aria-labelledby="island-title">
-      <div class="section-heading island-heading">
-        <p class="chapter">Current island chapter</p>
-        <h2 id="island-title">Now cooking. Now playing. Now making it loud.</h2>
-        <p>Four live signals from Tiago right now: the new fusion push, the family table, the records he cannot leave alone, and the kind of trouble worth starting together.</p>
-        <div class="island-tags" aria-label="Current focus">
-          <span>Mira / now</span>
-          <span>Bottega / family</span>
-          <span>African sounds</span>
-          <span>Pop-ups + residencies</span>
-        </div>
-      </div>
-
-      <div class="island-spread">
-        <article class="chapter-card chapter-mira">
-          <svg class="chapter-doodle doodle-flames" viewBox="0 0 180 80" aria-hidden="true" focusable="false">
-            <path d="M30 65C12 42 32 30 28 12c18 14 20 28 16 44 8-15 30-20 28-46 24 24 26 44 12 58 18-8 34-24 30-56 34 30 34 62 8 74"></path>
-            <path d="M140 65c-12-12-10-26 4-38 12 18 12 30-4 38Z"></path>
-          </svg>
-          <span class="bang-stamp" aria-hidden="true">Bang<br>Bang</span>
-          <span class="chapter-kicker">01 / Mira Lounge</span>
-          <h3>Mira Lounge. Fusion at full heat.</h3>
-          <p><a href="https://www.miraloungeibiza.com/" target="_blank" rel="noreferrer">Mira Lounge</a> is Tiago's current chapter: bold combinations, island produce, global instinct, and food that should arrive with heat, confidence, and no polite little whisper.</p>
-          <a class="chapter-link" href="work.html">See the Mira chapter</a>
-        </article>
-
-        <figure class="chapter-photo chapter-photo-mira">
-          <img src="images/work/mira-lounge.webp" alt="A table at Mira Lounge with colorful dishes and drinks" loading="lazy">
-          <figcaption>Mira now / fusion, fire, night energy</figcaption>
-        </figure>
-
-        <article class="chapter-card chapter-bottega">
-          <svg class="chapter-doodle doodle-shrimp" viewBox="0 0 120 120" aria-hidden="true" focusable="false">
-            <path d="M88 26c-28-22-70 0-60 36 8 30 52 40 70 10"></path>
-            <path d="M86 26c-12 10-14 22-8 34 6 10 18 14 30 10"></path>
-            <path d="M44 28c12 10 18 22 18 40M26 48c14 4 28 12 42 24M40 82l-18 22M56 88l-4 24M72 86l14 20"></path>
-            <circle cx="94" cy="34" r="3"></circle>
-          </svg>
-          <span class="chapter-kicker">02 / Still family</span>
-          <h3>Bottega il Buco is not a line on the CV.</h3>
-          <p><a href="https://ilbuco.com/pages/bottega" target="_blank" rel="noreferrer">Bottega il Buco</a> is one of those places that stays under the skin. Tiago left, returned, grew with it, and keeps carrying its family feeling into sharper, more creative work.</p>
-          <a class="chapter-link" href="work.html">Open selected work</a>
-        </article>
-
-        <article class="chapter-card chapter-cta">
-          <svg class="chapter-doodle doodle-chili" viewBox="0 0 130 120" aria-hidden="true" focusable="false">
-            <path d="M78 18c20 18 8 62-28 88-18 12-36-6-22-24 24-30 20-54 50-64Z"></path>
-            <path d="M78 18c10-8 20-10 32-6M96 16c-8 10-10 18-4 28"></path>
-          </svg>
-          <span class="chapter-kicker">04 / Start something</span>
-          <h3>Got a kitchen, a table, a terrace, a dancefloor?</h3>
-          <p>Bring Tiago into the mix for openings, pop-ups, residencies, food-led events, or a project that needs more instinct, more flavour, and better energy.</p>
-          <a class="chapter-button" href="mailto:tiagodoborges@gmail.com?subject=Project%20for%20Tiago%20Borges">Let's cook something up</a>
-        </article>
-      </div>
+      <svg class="pov-fire" viewBox="0 0 70 92" aria-hidden="true" focusable="false">
+        <path d="M35 78c-18 0-27-12-25-27 2-12 12-20 14-35 12 9 16 20 11 33 7-8 14-15 15-31 16 15 18 32 8 47-5 8-12 13-23 13Z"></path>
+        <path d="M34 68c-8 0-13-6-12-13 1-7 8-10 9-19 8 8 13 19 6 28"></path>
+      </svg>
     </section>
   </main>
 
