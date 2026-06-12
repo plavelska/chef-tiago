@@ -231,7 +231,7 @@ main {
   z-index: 6;
   align-self: end;
   min-width: 0;
-  padding-top: clamp(92px, 10vw, 160px);
+  padding-top: clamp(56px, 6.5vw, 112px);
 }
 
 .hero-illu {
@@ -241,8 +241,8 @@ main {
 }
 
 .hero-chilis {
-  top: clamp(74px, 9vw, 150px);
-  left: clamp(10px, 7vw, 140px);
+  top: clamp(18px, 4.5vw, 82px);
+  left: clamp(-76px, -1.5vw, -18px);
   z-index: 1;
   width: clamp(390px, 43vw, 760px);
   mix-blend-mode: normal;
@@ -655,9 +655,11 @@ p {
   border-radius: 34px;
   background: var(--blue);
   color: white;
+  overflow: hidden;
 }
 
 .contact-card h2 {
+  width: fit-content;
   font-family: var(--font-display);
   font-size: clamp(3rem, 6vw, 5.6rem);
   line-height: 0.96;
@@ -682,46 +684,21 @@ p {
 }
 
 .contact-card h2,
-.contact-card a,
-.paper-plane-mark {
+.contact-card a {
   position: relative;
   z-index: 1;
 }
 
-.contact-fish {
+.contact-pepper {
   position: absolute;
+  top: clamp(-46px, -3.5vw, -24px);
+  right: clamp(-34px, -2.6vw, -18px);
   z-index: 0;
-  color: rgba(255, 255, 255, 0.92);
+  width: clamp(190px, 20vw, 330px);
+  max-width: none;
+  transform: rotate(11deg);
   pointer-events: none;
-}
-
-.contact-fish path,
-.contact-fish circle {
-  stroke-width: 5;
-}
-
-.contact-fish-one {
-  top: -10px;
-  right: 18%;
-  width: clamp(180px, 21vw, 340px);
-  transform: rotate(8deg);
-}
-
-.contact-fish-two {
-  top: 74px;
-  right: -30px;
-  width: clamp(150px, 17vw, 280px);
-  transform: rotate(-8deg);
-}
-
-.paper-plane-mark {
-  width: 44px;
-  height: 44px;
-  display: grid;
-  place-items: center;
-  color: var(--paper);
-  border: 2px solid currentColor;
-  border-radius: 50%;
+  user-select: none;
 }
 
 .note-band {
@@ -2356,12 +2333,12 @@ p {
   }
 
   .hero-copy {
-    padding-top: clamp(78px, 10vw, 120px);
+    padding-top: clamp(52px, 7vw, 86px);
   }
 
   .hero-chilis {
-    top: clamp(54px, 9vw, 104px);
-    left: clamp(-18px, 4vw, 58px);
+    top: clamp(18px, 5vw, 54px);
+    left: clamp(-92px, -4vw, -38px);
     width: clamp(360px, 58vw, 620px);
   }
 
@@ -2511,12 +2488,12 @@ p {
   }
 
   .hero-copy {
-    padding-top: 112px;
+    padding-top: 84px;
   }
 
   .hero-chilis {
-    top: 148px;
-    left: -46px;
+    top: 94px;
+    left: -96px;
     width: min(118vw, 520px);
     opacity: 0.42;
   }
@@ -2611,14 +2588,10 @@ p {
     display: none;
   }
 
-  .contact-fish-one {
-    width: 210px;
+  .contact-pepper {
+    top: -24px;
     right: -26px;
-    top: -4px;
-  }
-
-  .contact-fish-two {
-    display: none;
+    width: min(48vw, 210px);
   }
 
   .image-row,
