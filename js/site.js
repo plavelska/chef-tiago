@@ -17,6 +17,35 @@ document.querySelectorAll(".site-nav a[href]").forEach((link) => {
   }
 });
 
+document.querySelectorAll(".site-nav").forEach((nav) => {
+  const toggle = nav.querySelector(".nav-toggle");
+  const menu = nav.querySelector(".site-menu");
+  if (!toggle || !menu) return;
+
+  const setOpen = (isOpen) => {
+    nav.dataset.navOpen = isOpen ? "true" : "false";
+    toggle.setAttribute("aria-expanded", String(isOpen));
+  };
+
+  setOpen(false);
+
+  toggle.addEventListener("click", () => {
+    setOpen(nav.dataset.navOpen !== "true");
+  });
+
+  menu.addEventListener("click", (event) => {
+    if (event.target.closest("a")) setOpen(false);
+  });
+
+  document.addEventListener("click", (event) => {
+    if (!nav.contains(event.target)) setOpen(false);
+  });
+
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape") setOpen(false);
+  });
+});
+
 document.querySelectorAll('a[href^="#"]').forEach((link) => {
   const hash = link.getAttribute("href");
   const target = hash && hash.length > 1 ? document.getElementById(hash.slice(1)) : null;

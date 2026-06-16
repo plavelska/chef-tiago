@@ -25,7 +25,6 @@ const expectedNav = [
   "collaborations.html",
   "gallery.html",
   "music.html",
-  "contact.html",
 ];
 
 const requiredFiles = [
@@ -81,6 +80,7 @@ for (const [page, html] of pageHtml.entries()) {
   if (!/<main id="main">/.test(html)) fail(`${page} must include <main id="main">.`);
   if (!/href="css\/site\.css"/.test(html)) fail(`${page} must load css/site.css.`);
   if (!/src="js\/site\.js"/.test(html)) fail(`${page} must load js/site.js.`);
+  if (!/<a class="header-contact" href="contact\.html"/.test(html)) fail(`${page} must include the separate header contact button.`);
   if (!/href="mailto:tiagodoborges@gmail\.com/.test(html)) fail(`${page} must link the visible email with mailto.`);
   if (!/>tiagodoborges@gmail\.com</.test(html)) fail(`${page} must show the contact email as text.`);
   if (/<form[\s>]/i.test(html)) fail(`${page} must stay email-first and must not include a form.`);
@@ -99,7 +99,7 @@ for (const [page, html] of pageHtml.entries()) {
       fail(`${page} nav order mismatch: ${navHrefs.join(", ")}`);
     }
     const currentCount = (navMatch[0].match(/aria-current="page"/g) || []).length;
-    const expectedCurrentCount = page === "index.html" ? 0 : 1;
+    const expectedCurrentCount = page === "index.html" || page === "contact.html" ? 0 : 1;
     if (currentCount !== expectedCurrentCount) {
       fail(`${page} must have ${expectedCurrentCount} current nav item${expectedCurrentCount === 1 ? "" : "s"}.`);
     }
