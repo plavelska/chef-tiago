@@ -79,6 +79,28 @@ The current script checks:
 
 For visual QA, use gstack `/qa` or `/qa-only`.
 
+## Checkpoint Commit
+
+When a design/content iteration is ready to save, run:
+
+```sh
+npm run checkpoint
+```
+
+The checkpoint script runs the static verification, checks whitespace errors,
+shows the current git status and diff summary, then asks before staging,
+committing, and pushing. To provide the message up front:
+
+```sh
+npm run checkpoint -- --message "Update homepage typography"
+```
+
+To commit locally without pushing:
+
+```sh
+npm run checkpoint -- --no-push
+```
+
 ## Notes
 
 - The public site no longer depends on Webflow runtime assets or Formspree.

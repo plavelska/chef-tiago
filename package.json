@@ -3,6 +3,7 @@
   "private": true,
   "type": "module",
   "scripts": {
+    "checkpoint": "sh scripts/checkpoint.sh",
     "test": "node scripts/verify-static-site.mjs"
   }
 }
