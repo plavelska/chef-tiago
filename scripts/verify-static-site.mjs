@@ -140,10 +140,6 @@ if (/new assets/i.test(`${siteCss}\n${siteJs}`)) {
   fail("CSS/JS must not reference raw new assets paths.");
 }
 
-if (/\.role-line[^{]*{[^}]*display\s*:\s*none/i.test(siteCss) || /\.role-line[^{]*{[^}]*visibility\s*:\s*hidden/i.test(siteCss)) {
-  fail("CSS must not hide .role-line.");
-}
-
 if (!/\.site-nav a\s*{[\s\S]*?min-height:\s*44px/.test(siteCss)) {
   fail("CSS must keep .site-nav a touch targets at least 44px.");
 }

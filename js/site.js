@@ -46,6 +46,27 @@ document.querySelectorAll(".site-nav").forEach((nav) => {
   });
 });
 
+document.querySelectorAll("[data-accordion]").forEach((accordion) => {
+  accordion.querySelectorAll(".skill-toggle").forEach((toggle) => {
+    const panelId = toggle.getAttribute("aria-controls");
+    const panel = panelId ? document.getElementById(panelId) : null;
+    const item = toggle.closest(".skill-item");
+    if (!panel || !item) return;
+
+    const setOpen = (isOpen) => {
+      toggle.setAttribute("aria-expanded", String(isOpen));
+      panel.hidden = !isOpen;
+      item.classList.toggle("is-open", isOpen);
+    };
+
+    setOpen(toggle.getAttribute("aria-expanded") === "true");
+
+    toggle.addEventListener("click", () => {
+      setOpen(toggle.getAttribute("aria-expanded") !== "true");
+    });
+  });
+});
+
 document.querySelectorAll('a[href^="#"]').forEach((link) => {
   const hash = link.getAttribute("href");
   const target = hash && hash.length > 1 ? document.getElementById(hash.slice(1)) : null;

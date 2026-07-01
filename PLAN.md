@@ -187,7 +187,7 @@ Required static checks:
 - Local `href` and `src` values resolve, excluding `mailto:`, external URLs, phone links, and valid same-page hashes.
 - No public page references raw `new assets/` paths.
 - No old public framing leaks: `Private Chef`, `Booking`, `Services`, `booking.html`, `services.html`, `Formspree`, `Webflow`, or `jquery`.
-- CSS must not hide `.role-line` at mobile/tablet sizes and nav touch targets must stay at least `44px`.
+- Header role text is intentionally removed; shared nav/contact touch targets must stay at least `44px`.
 - Gallery uses optimized public derivatives under `images/tiago-2026/`.
 - Music page exists and routes back to `Work`, `Collaborations`, or `Contact`.
 

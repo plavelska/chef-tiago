@@ -16,7 +16,7 @@ Deferred work from the Tiago Borges relaunch plan.
 - Completed: replaced the one-page static verifier with multi-page checks before treating `npm test` as launch confidence.
 - Completed: built Work proof cards from the claims table in `PLAN.md`; removed vague `friends and clients`, unverified exact titles, and decorative stats.
 - Completed: rewrote `js/site.js` so page nav uses current pathname and hash behavior only touches same-page hash links.
-- Completed: kept `.role-line` visible at mobile/tablet widths and nav touch targets at least 44px.
+- Completed: removed the header role line and kept shared nav/contact touch targets at least 44px.
 - Prioritize restaurant/opening support plus extraordinary food-led events as the two strongest v1 inbound outcomes.
 - Run a final `/design-review` after the next feedback pass to catch visual regressions in the paper-note system, contact readability, and mobile hero rhythm.
 - Keep the visible public contact as `tiagodoborges@gmail.com`.

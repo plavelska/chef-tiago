@@ -22,7 +22,6 @@
   <a class="skip-link" href="#main">Skip to content</a>
   <header class="site-header" aria-label="Primary navigation">
     <a class="stamp" href="index.html" aria-label="Tiago Borges home"><img class="stamp-type" src="images/illustrations/Logo/Logo-Type.svg" alt="" aria-hidden="true"><img class="stamp-image" src="images/illustrations/Logo/Logo-IMG.svg" alt="" aria-hidden="true"></a>
-    <p class="role-line">Chef + executive chef<br>Restaurant operator<br>Culinary consultant</p>
     <nav class="site-nav" aria-label="Site">
       <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-menu">
         <span>Menu</span>
@@ -51,13 +50,85 @@
         <p class="chapter">Core skills</p>
         <h2 id="skills-title">What Tiago brings to a project.</h2>
       </div>
-      <div class="skill-lines">
-        <p><span>Recipes + menu planning</span>Food ideas that can be cooked, explained, repeated, costed, and remembered.</p>
-        <p><span>Concept development</span>The spine of a place: what it tastes like, how it moves, and why people should care.</p>
-        <p><span>Kitchen coordination</span>Workflow, prep logic, equipment, sanitation, service rhythm, and the calm behind the noise.</p>
-        <p><span>Team culture</span>Training, communication, performance, scheduling, and the emotional weather of a brigade.</p>
-        <p><span>Operations brain</span>Forecasting, planning, budgeting, cost control, and knowing when recovery matters more than endurance.</p>
-        <p><span>Guest instinct</span>Food, music, pace, warmth, and the tiny choices that make guests stay longer than planned.</p>
+      <div class="skill-lines" data-accordion>
+        <article class="skill-item is-open">
+          <button class="skill-toggle" type="button" id="skill-recipes-button" aria-expanded="true" aria-controls="skill-recipes-panel">
+            <span>
+              <span class="skill-title">Recipes + menu planning</span>
+              <span class="skill-summary">Food ideas that can be cooked, explained, repeated, costed, and remembered.</span>
+            </span>
+            <span class="skill-plus" aria-hidden="true"></span>
+          </button>
+          <div class="skill-panel" id="skill-recipes-panel" role="region" aria-labelledby="skill-recipes-button">
+            <p>Tiago builds menus from the reality of the kitchen, not from fantasy boards. He thinks about season, suppliers, prep pressure, margin, service pace, and the story a guest should understand without needing a lecture.</p>
+            <p>The result is food with personality that can still survive repetition: recipes with clear hands, exact steps, sensible costs, and enough memory to become part of the place.</p>
+          </div>
+        </article>
+        <article class="skill-item">
+          <button class="skill-toggle" type="button" id="skill-concept-button" aria-expanded="false" aria-controls="skill-concept-panel">
+            <span>
+              <span class="skill-title">Concept development</span>
+              <span class="skill-summary">The spine of a place: what it tastes like, how it moves, and why people should care.</span>
+            </span>
+            <span class="skill-plus" aria-hidden="true"></span>
+          </button>
+          <div class="skill-panel" id="skill-concept-panel" role="region" aria-labelledby="skill-concept-button" hidden>
+            <p>A strong concept is not just a name, a mood, or a nice plate. It is the logic that connects the menu, the table, the staff, the price point, the music, and the kind of night people are supposed to have.</p>
+            <p>Tiago helps turn loose energy into a usable food language: bold enough to be noticed, simple enough to execute, and specific enough to belong to one place only.</p>
+          </div>
+        </article>
+        <article class="skill-item">
+          <button class="skill-toggle" type="button" id="skill-kitchen-button" aria-expanded="false" aria-controls="skill-kitchen-panel">
+            <span>
+              <span class="skill-title">Kitchen coordination</span>
+              <span class="skill-summary">Workflow, prep logic, equipment, sanitation, service rhythm, and the calm behind the noise.</span>
+            </span>
+            <span class="skill-plus" aria-hidden="true"></span>
+          </button>
+          <div class="skill-panel" id="skill-kitchen-panel" role="region" aria-labelledby="skill-kitchen-button" hidden>
+            <p>This is the practical layer that decides whether the idea works on a busy night. Tiago looks at stations, mise en place, handovers, storage, cleaning routines, timings, and the invisible friction that slows a team down.</p>
+            <p>He brings order without making the kitchen stiff: clearer prep, cleaner communication, better flow, and a pass that can carry pressure without losing appetite.</p>
+          </div>
+        </article>
+        <article class="skill-item">
+          <button class="skill-toggle" type="button" id="skill-team-button" aria-expanded="false" aria-controls="skill-team-panel">
+            <span>
+              <span class="skill-title">Team culture</span>
+              <span class="skill-summary">Training, communication, performance, scheduling, and the emotional weather of a brigade.</span>
+            </span>
+            <span class="skill-plus" aria-hidden="true"></span>
+          </button>
+          <div class="skill-panel" id="skill-team-panel" role="region" aria-labelledby="skill-team-button" hidden>
+            <p>A restaurant can have the right menu and still feel wrong if the team is tense, confused, or tired in the wrong places. Tiago reads the human side of service as carefully as the food.</p>
+            <p>He helps teams understand what matters, how to talk during pressure, where standards need to be exact, and where confidence can replace panic.</p>
+          </div>
+        </article>
+        <article class="skill-item">
+          <button class="skill-toggle" type="button" id="skill-operations-button" aria-expanded="false" aria-controls="skill-operations-panel">
+            <span>
+              <span class="skill-title">Operations brain</span>
+              <span class="skill-summary">Forecasting, planning, budgeting, cost control, and knowing when recovery matters more than endurance.</span>
+            </span>
+            <span class="skill-plus" aria-hidden="true"></span>
+          </button>
+          <div class="skill-panel" id="skill-operations-panel" role="region" aria-labelledby="skill-operations-button" hidden>
+            <p>Behind the instinct is a very practical operator. Tiago understands budgets, ordering, waste, staffing pressure, supplier reliability, and the difference between a beautiful idea and a sustainable one.</p>
+            <p>He is useful when a project needs taste and discipline at the same time: sharper decisions, fewer leaks, and a clearer sense of what deserves energy now.</p>
+          </div>
+        </article>
+        <article class="skill-item">
+          <button class="skill-toggle" type="button" id="skill-guest-button" aria-expanded="false" aria-controls="skill-guest-panel">
+            <span>
+              <span class="skill-title">Guest instinct</span>
+              <span class="skill-summary">Food, music, pace, warmth, and the tiny choices that make guests stay longer than planned.</span>
+            </span>
+            <span class="skill-plus" aria-hidden="true"></span>
+          </button>
+          <div class="skill-panel" id="skill-guest-panel" role="region" aria-labelledby="skill-guest-button" hidden>
+            <p>Tiago notices the small signals: when a table wants comfort, when the night wants volume, when a dish needs less explanation, when music changes the appetite, and when the best move is simply generosity.</p>
+            <p>That instinct helps a project feel alive rather than decorated. The food has to carry flavor, but the whole experience should carry memory.</p>
+          </div>
+        </article>
       </div>
     </section>
 
