@@ -67,6 +67,84 @@ document.querySelectorAll("[data-accordion]").forEach((accordion) => {
   });
 });
 
+document.querySelectorAll(".gallery-wall").forEach((wall) => {
+  const originalItems = Array.from(wall.children).filter((item) =>
+    item.matches("figure, .gallery-block"),
+  );
+  const fillColors = ["yellow-block", "green-block", "blue-block", "coral-block"];
+  let resizeTimer;
+
+  const resetGallery = () => {
+    wall.classList.remove("is-balanced");
+    wall.replaceChildren(...originalItems);
+  };
+
+  const columnCount = () => {
+    if (window.matchMedia("(max-width: 820px)").matches) return 1;
+    if (window.matchMedia("(max-width: 1180px)").matches) return 2;
+    return 3;
+  };
+
+  const closestColumn = (left, columnLefts) =>
+    columnLefts.reduce((best, current, index) => {
+      const bestDistance = Math.abs(left - columnLefts[best]);
+      const currentDistance = Math.abs(left - current);
+      return currentDistance < bestDistance ? index : best;
+    }, 0);
+
+  const balanceGallery = () => {
+    const count = columnCount();
+    resetGallery();
+
+    if (count === 1 || originalItems.length === 0) return;
+
+    const itemRects = originalItems.map((item) => ({
+      item,
+      left: item.getBoundingClientRect().left,
+    }));
+    const columnLefts = [...new Set(itemRects.map(({ left }) => Math.round(left)))]
+      .sort((a, b) => a - b)
+      .slice(0, count);
+
+    if (columnLefts.length < count) return;
+
+    const columns = Array.from({ length: count }, () => []);
+    itemRects.forEach(({ item, left }) => {
+      columns[closestColumn(Math.round(left), columnLefts)].push(item);
+    });
+
+    wall.classList.add("is-balanced");
+    wall.replaceChildren();
+
+    columns.forEach((items, index) => {
+      const column = document.createElement("div");
+      column.className = "gallery-column";
+      const filler = document.createElement("div");
+      filler.className = `gallery-column-fill ${fillColors[index % fillColors.length]}`;
+      filler.setAttribute("aria-hidden", "true");
+
+      if (items.length > 1) {
+        column.append(...items.slice(0, -1), filler, items[items.length - 1]);
+      } else {
+        column.append(filler, ...items);
+      }
+
+      wall.append(column);
+    });
+  };
+
+  const scheduleBalance = () => {
+    window.clearTimeout(resizeTimer);
+    resizeTimer = window.setTimeout(() => {
+      window.requestAnimationFrame(balanceGallery);
+    }, 120);
+  };
+
+  window.addEventListener("load", scheduleBalance);
+  window.addEventListener("resize", scheduleBalance);
+  scheduleBalance();
+});
+
 document.querySelectorAll('a[href^="#"]').forEach((link) => {
   const hash = link.getAttribute("href");
   const target = hash && hash.length > 1 ? document.getElementById(hash.slice(1)) : null;

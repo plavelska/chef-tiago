@@ -2065,14 +2065,13 @@ p {
 .gallery-contact-sheet {
   display: grid;
   gap: clamp(18px, 4vw, 46px);
-  padding-block: clamp(44px, 7vw, 110px);
-  border-top: 3px solid var(--ink);
+  padding-block: clamp(30px, 6vw, 92px);
 }
 
 .contact-sheet-heading {
   display: grid;
   grid-template-columns: repeat(12, minmax(0, 1fr));
-  gap: clamp(22px, 5vw, 80px);
+  gap: clamp(12px, 3vw, 42px);
   align-items: end;
 }
 
@@ -2091,17 +2090,17 @@ p {
 
 .sheet-note {
   position: relative;
-  grid-column: 5 / span 4;
-  max-width: 36ch;
-  justify-self: center;
-  margin: clamp(12px, 2vw, 28px) 0 clamp(18px, 3vw, 42px);
-  padding: clamp(13px, 1.8vw, 22px) clamp(18px, 2.7vw, 34px);
+  grid-column: 5 / span 7;
+  max-width: 58ch;
+  justify-self: start;
+  margin: clamp(4px, 1vw, 14px) 0 clamp(14px, 2vw, 28px);
+  padding: clamp(34px, 4.8vw, 72px) clamp(46px, 6.4vw, 108px);
   border: 0;
   border-radius: 51% 49% 48% 52% / 58% 44% 56% 42%;
   background: var(--cream);
   color: var(--blue);
   font-family: var(--font-deco);
-  font-size: clamp(1rem, 1.3vw, 1.55rem);
+  font-size: clamp(1.06rem, 1.45vw, 1.72rem);
   font-weight: 400;
   line-height: 1.12;
 }
@@ -2109,9 +2108,9 @@ p {
 .sheet-note::after {
   position: absolute;
   left: 18%;
-  bottom: -12px;
-  width: 38px;
-  height: 24px;
+  bottom: -16px;
+  width: 54px;
+  height: 34px;
   content: "";
   border-radius: 50%;
   background: var(--cream);
@@ -2119,12 +2118,59 @@ p {
 }
 
 .gallery-wall {
-  counter-reset: gallery-frame;
+  --gallery-line: 3px;
+  --gallery-caption-height: clamp(42px, 4vw, 54px);
   column-count: 3;
-  column-gap: 0;
-  padding: 0;
-  border: 3px solid var(--ink);
+  column-gap: var(--gallery-line);
+  padding: var(--gallery-line);
   background: var(--ink);
+}
+
+.gallery-wall.is-balanced {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--gallery-line);
+  column-count: initial;
+  align-items: stretch;
+}
+
+.gallery-column {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  gap: var(--gallery-line);
+}
+
+.gallery-wall.is-balanced figure,
+.gallery-wall.is-balanced .gallery-block {
+  margin: 0;
+  break-inside: auto;
+}
+
+.gallery-column-fill {
+  flex: 1 1 auto;
+  min-height: 0;
+  background:
+    linear-gradient(90deg, rgba(16, 16, 14, 0.12) 1px, transparent 1px),
+    linear-gradient(rgba(16, 16, 14, 0.12) 1px, transparent 1px),
+    var(--block-color, var(--yellow));
+  background-size: 28px 28px;
+}
+
+.gallery-column-fill.yellow-block {
+  --block-color: var(--yellow);
+}
+
+.gallery-column-fill.green-block {
+  --block-color: var(--green);
+}
+
+.gallery-column-fill.blue-block {
+  --block-color: var(--blue);
+}
+
+.gallery-column-fill.coral-block {
+  --block-color: var(--coral);
 }
 
 .gallery-wall figure,
@@ -2132,31 +2178,20 @@ p {
   position: relative;
   width: 100%;
   break-inside: avoid;
-  margin: 0;
-  border: 1.5px solid var(--ink);
+  min-height: 0;
+  margin: 0 0 var(--gallery-line);
+  border: 0;
   border-radius: 0;
 }
 
 .gallery-wall figure {
-  counter-increment: gallery-frame;
   overflow: hidden;
   background: var(--cream);
   box-shadow: none;
 }
 
-.gallery-wall figure::before {
-  position: absolute;
-  right: 10px;
-  bottom: 42px;
-  z-index: 2;
-  content: "0" counter(gallery-frame);
-  color: white;
-  font-size: 0.76rem;
-  font-weight: 950;
-  letter-spacing: 0.12em;
-  text-shadow: 2px 2px 0 var(--ink);
-  transform: rotate(-90deg);
-  transform-origin: right bottom;
+.gallery-wall .frame-label {
+  display: none;
 }
 
 .frame-label {
@@ -2195,11 +2230,60 @@ p {
 
 .gallery-wall img {
   position: absolute;
-  inset: 0;
+  top: 0;
+  left: 0;
   width: 100%;
-  height: 100%;
+  height: calc(100% - var(--gallery-caption-height));
   object-fit: cover;
   filter: saturate(1.05) contrast(1.03);
+}
+
+.gallery-split {
+  --split-size: clamp(54px, 18%, 92px);
+  --split-color: var(--green);
+}
+
+.gallery-split img {
+  width: calc(100% - var(--split-size));
+}
+
+.gallery-split.split-left img {
+  left: var(--split-size);
+}
+
+.split-bar {
+  position: absolute;
+  top: 0;
+  bottom: var(--gallery-caption-height);
+  z-index: 1;
+  width: var(--split-size);
+  background: var(--split-color);
+}
+
+.split-right .split-bar {
+  right: 0;
+  border-left: var(--gallery-line) solid var(--ink);
+}
+
+.split-left .split-bar {
+  left: 0;
+  border-right: var(--gallery-line) solid var(--ink);
+}
+
+.split-green {
+  --split-color: var(--green);
+}
+
+.split-yellow {
+  --split-color: var(--yellow);
+}
+
+.split-blue {
+  --split-color: var(--blue);
+}
+
+.split-coral {
+  --split-color: var(--coral);
 }
 
 .gallery-wall figcaption {
@@ -2208,10 +2292,12 @@ p {
   bottom: 0;
   left: 0;
   z-index: 2;
-  min-height: 0;
+  min-height: var(--gallery-caption-height);
+  display: flex;
+  align-items: center;
   padding: 10px 12px;
   border: 0;
-  border-top: 2px solid var(--ink);
+  border-top: var(--gallery-line) solid var(--ink);
   background: var(--paper);
   color: var(--ink);
   font-size: 0.78rem;
@@ -2261,6 +2347,10 @@ p {
   aspect-ratio: 5 / 2;
 }
 
+.block-slim {
+  aspect-ratio: 5 / 1.2;
+}
+
 .gallery-block {
   display: grid;
   place-items: end start;
@@ -2274,7 +2364,13 @@ p {
 }
 
 .gallery-block p {
-  display: none;
+  max-width: 11ch;
+  color: inherit;
+  font-family: var(--font-display);
+  font-size: clamp(2.4rem, 4.2vw, 5.2rem);
+  line-height: 0.9;
+  letter-spacing: 0.01em;
+  text-transform: uppercase;
 }
 
 .coral-block {
@@ -2568,21 +2664,8 @@ p {
     column-count: 2;
   }
 
-  .gallery-wall .wide {
-    grid-column: span 4;
-  }
-
-  .block-large {
-    grid-column: span 3;
-  }
-
-  .block-small {
-    grid-column: span 1;
-  }
-
-  .block-medium,
-  .gallery-wall figure {
-    grid-column: span 2;
+  .gallery-wall.is-balanced {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
   .fit-list article {
@@ -2858,7 +2941,9 @@ p {
 
   .sheet-note {
     grid-column: auto;
+    max-width: min(100%, 42ch);
     justify-self: end;
+    padding: clamp(28px, 8vw, 48px) clamp(30px, 10vw, 58px);
   }
 
   .chapter-mira,
@@ -2929,17 +3014,6 @@ p {
   .fit-icon {
     width: 144px;
     height: 144px;
-  }
-
-  .gallery-wall .wide,
-  .gallery-wall .tall,
-  .gallery-block {
-    grid-column: auto;
-    grid-row: auto;
-  }
-
-  .gallery-wall figure {
-    grid-column: auto;
   }
 
   .gallery-block {
