@@ -80,9 +80,15 @@ for (const [page, html] of pageHtml.entries()) {
   if (!/<main id="main">/.test(html)) fail(`${page} must include <main id="main">.`);
   if (!/href="css\/site\.css"/.test(html)) fail(`${page} must load css/site.css.`);
   if (!/src="js\/site\.js"/.test(html)) fail(`${page} must load js/site.js.`);
-  if (!/<a class="header-contact" href="contact\.html"/.test(html)) fail(`${page} must include the separate header contact button.`);
+  if (!/<a class="header-contact" href="#contact">Contact<\/a>/.test(html)) fail(`${page} must include the footer-jump header contact button.`);
+  if (!/<footer class="site-footer" id="contact">/.test(html)) fail(`${page} must expose contact details only in the footer anchor.`);
+  if (!/<address class="footer-contact" aria-label="Contact details">/.test(html)) fail(`${page} must include structured footer contact details.`);
   if (!/href="mailto:tiagodoborges@gmail\.com/.test(html)) fail(`${page} must link the visible email with mailto.`);
   if (!/>tiagodoborges@gmail\.com</.test(html)) fail(`${page} must show the contact email as text.`);
+  if (!/href="tel:\+34611271684"/.test(html) || !/>\+34 611 27 16 84</.test(html)) fail(`${page} must show the contact phone in the footer.`);
+  if (!/<a class="footer-social" href="https:\/\/www\.instagram\.com\/tiagoisnotadj[^"]+" target="_blank" rel="noopener noreferrer" aria-label="Instagram profile">Instagram<\/a>/.test(html)) {
+    fail(`${page} must include an accessible Instagram text link in the footer.`);
+  }
   if (/<form[\s>]/i.test(html)) fail(`${page} must stay email-first and must not include a form.`);
   if (/new assets/i.test(html)) fail(`${page} must not reference raw new assets paths.`);
 
@@ -128,7 +134,7 @@ if (galleryImages.length < 8) {
 }
 
 const music = pageHtml.get("music.html");
-for (const href of ["collaborations.html", "contact.html"]) {
+for (const href of ["collaborations.html", "#contact"]) {
   if (!music.includes(`href="${href}"`)) fail(`music.html must route back to ${href}.`);
 }
 

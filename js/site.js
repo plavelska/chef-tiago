@@ -120,8 +120,19 @@ document.querySelectorAll(".gallery-wall").forEach((wall) => {
       const column = document.createElement("div");
       column.className = "gallery-column";
       const filler = document.createElement("div");
-      filler.className = `gallery-column-fill ${fillColors[index % fillColors.length]}`;
+      const isCenterDesktopFiller = count === 3 && index === 1;
+      filler.className = `gallery-column-fill ${
+        isCenterDesktopFiller ? "yellow-block beach-fill" : fillColors[index % fillColors.length]
+      }`;
       filler.setAttribute("aria-hidden", "true");
+
+      if (isCenterDesktopFiller) {
+        const illustration = document.createElement("img");
+        illustration.src = "images/illustrations/illu-beach.svg";
+        illustration.alt = "";
+        illustration.loading = "lazy";
+        filler.append(illustration);
+      }
 
       if (items.length > 1) {
         column.append(...items.slice(0, -1), filler, items[items.length - 1]);
