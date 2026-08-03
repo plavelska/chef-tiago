@@ -20,6 +20,7 @@ const pages = [
 ];
 
 const expectedNav = [
+  "index.html",
   "about.html",
   "work.html",
   "collaborations.html",
@@ -105,7 +106,7 @@ for (const [page, html] of pageHtml.entries()) {
       fail(`${page} nav order mismatch: ${navHrefs.join(", ")}`);
     }
     const currentCount = (navMatch[0].match(/aria-current="page"/g) || []).length;
-    const expectedCurrentCount = page === "index.html" || page === "contact.html" ? 0 : 1;
+    const expectedCurrentCount = page === "contact.html" ? 0 : 1;
     if (currentCount !== expectedCurrentCount) {
       fail(`${page} must have ${expectedCurrentCount} current nav item${expectedCurrentCount === 1 ? "" : "s"}.`);
     }

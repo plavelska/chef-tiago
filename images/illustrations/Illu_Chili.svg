@@ -1,4 +1,4 @@
-<svg width="481" height="164" viewBox="0 0 481 164" fill="none" xmlns="http://www.w3.org/2000/svg">
+<svg width="481" height="176" viewBox="0 0 481 176" fill="none" xmlns="http://www.w3.org/2000/svg">
 <style>
   .chili-dancer {
     transform-box: fill-box;
@@ -19,10 +19,6 @@
   .chili-dancer-1 { --chili-speed: 4.7s; --chili-delay: 0s; }
   .chili-dancer-2 { --chili-speed: 5.15s; --chili-delay: -0.95s; }
   .chili-dancer-3 { --chili-speed: 4.55s; --chili-delay: -1.75s; }
-  .chili-dancer-4 { --chili-speed: 5.35s; --chili-delay: -0.35s; }
-  .chili-dancer-5 { --chili-speed: 4.9s; --chili-delay: -2.2s; }
-  .chili-dancer-6 { --chili-speed: 5.6s; --chili-delay: -1.25s; }
-
   @keyframes chiliDanceBob {
     0%,
     100% { transform: translateY(0) rotate(-0.4deg); }
@@ -70,7 +66,4 @@
 <use href="#chili-source-left" class="chili-dancer chili-dancer-1" transform="translate(2 24) scale(0.48)"/>
 <use href="#chili-source-middle" class="chili-dancer chili-dancer-2" transform="translate(2 24) scale(0.48)"/>
 <use href="#chili-source-right" class="chili-dancer chili-dancer-3" transform="translate(2 24) scale(0.48)"/>
-<use href="#chili-source-left" class="chili-dancer chili-dancer-4" transform="translate(247 24) scale(0.48)"/>
-<use href="#chili-source-middle" class="chili-dancer chili-dancer-5" transform="translate(247 24) scale(0.48)"/>
-<use href="#chili-source-right" class="chili-dancer chili-dancer-6" transform="translate(247 24) scale(0.48)"/>
 </svg>

@@ -1,0 +1,217 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Typography Style Guide | Tiago Borges</title>
+  <meta name="description" content="Internal typography and button style guide for the Tiago Borges website.">
+  <meta name="theme-color" content="#0b43f2">
+  <link rel="icon" href="images/favicon.png" type="image/png">
+  <link rel="apple-touch-icon" href="images/webclip.jpg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Outfit:wght@300;400;500;600;700;800;900&family=Permanent+Marker&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/site.css">
+  <script src="js/site.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header" aria-label="Primary navigation">
+    <a class="stamp" href="index.html" aria-label="Home">
+      <img class="stamp-type" src="images/illustrations/Logo/Logo-Type.svg" alt="" aria-hidden="true">
+      <img class="stamp-image" src="images/illustrations/Logo/Logo-IMG.svg" alt="" aria-hidden="true">
+    </a>
+
+    <nav class="site-nav" aria-label="Site">
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-menu">
+        <span>Menu</span>
+        <i aria-hidden="true"></i>
+      </button>
+      <div class="site-menu" id="site-menu">
+        <a href="about.html">About</a>
+        <a href="work.html">Work</a>
+        <a href="collaborations.html">Collaborations</a>
+        <a href="gallery.html">Gallery</a>
+        <a href="music.html">Music</a>
+      </div>
+    </nav>
+    <a class="header-contact" href="#contact">Contact</a>
+  </header>
+
+  <main id="main" class="style-guide">
+    <section class="section style-guide-hero" aria-labelledby="guide-title">
+      <p class="eyebrow">Internal style guide / typography + buttons</p>
+      <h1 id="guide-title">Typography system.</h1>
+      <p class="hero-lede">A working overview of the current headline scale, supporting text styles, and button treatments used across the site.</p>
+    </section>
+
+    <section class="section style-guide-section" aria-labelledby="type-scale-title">
+      <div class="section-heading">
+        <h2 id="type-scale-title">Headline scale</h2>
+        <p>Use these as the source of truth when adjusting page hierarchy. The values below are the current CSS tokens or exact component rules.</p>
+      </div>
+
+      <div class="style-guide-scale" aria-label="Headline size overview">
+        <article>
+          <span>Display hero</span>
+          <code>--type-display-xl: clamp(5.6rem, 12.5vw, 13.6rem)</code>
+          <p class="style-sample type-display-xl">Tiago Borges</p>
+          <small>Used by: homepage H1 and footer statement.</small>
+        </article>
+
+        <article>
+          <span>Page hero</span>
+          <code>--type-display-lg: clamp(4.8rem, 9.8vw, 11.4rem)</code>
+          <p class="style-sample type-display-lg">Records with sun in their bones.</p>
+          <small>Used by: About, Work, Collaborations, Music opening H1.</small>
+        </article>
+
+        <article>
+          <span>Section headline</span>
+          <code>--type-section / --type-section-xl: clamp(3.75rem, 6.4vw, 7.6rem)</code>
+          <p class="style-sample type-section">Current island chapter</p>
+          <small>Used by: section headings, gallery title, music stage, quote-scale statements.</small>
+        </article>
+
+        <article>
+          <span>Module headline</span>
+          <code>--type-card-title / aliases: clamp(2.9rem, 5vw, 5.9rem)</code>
+          <p class="style-sample type-card-title">It&rsquo;s still a family!</p>
+          <small>Used by: cards, accordion labels, gallery blocks, fit modules, route cards.</small>
+        </article>
+
+        <article>
+          <span>Decorative headline</span>
+          <code>--type-deco-large</code>
+          <p class="style-marker">Food culture, people and good energy.</p>
+          <small>Used only for Permanent Marker comments and speech-bubble notes.</small>
+        </article>
+      </div>
+    </section>
+
+    <section class="section style-guide-section" aria-labelledby="support-type-title">
+      <div class="section-heading">
+        <h2 id="support-type-title">Supporting type</h2>
+        <p>These styles carry rhythm, notes, body copy, captions, and small labels.</p>
+      </div>
+
+      <div class="style-guide-table" role="table" aria-label="Supporting typography overview">
+        <div role="row">
+          <strong role="columnheader">Style</strong>
+          <strong role="columnheader">Token / rule</strong>
+          <strong role="columnheader">Example</strong>
+        </div>
+        <div role="row">
+          <span role="cell">Lede</span>
+          <code role="cell">--type-lede: clamp(1.16rem, 1.52vw, 1.52rem)</code>
+          <p role="cell" class="hero-lede">Food, timing, music, and the small piece of madness that makes a night come alive.</p>
+        </div>
+        <div role="row">
+          <span role="cell">Body large</span>
+          <code role="cell">--type-body-large: clamp(1.06rem, 1.28vw, 1.26rem)</code>
+          <p role="cell" class="style-body-large">Useful for summaries and short explanatory copy.</p>
+        </div>
+        <div role="row">
+          <span role="cell">Body</span>
+          <code role="cell">--type-body: clamp(1rem, 1vw, 1.08rem)</code>
+          <p role="cell">Default paragraph text for longer, readable sections.</p>
+        </div>
+        <div role="row">
+          <span role="cell">Eyebrow / chapter</span>
+          <code role="cell">clamp(0.7rem, 1vw, 0.86rem)</code>
+          <p role="cell" class="eyebrow">Gallery / contact sheet / selected proof</p>
+        </div>
+        <div role="row">
+          <span role="cell">Marker note</span>
+          <code role="cell">--type-deco / --type-deco-large</code>
+          <p role="cell" class="style-marker">Food culture, people and good energy.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section style-guide-section" aria-labelledby="buttons-title">
+      <div class="section-heading">
+        <h2 id="buttons-title">Buttons + controls</h2>
+        <p>Buttons use uppercase Outfit, pill geometry, and a clear black outline. Shadows are reserved for primary content actions, not header contact or footer pills.</p>
+      </div>
+
+      <div class="style-guide-buttons">
+        <article>
+          <h3 class="content-headline">Primary actions</h3>
+          <div class="style-guide-button-row">
+            <a class="button primary" href="#buttons-title">Primary button</a>
+            <a class="button secondary" href="#buttons-title">Secondary button</a>
+          </div>
+          <p>Use for explicit page actions. Hover lifts with a black shadow.</p>
+        </article>
+
+        <article>
+          <h3 class="content-headline">Navigation pills</h3>
+          <div class="style-guide-nav-demo">
+            <nav class="site-nav" aria-label="Style guide nav demo">
+              <div class="site-menu">
+                <a href="#buttons-title" aria-current="page">About</a>
+                <a href="#buttons-title">Work</a>
+                <a href="#buttons-title">Gallery</a>
+              </div>
+            </nav>
+            <a class="header-contact" href="#buttons-title">Contact</a>
+          </div>
+          <p>Navigation remains outline-first. Contact is separate from the menu bar.</p>
+        </article>
+
+        <article>
+          <h3 class="content-headline">Text action</h3>
+          <a class="island-projects-link" href="#buttons-title">See other projects</a>
+          <p>Use for lower-emphasis actions inside editorial layouts.</p>
+        </article>
+
+        <article>
+          <h3 class="content-headline">Accordion control</h3>
+          <button class="skill-toggle style-guide-accordion-demo" type="button" aria-expanded="false">
+            <span>
+              <span class="skill-title">Recipes + menu planning</span>
+              <span class="skill-summary">Food ideas that can be cooked, explained, repeated, costed, and remembered.</span>
+            </span>
+            <span class="skill-plus" aria-hidden="true"></span>
+          </button>
+          <p>The whole row is the hit area. The plus icon stays visual and compact.</p>
+        </article>
+
+        <article class="style-guide-footer-demo">
+          <h3 class="content-headline">Footer pills</h3>
+          <nav class="footer-nav" aria-label="Style guide footer pill demo">
+            <a href="#buttons-title">Home</a>
+            <a href="#buttons-title">About</a>
+            <a href="#buttons-title">Work</a>
+            <a href="#buttons-title">Collaboration</a>
+            <a href="#buttons-title">Gallery</a>
+            <a href="#buttons-title">Music</a>
+          </nav>
+          <p>Use only in the footer cluster. Slight overlap is allowed, but labels must stay readable and fully in the dark area.</p>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer" id="contact">
+    <div class="footer-call">
+      <h2>Get in touch.</h2>
+    </div>
+    <address class="footer-contact" aria-label="Contact details">
+      <a class="footer-social" href="https://www.instagram.com/tiagoisnotadj?utm_source=ig_web_button_share_sheet&amp;igsh=ZDNlZDc0MzIxNw==" target="_blank" rel="noopener noreferrer" aria-label="Instagram profile">Instagram</a>
+      <a class="footer-email" href="mailto:tiagodoborges@gmail.com?subject=Project%20for%20Tiago%20Borges">tiagodoborges@gmail.com</a>
+      <a class="footer-phone" href="tel:+34611271684">+34 611 27 16 84</a>
+    </address>
+    <nav class="footer-nav" aria-label="Footer navigation">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="work.html">Work</a>
+      <a href="collaborations.html">Collaboration</a>
+      <a href="gallery.html">Gallery</a>
+      <a href="music.html">Music</a>
+    </nav>
+  </footer>
+</body>
+</html>

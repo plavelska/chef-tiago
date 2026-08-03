@@ -6,6 +6,53 @@ const normalizePage = (href) => {
 
 const currentPage = normalizePage(window.location.href);
 
+const setupCustomCursor = () => {
+  const canUseCursor = window.matchMedia("(pointer: fine)").matches
+    && window.matchMedia("(prefers-reduced-motion: no-preference)").matches;
+  if (!canUseCursor) return;
+
+  const cursor = document.createElement("div");
+  cursor.className = "site-cursor";
+  cursor.setAttribute("aria-hidden", "true");
+  cursor.innerHTML = '<img src="images/illustrations/cursor-pointer.svg" alt="" aria-hidden="true">';
+  document.body.append(cursor);
+  document.documentElement.classList.add("has-custom-cursor");
+
+  let cursorX = -120;
+  let cursorY = -120;
+  let frame = 0;
+
+  const moveCursor = () => {
+    cursor.style.setProperty("--cursor-x", `${cursorX}px`);
+    cursor.style.setProperty("--cursor-y", `${cursorY}px`);
+    frame = 0;
+  };
+
+  document.addEventListener("pointermove", (event) => {
+    if (event.pointerType && event.pointerType !== "mouse") return;
+    cursorX = event.clientX - 10;
+    cursorY = event.clientY - 8;
+    cursor.classList.add("is-visible");
+
+    if (!frame) {
+      frame = window.requestAnimationFrame(moveCursor);
+    }
+  });
+
+  document.addEventListener("pointerleave", () => {
+    cursor.classList.remove("is-visible", "is-active");
+  });
+
+  document.addEventListener("pointerover", (event) => {
+    cursor.classList.toggle(
+      "is-active",
+      Boolean(event.target.closest("a, button, summary, input, textarea, select, [role='button']")),
+    );
+  });
+};
+
+setupCustomCursor();
+
 document.querySelectorAll(".site-nav a[href]").forEach((link) => {
   const href = link.getAttribute("href");
   if (!href || href.startsWith("#")) return;

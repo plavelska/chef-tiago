@@ -12,10 +12,9 @@
   <meta name="theme-color" content="#0b43f2">
   <link rel="icon" href="images/favicon.png" type="image/png">
   <link rel="apple-touch-icon" href="images/webclip.jpg">
-  <link rel="preload" href="fonts/WorkSans-VariableFont_wght.ttf" as="font" type="font/ttf" crossorigin>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Permanent+Marker&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Outfit:wght@300;400;500;600;700;800;900&family=Permanent+Marker&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/site.css">
   <script src="js/site.js" defer></script>
 </head>
@@ -34,6 +33,7 @@
         <i aria-hidden="true"></i>
       </button>
       <div class="site-menu" id="site-menu">
+        <a href="index.html" aria-current="page">Home</a>
         <a href="about.html">About</a>
         <a href="work.html">Work</a>
         <a href="collaborations.html">Collaborations</a>
@@ -46,19 +46,11 @@
 
   <main id="main">
     <section class="home-hero" aria-labelledby="home-title">
-      <img class="hero-illu hero-chilis" src="images/illustrations/Illu_Chili.svg" alt="" aria-hidden="true">
       <div class="hero-copy">
         <p class="eyebrow">Ibiza + food culture + good people + amazing music</p>
         <h1 id="home-title"><span>Tiago</span><span>Borges</span></h1>
-        <p class="scrawl">food culture, people and good energy, from kitchens to music-led moments</p>
+        <p class="scrawl">professional chef, restaurant operator and music selector with a taste for island produce, global influences and good energy</p>
       </div>
-
-      <aside class="hero-audio" aria-labelledby="hero-audio-title">
-        <img class="hero-audio-arrow" src="images/illustrations/Illu_arrow01.svg" alt="" aria-hidden="true">
-        <p class="mini-label" id="hero-audio-title">Audio love of now</p>
-        <strong>One set for the current mood.</strong>
-        <audio controls preload="none" src="audio/placeholders/island-warmup.mp3">Your browser does not support the audio element.</audio>
-      </aside>
 
       <figure class="hero-portrait">
         <span class="portrait-stamp" aria-hidden="true">Cozinha<br>com<br>alma</span>
@@ -69,15 +61,16 @@
         <figcaption>Cozinha com alma</figcaption>
       </figure>
 
-      <aside class="work-panel" aria-labelledby="work-panel-title">
-        <div>
-          <p class="mini-label" id="work-panel-title">What I do</p>
-          <ul>
-            <li><strong>Restaurant openings</strong><span>concept + setup + execution</span></li>
-            <li><strong>Menus and concepts</strong><span>seasonal + local + global</span></li>
-            <li><strong>Kitchen coordination</strong><span>brigade + flow + culture</span></li>
-            <li><strong>Extraordinary events</strong><span>food + music + atmosphere</span></li>
-          </ul>
+      <aside class="together-card" aria-labelledby="together-card-title">
+        <div class="together-chilis" aria-hidden="true">
+          <img class="together-chili together-chili-left" src="images/illustrations/PNG/Illu-Chili/Chili-left.png" alt="">
+          <img class="together-chili together-chili-middle" src="images/illustrations/PNG/Illu-Chili/Chili-middle.png" alt="">
+          <img class="together-chili together-chili-right" src="images/illustrations/PNG/Illu-Chili/Chili-right.png" alt="">
+        </div>
+        <div class="together-card-copy">
+          <h2 id="together-card-title">What can we do together</h2>
+          <p>Are you planning to open a restaurant and need practical advice or menu creation? Are you planning a cool event and need food with confidence, rhythm, and a clear point of view?</p>
+          <a class="together-card-button" href="work.html">More about my work</a>
         </div>
       </aside>
 
@@ -154,6 +147,15 @@
         <h2 id="pov-title">A kitchen can be loud without shouting.</h2>
       </div>
       <p class="big-copy">The work lives where food, team rhythm, and island energy meet. The plate matters. So does the pass, the sourcing, the timing, the music, and the feeling when the night suddenly has a pulse.</p>
+    </section>
+
+    <section class="section home-audio-section" aria-label="Audio love of now">
+      <aside class="hero-audio home-audio-end" aria-labelledby="hero-audio-title">
+        <img class="hero-audio-arrow" src="images/illustrations/Illu_arrow01.svg" alt="" aria-hidden="true">
+        <p class="mini-label" id="hero-audio-title">Audio love of now</p>
+        <strong>One set for the current mood.</strong>
+        <audio controls preload="none" src="audio/placeholders/island-warmup.mp3">Your browser does not support the audio element.</audio>
+      </aside>
     </section>
   </main>
 
