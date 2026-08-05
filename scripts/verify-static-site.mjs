@@ -81,7 +81,7 @@ for (const [page, html] of pageHtml.entries()) {
   if (!/<main id="main">/.test(html)) fail(`${page} must include <main id="main">.`);
   if (!/href="css\/site\.css"/.test(html)) fail(`${page} must load css/site.css.`);
   if (!/src="js\/site\.js"/.test(html)) fail(`${page} must load js/site.js.`);
-  if (!/<a class="header-contact" href="#contact">Contact<\/a>/.test(html)) fail(`${page} must include the footer-jump header contact button.`);
+  if (!/<a class="header-contact" href="#contact"[^>]*>.*?Get in touch.*?<\/a>/.test(html)) fail(`${page} must include the footer-jump header contact button.`);
   if (!/<footer class="site-footer" id="contact">/.test(html)) fail(`${page} must expose contact details only in the footer anchor.`);
   if (!/<address class="footer-contact" aria-label="Contact details">/.test(html)) fail(`${page} must include structured footer contact details.`);
   if (!/href="mailto:tiagodoborges@gmail\.com/.test(html)) fail(`${page} must link the visible email with mailto.`);
