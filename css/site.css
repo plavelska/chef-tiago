@@ -851,9 +851,9 @@ main {
   --hero-vinyl-size: 82%;
   position: absolute;
   left: -10%;
-  top: calc(100% - clamp(8px, 1.2vw, 16px));
+  top: calc(100% - clamp(24px, 2.2vw, 34px));
   z-index: 4;
-  width: min(416px, 81cqi);
+  width: min(460px, 90cqi);
   aspect-ratio: 1.28;
   overflow: visible;
 }
@@ -4466,7 +4466,7 @@ p {
   }
 
   .hero-vinyl-knife {
-    width: min(390px, 81cqi);
+    width: min(430px, 88cqi);
     min-height: 0;
   }
 
@@ -4767,7 +4767,7 @@ p {
 
   .hero-vinyl-knife {
     left: -9%;
-    width: min(351px, 81cqi);
+    width: min(385px, 88cqi);
     min-height: 0;
   }
 
