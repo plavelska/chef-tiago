@@ -53,6 +53,7 @@
   --type-deco-element-large: clamp(1.8rem, 3.4vw, 4.05rem);
   --type-quote: clamp(4.1rem, 7vw, 8.35rem);
   --type-stage-intro: clamp(1.28rem, 1.52vw, 1.72rem);
+  --tile-stack-gap: clamp(16px, 1.8vw, 24px);
   --leading-tight: 0.92;
   --leading-body-tight: 1.2;
   --leading-body: 1.32;
@@ -1263,7 +1264,7 @@ p {
   z-index: 1;
   display: grid;
   align-content: center;
-  gap: clamp(16px, 1.8vw, 24px);
+  gap: var(--tile-stack-gap);
   max-width: 58ch;
 }
 
@@ -2876,7 +2877,7 @@ p {
   --chapter-inset: clamp(28px, 3vw, 42px);
   display: grid;
   align-content: space-between;
-  gap: 18px;
+  gap: var(--tile-stack-gap);
   padding: var(--chapter-inset);
 }
 
@@ -2940,7 +2941,6 @@ p {
   grid-row: 1;
   min-height: 0;
   align-content: start;
-  gap: 0;
   overflow: visible;
   padding: 0 clamp(20px, 3vw, 44px) 0 0;
   border: 0;
@@ -2964,31 +2964,29 @@ p {
 
 .chapter-mira h3 {
   max-width: 13ch;
-  margin-top: clamp(24px, 3vw, 40px);
+  margin-top: 0;
 }
 
 .chapter-mira p {
-  margin-top: clamp(16px, 1.8vw, 24px);
+  margin-top: 0;
 }
 
 .chapter-bottega h3 {
   max-width: 13ch;
-  margin-top: clamp(24px, 3vw, 40px);
+  margin-top: 0;
 }
 
 .chapter-bottega {
   align-content: start;
   align-self: start;
-  gap: 0;
   min-height: 0;
   height: fit-content;
-  padding-bottom: clamp(12px, 1.5vw, 20px);
   top: 0;
   z-index: 2;
 }
 
 .chapter-bottega p {
-  margin-top: clamp(16px, 1.8vw, 24px);
+  margin-top: 0;
 }
 
 .chapter-fork-stage {
@@ -4793,7 +4791,7 @@ p {
   .together-card {
     --teaser-inset: clamp(24px, 5vw, 36px);
     grid-template-columns: 1fr;
-    gap: clamp(8px, 2.2vw, 14px);
+    gap: var(--tile-stack-gap);
     width: min(100%, 68rem);
     min-height: auto;
     padding: var(--teaser-inset);
@@ -4806,10 +4804,10 @@ p {
     width: min(100%, 70%);
     min-height: 0;
     margin-right: auto;
-    margin-top: clamp(4px, 1.5vw, 10px);
+    margin-top: 0;
     justify-content: start;
     gap: clamp(10px, 8cqw, 22cqw);
-    margin-bottom: clamp(6px, 1.8vw, 12px);
+    margin-bottom: 0;
     transform: none;
   }
 
@@ -5158,7 +5156,7 @@ p {
   }
 
   .chapter-card {
-    padding: 22px 20px 34px;
+    padding: var(--chapter-inset);
   }
 
   .chapter-mira {
