@@ -4791,9 +4791,9 @@ p {
   }
 
   .together-card {
-    --teaser-inset: clamp(32px, 6vw, 48px);
+    --teaser-inset: clamp(24px, 5vw, 36px);
     grid-template-columns: 1fr;
-    gap: clamp(12px, 2.8vw, 18px);
+    gap: clamp(8px, 2.2vw, 14px);
     width: min(100%, 68rem);
     min-height: auto;
     padding: var(--teaser-inset);
@@ -4806,16 +4806,16 @@ p {
     width: min(100%, 70%);
     min-height: 0;
     margin-right: auto;
-    margin-top: clamp(8px, 2vw, 18px);
+    margin-top: clamp(4px, 1.5vw, 10px);
     justify-content: start;
-    gap: clamp(16px, 12cqw, 30cqw);
-    margin-bottom: clamp(10px, 2.5vw, 18px);
+    gap: clamp(10px, 8cqw, 22cqw);
+    margin-bottom: clamp(6px, 1.8vw, 12px);
     transform: none;
   }
 
   .together-chili {
     justify-self: center;
-    height: clamp(175px, 41.5vw, 237px);
+    height: clamp(140px, 31vw, 180px);
   }
 
   .together-card-copy {
@@ -4824,8 +4824,8 @@ p {
 
   .together-card h2 {
     grid-row: 2;
-    max-width: 12.5ch;
-    font-size: clamp(2.65rem, 10vw, 4.2rem);
+    max-width: 100%;
+    font-size: clamp(1.75rem, 9.3vw, 4.2rem);
   }
 
   .together-card p {
