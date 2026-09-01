@@ -2783,7 +2783,7 @@ p {
 .island-heading,
 .music-heading {
   --chapter-following-gap: clamp(22px, 3vw, 48px);
-  --chapter-heading-row-gap: clamp(18px, 2.2vw, 30px);
+  --chapter-heading-row-gap: clamp(28px, 2.8vw, 38px);
   row-gap: var(--chapter-heading-row-gap);
 }
 
@@ -2821,6 +2821,7 @@ p {
 .music-heading > .heading-main > h2 {
   grid-column: 1 / -1;
   grid-row: auto;
+  letter-spacing: 0.015em;
 }
 
 .island-projects-link {
@@ -5092,7 +5093,7 @@ p {
   .island-heading,
   .music-heading {
     grid-template-columns: 1fr;
-    row-gap: clamp(16px, 4.8vw, 24px);
+    row-gap: var(--chapter-heading-row-gap);
   }
 
   .island-heading h2,
@@ -5105,7 +5106,7 @@ p {
   .music-heading > .heading-main {
     grid-column: 1 / -1;
     grid-row: 1;
-    row-gap: clamp(16px, 4.8vw, 24px);
+    row-gap: var(--chapter-heading-row-gap);
   }
 
   .island-heading > .heading-main > .island-projects-link,
