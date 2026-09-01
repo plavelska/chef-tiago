@@ -815,8 +815,9 @@ main {
 
 .home-hero {
   --home-hero-card-gap: clamp(32px, 4vw, 56px);
+  --home-hero-max-height: 1340px;
   position: relative;
-  min-height: calc(100svh - 84px);
+  min-height: min(calc(100svh - 84px), var(--home-hero-max-height));
   display: grid;
   grid-template-columns: repeat(12, minmax(0, 1fr));
   grid-template-areas:
@@ -826,6 +827,7 @@ main {
   column-gap: clamp(12px, 1.6vw, 22px);
   row-gap: clamp(32px, 4vw, 58px);
   align-items: start;
+  align-content: start;
   padding: clamp(20px, 3vw, 38px) var(--gutter) clamp(70px, 8vw, 110px);
 }
 
