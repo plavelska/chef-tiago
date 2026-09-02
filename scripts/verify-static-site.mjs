@@ -63,7 +63,7 @@ const stalePublicLanguage = [
 const ignoredHref = /^(mailto:|tel:|https?:|\/\/)/i;
 const hrefPattern = /\s(?:href|src)=["']([^"']+)["']/g;
 
-const stripHash = (value) => value.split("#")[0];
+const stripHash = (value) => value.split("#")[0].split("?")[0];
 const hashPart = (value) => value.includes("#") ? value.split("#").slice(1).join("#") : "";
 
 const resolveLocal = (page, value) => {
@@ -79,7 +79,7 @@ for (const [page, html] of pageHtml.entries()) {
   if (!/<meta name="description" content="[^"]+">/.test(html)) fail(`${page} must include a meta description.`);
   if (!/<a class="skip-link" href="#main">Skip to content<\/a>/.test(html)) fail(`${page} must include the shared skip link.`);
   if (!/<main id="main">/.test(html)) fail(`${page} must include <main id="main">.`);
-  if (!/href="css\/site\.css"/.test(html)) fail(`${page} must load css/site.css.`);
+  if (!/href="css\/site\.css(?:\?[^" ]+)?"/.test(html)) fail(`${page} must load css/site.css.`);
   if (!/src="js\/site\.js"/.test(html)) fail(`${page} must load js/site.js.`);
   if (!/<a class="header-contact" href="#contact"[^>]*>.*?Get in touch.*?<\/a>/.test(html)) fail(`${page} must include the footer-jump header contact button.`);
   if (!/<footer class="site-footer" id="contact">/.test(html)) fail(`${page} must expose contact details only in the footer anchor.`);
