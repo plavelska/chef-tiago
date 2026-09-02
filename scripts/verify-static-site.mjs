@@ -139,6 +139,31 @@ for (const href of ["collaborations.html", "#contact"]) {
   if (!music.includes(`href="${href}"`)) fail(`music.html must route back to ${href}.`);
 }
 
+const home = pageHtml.get("index.html");
+if (!/<div class="hero-visual">[\s\S]*?<figure class="hero-portrait">[\s\S]*?<div class="hero-vinyl-knife"/.test(home)) {
+  fail("index.html must keep the portrait and vinyl composition in the shared hero visual flow.");
+}
+
+for (const legacyRule of ["--home-hero-card-gap", "--home-hero-portrait-reserve", "--home-hero-max-height"]) {
+  if (siteCss.includes(legacyRule)) fail(`CSS must not restore the legacy hero spacing rule: ${legacyRule}.`);
+}
+
+if (!/\.home-hero\s*{[\s\S]*?row-gap:\s*var\(--home-hero-panel-gap\)/.test(siteCss)) {
+  fail("CSS must derive the hero-to-panel spacing from --home-hero-panel-gap.");
+}
+
+const togetherHeadingBlocks = Array.from(siteCss.matchAll(/\.together-card h2\s*{([^}]*)}/g));
+if (!togetherHeadingBlocks.length || !/font-size:\s*var\(--type-section-xl\)/.test(togetherHeadingBlocks[0][1])) {
+  fail("CSS must derive the together-card headline from --type-section-xl.");
+}
+if (togetherHeadingBlocks.slice(1).some((match) => /font-size:/.test(match[1]))) {
+  fail("Responsive CSS must not override the together-card headline size.");
+}
+
+if (!/\.home-hero h1\s*{[^}]*font-size:\s*var\(--type-home-hero\)/.test(siteCss)) {
+  fail("CSS must derive the homepage hero headline from --type-home-hero.");
+}
+
 if (/webflow|jquery|formspree/i.test(`${siteCss}\n${siteJs}`)) {
   fail("New CSS/JS should not depend on Webflow, jQuery, or Formspree.");
 }
