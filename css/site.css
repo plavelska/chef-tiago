@@ -1951,7 +1951,7 @@ p {
   z-index: -1;
   width: clamp(340px, 48vw, 760px);
   aspect-ratio: 661 / 760;
-  opacity: 0.68;
+  opacity: 1;
   pointer-events: none;
   user-select: none;
 }
