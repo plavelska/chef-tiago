@@ -39,9 +39,12 @@
   --page-headline-copy-gap: clamp(20px, 2.6vw, 38px);
   --page-header-padding-top: clamp(132px, 16vw, 228px);
   --section-headline-max: min(100%, 30ch);
-  --section-topline-headline-gap: clamp(12px, 1.5vw, 22px);
+  --rule-to-topline-space: clamp(28px, 4vw, 64px);
+  --topline-to-heading-space: clamp(12px, 1.5vw, 22px);
   --section-headline-content-gap: clamp(28px, 4vw, 64px);
-  --module-rule-topline-gap: clamp(28px, 4vw, 64px);
+  --footer-transition-space: clamp(80px, 9vw, 144px);
+  --motion-line-duration: 400ms;
+  --motion-line-ease: cubic-bezier(0.25, 0.46, 0.45, 0.94);
   --type-section: clamp(3.35rem, 6.1vw, 7rem);
   --type-section-xl: var(--type-section);
   --type-card-title: clamp(2.9rem, 5vw, 5.9rem);
@@ -53,7 +56,7 @@
   --type-micro: clamp(0.68rem, 0.9vw, 0.84rem);
   --type-deco-element: clamp(1.28rem, 1.85vw, 2.15rem);
   --type-deco-element-large: clamp(1.8rem, 3.4vw, 4.05rem);
-  --type-quote: clamp(4.1rem, 7vw, 8.35rem);
+  --type-quote: clamp(3.1rem, 6.2vw, 7.7rem);
   --type-stage-intro: clamp(1.28rem, 1.52vw, 1.72rem);
   --tile-stack-gap: clamp(16px, 1.8vw, 24px);
   --leading-tight: 0.92;
@@ -81,6 +84,20 @@
 
   to {
     transform: rotate(350deg);
+  }
+}
+
+@keyframes musicStageBangBangStarPulse {
+  from {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.075);
+  }
+
+  to {
+    transform: scale(1);
   }
 }
 
@@ -523,7 +540,7 @@ svg:not(.collab-hero-illu) circle {
 .chapter + h1,
 .chapter + h2,
 .chapter + h3 {
-  margin-top: var(--section-topline-headline-gap);
+  margin-top: var(--topline-to-heading-space);
 }
 
 .content-heading {
@@ -533,9 +550,9 @@ svg:not(.collab-hero-illu) circle {
 
 .module-heading {
   display: grid;
-  gap: var(--section-topline-headline-gap);
+  gap: var(--topline-to-heading-space);
   border-top: 2px solid var(--ink);
-  padding-top: var(--module-rule-topline-gap);
+  padding-top: var(--rule-to-topline-space);
 }
 
 .module-heading > h2,
@@ -547,6 +564,31 @@ svg:not(.collab-hero-illu) circle {
 .module-heading--no-rule {
   border-top: 0;
   padding-top: 0;
+}
+
+/* Shared section-rule reveal. The original border remains as the no-JS fallback. */
+.motion-line {
+  position: relative;
+}
+
+.has-motion .motion-line {
+  border-top-color: transparent;
+}
+
+.has-motion .motion-line::after {
+  position: absolute;
+  z-index: 1;
+  top: -2px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  content: "";
+  background: var(--ink);
+  transition: width var(--motion-line-duration) var(--motion-line-ease);
+}
+
+.has-motion .motion-line.is-motion-visible::after {
+  width: 100%;
 }
 
 .content-heading > .chapter,
@@ -562,7 +604,7 @@ svg:not(.collab-hero-illu) circle {
   letter-spacing: var(--tracking-page-headline);
   text-transform: uppercase;
   max-width: var(--section-headline-max);
-  margin-block: var(--section-topline-headline-gap) 0;
+  margin-block: var(--topline-to-heading-space) 0;
 }
 
 .content-heading + * {
@@ -827,10 +869,6 @@ main {
 
 .home-page main > .home-pov {
   margin-top: var(--home-closing-space);
-}
-
-.home-page main + .site-footer {
-  margin-top: clamp(52px, 5.5vw, 80px);
 }
 
 .home-hero {
@@ -1915,7 +1953,8 @@ p {
   column-gap: clamp(40px, 6vw, 104px);
   align-items: start;
   min-height: 0;
-  margin-bottom: clamp(28px, 3vw, 48px);
+  /* The main grid owns module spacing; a stage margin here would double it. */
+  margin-bottom: 0;
   padding-block: clamp(72px, 8vw, 128px) clamp(40px, 4vw, 64px);
   overflow: visible;
   isolation: isolate;
@@ -2085,17 +2124,17 @@ p {
 .about-story {
   grid-template-columns: 1fr;
   gap: var(--section-headline-content-gap);
-  padding-top: var(--module-rule-topline-gap);
+  padding-top: var(--rule-to-topline-space);
   border-top: 2px solid var(--ink);
 }
 
 .music-story {
-  padding-top: var(--module-rule-topline-gap);
+  padding-top: var(--rule-to-topline-space);
   border-top: 2px solid var(--ink);
 }
 
 .music-player-section {
-  padding-top: var(--module-rule-topline-gap);
+  padding-top: var(--rule-to-topline-space);
   border-top: 2px solid var(--ink);
 }
 
@@ -2130,7 +2169,7 @@ p {
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: clamp(22px, 4vw, 70px);
   padding-block: clamp(36px, 6vw, 92px);
-  border-block: 2px solid var(--ink);
+  border-top: 2px solid var(--ink);
 }
 
 .about-maxims p {
@@ -2399,7 +2438,7 @@ p {
 
 .work-skills.split-section {
   position: relative;
-  padding-top: var(--module-rule-topline-gap);
+  padding-top: var(--rule-to-topline-space);
   border-top: 2px solid var(--ink);
 }
 
@@ -2419,6 +2458,27 @@ p {
 
 .skill-item {
   border-bottom: 2px solid var(--ink);
+}
+
+.has-motion .skill-item.motion-list-line {
+  position: relative;
+  border-bottom-color: transparent;
+}
+
+.has-motion .skill-item.motion-list-line::after {
+  position: absolute;
+  right: auto;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  content: "";
+  background: var(--ink);
+  transition: width var(--motion-line-duration) var(--motion-line-ease);
+}
+
+.has-motion .skill-item.motion-list-line.is-motion-visible::after {
+  width: 100%;
 }
 
 .skill-toggle {
@@ -2760,7 +2820,7 @@ p {
 }
 
 .section-heading.module-heading {
-  gap: var(--section-topline-headline-gap);
+  gap: var(--topline-to-heading-space);
 }
 
 .route-grid,
@@ -3615,10 +3675,12 @@ p {
   top: 2%;
   right: 0;
   z-index: 2;
-  width: 36%;
+  width: 40%;
   min-height: 0;
   margin: 0;
   opacity: 1;
+  transform: translate(16%, -18%) rotate(-10deg);
+  transform-origin: 50% 50%;
 }
 
 .hero-portrait .hero-stage-star {
@@ -3648,9 +3710,27 @@ p {
   transform: translate(-50%, -50%);
 }
 
-.music-stage-burst {
+.music-stage-bangbang {
   min-height: 0;
-  aspect-ratio: 1;
+  aspect-ratio: 2589 / 2583;
+}
+
+.music-stage-bangbang img {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.music-stage-bangbang-text {
+  z-index: 1;
+}
+
+.music-stage-bangbang-star {
+  z-index: 2;
+  transform-origin: center;
 }
 
 .music-stage-lemon {
@@ -3659,7 +3739,7 @@ p {
   right: 0;
   bottom: 0;
   z-index: 1;
-  width: 92%;
+  width: 82%;
   max-width: none;
   height: auto;
   opacity: 1;
@@ -3698,12 +3778,13 @@ p {
     --stage-visual-width: clamp(260px, 48vw, 340px);
   }
 
-  .music-hero-illu .music-stage-burst {
-    width: 36%;
-  }
 }
 
 @media (prefers-reduced-motion: no-preference) {
+  .music-stage-bangbang-star {
+    animation: musicStageBangBangStarPulse 4.8s ease-in-out infinite;
+  }
+
   .music-stage-lemon {
     animation: musicLemonFloat 5.5s ease-in-out infinite;
   }
@@ -4132,7 +4213,8 @@ p {
   background: transparent;
 }
 
-.track-list li:has(.spotify-playlist) {
+.track-list li:has(.spotify-playlist),
+.track-list li:has(.soundcloud-playlist) {
   grid-template-columns: 1fr;
   align-items: start;
 }
@@ -4151,7 +4233,8 @@ p {
   filter: saturate(1.2);
 }
 
-.spotify-playlist {
+.spotify-playlist,
+.soundcloud-playlist {
   width: 100%;
   min-width: 0;
   border: 0;
@@ -4249,14 +4332,20 @@ p {
 }
 
 .site-footer {
-  display: grid;
-  grid-template-columns: minmax(240px, 0.82fr) minmax(320px, 1.18fr);
-  gap: clamp(28px, 5vw, 72px);
-  margin-top: clamp(30px, 5vw, 70px);
-  padding: clamp(36px, 6vw, 86px) var(--gutter) clamp(22px, 3vw, 34px);
+  margin-top: var(--footer-transition-space);
+  padding: clamp(36px, 6vw, 86px) 0 clamp(22px, 3vw, 34px);
   border-top: 2px solid var(--ink);
   background: var(--ink);
   color: var(--paper);
+}
+
+/* Mirrors the content modules so contact details share the text column's left edge. */
+.footer-inner {
+  display: grid;
+  grid-template-columns: minmax(240px, 0.8fr) minmax(280px, 1.2fr);
+  gap: 24px;
+  width: min(100% - (var(--gutter) * 2), 1480px);
+  margin-inline: auto;
 }
 
 .footer-call {
@@ -4875,8 +4964,7 @@ p {
     grid-template-columns: 1fr;
   }
 
-  .site-footer,
-  .footer-contact {
+  .footer-inner {
     grid-template-columns: 1fr;
   }
 

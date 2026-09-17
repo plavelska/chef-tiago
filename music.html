@@ -42,7 +42,10 @@
   <main id="main">
     <section class="section page-stage music-page-open" aria-labelledby="music-title">
       <div class="page-stage-visual music-hero-illu" aria-hidden="true">
-        <span class="portrait-burst music-stage-burst music-stage-star">Bang<br>Bang</span>
+        <div class="music-stage-star music-stage-bangbang">
+          <img class="music-stage-bangbang-star" src="images/illustrations/PNG/Illu-Star-BangBang/Illu-Setrn-BangBang.png?v=2" alt="">
+          <img class="music-stage-bangbang-text" src="images/illustrations/PNG/Illu-Star-BangBang/Illu-Setrn-BangBang-Text.png?v=2" alt="">
+        </div>
         <img class="music-stage-lemon" src="images/illustrations/PNG/Illu_lemon.png" alt="">
       </div>
       <div class="page-stage-copy">
@@ -58,7 +61,7 @@
         <h2 id="playlist-title">One set for the current mood.</h2>
         <p class="stage-note">Temporary sound sketches until the real selections arrive: African heat, island rhythm, after-hours curiosity.</p>
       </div>
-      <div class="music-stage" aria-label="Three Spotify playlists for the current mood">
+      <div class="music-stage" aria-label="Spotify and SoundCloud playlists for the current mood">
         <ol class="track-list spotify-playlists">
           <li>
             <iframe
@@ -90,6 +93,16 @@
               loading="lazy"
               allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
           </li>
+          <li>
+            <iframe
+              class="soundcloud-playlist"
+              src="https://w.soundcloud.com/player/?url=https%3A%2F%2Fapi.soundcloud.com%2Fplaylists%2F1430204581&color=%230b43f2&auto_play=false&hide_related=false&show_comments=false&show_user=true&show_reposts=false&show_teaser=true&visual=false"
+              title="Drum Syrup Podcasts by Ba Dum Tish on SoundCloud"
+              width="100%"
+              height="166"
+              loading="lazy"
+              allow="autoplay; encrypted-media"></iframe>
+          </li>
         </ol>
       </div>
     </section>
@@ -110,6 +123,7 @@
   </main>
 
   <footer class="site-footer" id="contact">
+    <div class="footer-inner">
     <div class="footer-call">
       <h2>Get in touch.</h2>
     </div>
@@ -126,6 +140,7 @@
       <a href="gallery.html">Gallery</a>
       <a href="music.html">Music</a>
     </nav>
+    </div>
   </footer>
 </body>
 </html>

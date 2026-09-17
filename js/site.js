@@ -53,6 +53,80 @@ const setupCustomCursor = () => {
 
 setupCustomCursor();
 
+const canUseScrollMotion = () => window.matchMedia("(prefers-reduced-motion: no-preference)").matches
+  && "IntersectionObserver" in window;
+
+const setupSectionRuleMotion = () => {
+  if (!canUseScrollMotion()) return;
+
+  const ruleSelectors = [
+    ".module-heading:not(.module-heading--no-rule):not(.module-heading--section-rule)",
+    ".about-story",
+    ".music-story",
+    ".music-player-section",
+    ".work-skills",
+    ".about-maxims",
+  ];
+  const rules = [...document.querySelectorAll(ruleSelectors.join(","))].filter((rule) => {
+    const styles = window.getComputedStyle(rule);
+    const rect = rule.getBoundingClientRect();
+    return rect.width > 0
+      && rect.height > 0
+      && styles.borderTopStyle !== "none"
+      && Number.parseFloat(styles.borderTopWidth) > 0;
+  });
+  if (!rules.length) return;
+
+  document.documentElement.classList.add("has-motion");
+  rules.forEach((rule) => rule.classList.add("motion-line"));
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (!entry.isIntersecting) return;
+      entry.target.classList.add("is-motion-visible");
+      observer.unobserve(entry.target);
+    });
+  }, {
+    threshold: 0,
+    rootMargin: "0px 0px -5% 0px",
+  });
+
+  rules.forEach((rule) => observer.observe(rule));
+};
+
+setupSectionRuleMotion();
+
+const setupSkillLineMotion = () => {
+  if (!canUseScrollMotion()) return;
+
+  const lists = document.querySelectorAll(".skill-lines");
+  if (!lists.length) return;
+
+  document.documentElement.classList.add("has-motion");
+
+  lists.forEach((list) => {
+    const items = [...list.querySelectorAll(":scope > .skill-item")];
+    if (!items.length) return;
+
+    items.forEach((item) => item.classList.add("motion-list-line"));
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add("is-motion-visible");
+        observer.unobserve(entry.target);
+      });
+    }, {
+      threshold: 0,
+      rootMargin: "0px 0px -5% 0px",
+    });
+
+    items.forEach((item) => observer.observe(item));
+  });
+};
+
+setupSkillLineMotion();
+
 document.querySelectorAll(".site-nav a[href]").forEach((link) => {
   const href = link.getAttribute("href");
   if (!href || href.startsWith("#")) return;
