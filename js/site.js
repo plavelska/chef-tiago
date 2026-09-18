@@ -127,6 +127,49 @@ const setupSkillLineMotion = () => {
 
 setupSkillLineMotion();
 
+const setupTextRevealMotion = () => {
+  if (!canUseScrollMotion()) return;
+
+  const groups = document.querySelectorAll([
+    ".hero-copy",
+    ".page-stage-copy",
+    ".content-heading",
+    ".section-heading:not(.content-heading)",
+    ".contact-open",
+    ".contact-sheet-heading",
+  ].join(","));
+  if (!groups.length) return;
+
+  document.documentElement.classList.add("has-text-motion");
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (!entry.isIntersecting) return;
+
+      entry.target.querySelectorAll(":scope > .motion-reveal").forEach((element) => {
+        element.classList.add("is-motion-visible");
+      });
+      observer.unobserve(entry.target);
+    });
+  }, {
+    threshold: 0,
+    rootMargin: "0px 0px -7% 0px",
+  });
+
+  groups.forEach((group) => {
+    const elements = [...group.children].filter((element) => element.textContent.trim());
+    if (!elements.length) return;
+
+    elements.forEach((element, index) => {
+      element.classList.add("motion-reveal");
+      element.style.setProperty("--motion-reveal-delay", `${index * 90}ms`);
+    });
+    observer.observe(group);
+  });
+};
+
+setupTextRevealMotion();
+
 document.querySelectorAll(".site-nav a[href]").forEach((link) => {
   const href = link.getAttribute("href");
   if (!href || href.startsWith("#")) return;
