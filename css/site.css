@@ -683,6 +683,49 @@ svg:not(.collab-hero-illu) circle {
   transform: translateY(0);
 }
 
+/* Each visual headline line is masked independently for a stronger editorial
+   reveal, while the surrounding text keeps the quieter fade-and-rise motion. */
+.motion-heading-line-mask {
+  display: block;
+  overflow: hidden;
+  padding-block: 0.1em;
+  margin-block: -0.1em;
+}
+
+.motion-heading-line {
+  display: block;
+  white-space: nowrap;
+}
+
+.home-hero h1 .motion-heading-line--offset {
+  margin-left: clamp(1.75rem, 5vw, 6rem);
+}
+
+.has-text-motion .motion-heading-line {
+  transform: translateY(112%);
+  transition: transform 760ms var(--motion-reveal-ease);
+  transition-delay: calc(
+    var(--motion-reveal-delay, 0ms) + var(--motion-heading-line-delay, 0ms)
+  );
+}
+
+.has-text-motion .motion-heading.is-motion-visible .motion-heading-line {
+  transform: translateY(0);
+}
+
+/* Large editorial cards can opt into a small viewport-led scale without
+   affecting the surrounding document flow. */
+.scroll-scale-target {
+  --scroll-scale-min: 0.94;
+  --scroll-scale: 1;
+  transform: translateZ(0) scale(var(--scroll-scale));
+  transform-origin: center;
+}
+
+.has-scroll-scale-motion .scroll-scale-target {
+  will-change: transform;
+}
+
 .content-heading > .chapter,
 .content-heading > .eyebrow {
   margin: 0;
@@ -1089,7 +1132,7 @@ p {
   white-space: nowrap;
 }
 
-.home-hero h1 span:nth-child(2) {
+.home-hero h1 > span:nth-child(2):not(.motion-heading-line-mask) {
   margin-left: clamp(1.75rem, 5vw, 6rem);
 }
 
@@ -5145,6 +5188,7 @@ p {
 
   .together-card {
     --teaser-inset: clamp(24px, 5vw, 36px);
+    --scroll-scale-min: 0.98;
     grid-template-columns: 1fr;
     gap: var(--teaser-stack-gap);
     width: min(100%, 68rem);

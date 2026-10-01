@@ -141,12 +141,62 @@ const setupTextRevealMotion = () => {
   if (!groups.length) return;
 
   document.documentElement.classList.add("has-text-motion");
+  const headings = [];
+
+  const buildHeadlineLines = (heading) => {
+    const source = heading.dataset.motionHeadline || heading.textContent.trim();
+    if (!source) return;
+
+    heading.dataset.motionHeadline = source;
+    heading.replaceChildren();
+
+    const probes = source.split(/\s+/).map((word, index, words) => {
+      const probe = document.createElement("span");
+      probe.textContent = index === words.length - 1 ? word : `${word} `;
+      heading.append(probe);
+      return probe;
+    });
+
+    const lines = [];
+    probes.forEach((probe) => {
+      const top = Math.round(probe.offsetTop);
+      const currentLine = lines.at(-1);
+      if (!currentLine || currentLine.top !== top) lines.push({ top, words: [] });
+      lines.at(-1).words.push(probe.textContent.trim());
+    });
+
+    heading.replaceChildren();
+    lines.forEach((line, index) => {
+      const mask = document.createElement("span");
+      const content = document.createElement("span");
+      mask.className = "motion-heading-line-mask";
+      content.className = "motion-heading-line";
+      content.textContent = line.words.join(" ");
+      content.style.setProperty("--motion-heading-line-delay", `${index * 105}ms`);
+      mask.append(content);
+      heading.append(mask);
+    });
+    heading.dataset.motionHeadlineWidth = `${Math.round(heading.getBoundingClientRect().width)}`;
+  };
+
+  const buildPresetHeadlineLines = (heading) => {
+    const lines = [...heading.children];
+    lines.forEach((line, index) => {
+      const mask = document.createElement("span");
+      mask.className = "motion-heading-line-mask";
+      line.classList.add("motion-heading-line");
+      if (index > 0) line.classList.add("motion-heading-line--offset");
+      line.style.setProperty("--motion-heading-line-delay", `${index * 105}ms`);
+      mask.append(line);
+      heading.append(mask);
+    });
+  };
 
   const observer = new IntersectionObserver((entries) => {
     entries.forEach((entry) => {
       if (!entry.isIntersecting) return;
 
-      entry.target.querySelectorAll(":scope > .motion-reveal").forEach((element) => {
+      entry.target.querySelectorAll(".motion-reveal, .motion-heading").forEach((element) => {
         element.classList.add("is-motion-visible");
       });
       observer.unobserve(entry.target);
@@ -161,14 +211,92 @@ const setupTextRevealMotion = () => {
     if (!elements.length) return;
 
     elements.forEach((element, index) => {
-      element.classList.add("motion-reveal");
-      element.style.setProperty("--motion-reveal-delay", `${index * 90}ms`);
+      const heading = element.matches("h1, h2, h3")
+        ? element
+        : element.querySelector(":scope > h1, :scope > h2, :scope > h3");
+      const hasPresetLines = heading?.id === "home-title"
+        && [...heading.children].every((child) => child.tagName === "SPAN");
+
+      if (heading && (!heading.children.length || hasPresetLines)) {
+        heading.classList.add("motion-heading");
+        heading.style.setProperty("--motion-reveal-delay", `${index * 90}ms`);
+        if (hasPresetLines) buildPresetHeadlineLines(heading);
+        else {
+          buildHeadlineLines(heading);
+          headings.push(heading);
+        }
+      } else {
+        element.classList.add("motion-reveal");
+        element.style.setProperty("--motion-reveal-delay", `${index * 90}ms`);
+      }
     });
     observer.observe(group);
+  });
+
+  let resizeFrameId = null;
+  window.addEventListener("resize", () => {
+    if (resizeFrameId !== null) return;
+    resizeFrameId = window.requestAnimationFrame(() => {
+      resizeFrameId = null;
+      headings.forEach((heading) => {
+        const width = `${Math.round(heading.getBoundingClientRect().width)}`;
+        if (heading.dataset.motionHeadlineWidth === width) return;
+        buildHeadlineLines(heading);
+      });
+    });
   });
 };
 
 setupTextRevealMotion();
+
+const setupScrollScaleMotion = () => {
+  if (!canUseScrollMotion()) return;
+
+  const targets = [...document.querySelectorAll(".scroll-scale-target")];
+  if (!targets.length) return;
+
+  document.documentElement.classList.add("has-scroll-scale-motion");
+  const activeTargets = new Set();
+  let frameId = null;
+
+  const updateScale = () => {
+    frameId = null;
+    const scaleStart = window.innerHeight * 0.9;
+    const scaleEnd = window.innerHeight * 0.35;
+
+    activeTargets.forEach((target) => {
+      const rect = target.getBoundingClientRect();
+      const minScale = Number.parseFloat(window.getComputedStyle(target).getPropertyValue("--scroll-scale-min")) || 1;
+      const currentProgress = Math.max(0, Math.min(1, (scaleStart - rect.top) / (scaleStart - scaleEnd)));
+      const previousProgress = Number.parseFloat(target.dataset.scrollScaleProgress) || 0;
+      const progress = Math.max(previousProgress, currentProgress);
+      const scale = minScale + ((1 - minScale) * progress);
+
+      target.dataset.scrollScaleProgress = progress.toFixed(4);
+      target.style.setProperty("--scroll-scale", scale.toFixed(4));
+    });
+  };
+
+  const requestScaleUpdate = () => {
+    if (frameId !== null) return;
+    frameId = window.requestAnimationFrame(updateScale);
+  };
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) activeTargets.add(entry.target);
+      else activeTargets.delete(entry.target);
+    });
+    requestScaleUpdate();
+  }, { rootMargin: "20% 0px" });
+
+  targets.forEach((target) => observer.observe(target));
+  window.addEventListener("scroll", requestScaleUpdate, { passive: true });
+  window.addEventListener("resize", requestScaleUpdate);
+  requestScaleUpdate();
+};
+
+setupScrollScaleMotion();
 
 document.querySelectorAll(".site-nav a[href]").forEach((link) => {
   const href = link.getAttribute("href");
